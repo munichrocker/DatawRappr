@@ -1,0 +1,13 @@
+Package: DatawRappr
+Type: Package
+Title: Provides access to Datawrapper's API to create and edit charts directly out of R.
+Version: 0.1.0
+Author: Benedict Witzenberger
+Maintainer: Benedict Witzenberger <benedict.witzenberger@sueddeutsche.de>
+Description: This package is a simple implementation to create and edit charts via Datawrapper's API.
+    It makes heavy use of the _httr_-library and tries to manage the API-token for the user in the .Renviron-file.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Imports:
+    httr
