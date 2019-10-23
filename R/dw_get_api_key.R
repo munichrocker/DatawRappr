@@ -1,6 +1,6 @@
 #' Get Datawrapper-API-Key
 #'
-#' Retrieves the Datawrapper-API-key from the .Renviron-file
+#' Retrieves the \href{https://developer.datawrapper.de/}{Datawrapper-API}-key from the .Renviron-file
 #'
 #' @return The API-key as a character string
 #' @author Benedict Witzenberger
@@ -19,7 +19,7 @@ dw_get_api_key <- function() {
 
   } else {
 
-    warning("Kein Datawrapper-API-Key gefunden. Zuerst einen neuen Key mit datawrapper_auth() hinzufügen.", immediate. = TRUE)
+    warning("No Datawrapper-key was found. Please add a new key first using datawrapper_auth().", immediate. = TRUE)
 
   }
 

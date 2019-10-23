@@ -15,7 +15,7 @@
 #'
 #' dw_publish_chart(chart_id = "a1B2Cd", api_key = "1234ABCD") # uses the specified key
 #'
-#' dw_publish_chart(chart_id = "a1B2Cd", return_urls = TRUE) # doesn't return the code and URLs for the chart
+#' dw_publish_chart(chart_id = "a1B2Cd", return_urls = TRUE) # won't return code and URLs for chart
 #'
 #' @rdname dw_publish_chart
 #' @export

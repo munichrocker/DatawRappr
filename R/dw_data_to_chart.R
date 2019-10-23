@@ -14,11 +14,11 @@
 #' @note This function uploads a R-dataframe to Datawrapper.
 #' @examples
 #'
-#' dw_data_to_chart(df, "aBcDE") # uses the preset key in the .Renviron-file
+#' \dontrun{dw_data_to_chart(df, "aBcDE")} # uses the preset key in the .Renviron-file
 #'
-#' dw_data_to_chart(df, chart_id = "a1B2Cd", api_key = "1234ABCD") # uses the specified key
+#' \dontrun{dw_data_to_chart(df, chart_id = "a1B2Cd", api_key = "1234ABCD")} # uses the specified key
 #'
-#' dw_data_to_chart(df, chart_id = "a1B2Cd", display_response = FALSE) # doesn't return the response from the server
+#' \dontrun{dw_data_to_chart(df, chart_id = "a1B2Cd", display_response = FALSE)} # wont't return response
 #'
 #' @rdname dw_data_to_chart
 #' @export

@@ -1,10 +1,10 @@
 #' Tests the Datawrapper-API-key
 #'
-#' Tests the key by querying the API for user information.
+#' Tests the key by querying the \href{https://developer.datawrapper.de/}{Datawrapper-API} for user information.
 #'
 #' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file.
 #'
-#' @return A list with the elements from the Datawrapper-API
+#' @return A list with the elements from the \href{https://developer.datawrapper.de/}{Datawrapper-API}
 #' \item{status}{Returns 'ok' if the API-key used was correct.}
 #' \item{data$user$id}{Returns the internal user id.}
 #' \item{data$user$email}{The users e-mail adress.}
