@@ -3,7 +3,7 @@
 #' Return the metadata of a existing Datawrapper chart.
 #'
 #' @param chart_id Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe".
-#' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file.
+#' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
 #'
 #' @return A list with the elements from the Datawrapper-API
 #' \item{status}{Returns 'ok' if the API-key used was correct.}

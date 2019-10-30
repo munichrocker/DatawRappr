@@ -4,7 +4,7 @@
 #'
 #' @param x Required. A R object of class 'data.frame',to be uploaded as the Datawrapper data.
 #' @param chart_id Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe".
-#' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file.
+#' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
 #' @param display_response Optional. It TRUE (default) returns the status code and URL to the uploaded data as CSV.
 #'
 #' @return A list with the elements from the Datawrapper-API

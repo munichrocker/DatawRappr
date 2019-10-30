@@ -3,7 +3,7 @@
 #' Publish a chart on Datawrapper.
 #'
 #' @param chart_id Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe".
-#' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file.
+#' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
 #' @param return_urls Optional. If TRUE (default) it returns the code for the responsive iFrame and an URL to the chart.
 #'
 #' @return A message that specifies, if the publication was successfull. If set, including the iFrame-Code and chart-URL.

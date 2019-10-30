@@ -1,6 +1,6 @@
 #' Get Datawrapper-API-Key
 #'
-#' Retrieves the \href{https://developer.datawrapper.de/}{Datawrapper-API}-key from the .Renviron-file
+#' Retrieves the \href{https://developer.datawrapper.de/}{Datawrapper-API}-key from the .Renviron-file, if it was saved there earlier by \code{\link{datawrapper_auth}}.
 #'
 #' @return The API-key as a character string
 #' @author Benedict Witzenberger

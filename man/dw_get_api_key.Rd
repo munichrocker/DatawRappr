@@ -10,7 +10,7 @@ dw_get_api_key()
 The API-key as a character string
 }
 \description{
-Retrieves the \href{https://developer.datawrapper.de/}{Datawrapper-API}-key from the .Renviron-file
+Retrieves the \href{https://developer.datawrapper.de/}{Datawrapper-API}-key from the .Renviron-file, if it was saved there earlier by \code{\link{datawrapper_auth}}.
 }
 \note{
 This is a helper function, that shouldn't be of any use outside of this package.

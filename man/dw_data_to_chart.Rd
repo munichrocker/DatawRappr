@@ -11,7 +11,7 @@ dw_data_to_chart(x, chart_id, api_key = "environment", display_response = TRUE)
 
 \item{chart_id}{Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe".}
 
-\item{api_key}{Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file.}
+\item{api_key}{Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.}
 
 \item{display_response}{Optional. It TRUE (default) returns the status code and URL to the uploaded data as CSV.}
 }
@@ -28,11 +28,11 @@ This function uploads a R-dataframe to Datawrapper.
 }
 \examples{
 
-dw_data_to_chart(df, "aBcDE") # uses the preset key in the .Renviron-file
+\dontrun{dw_data_to_chart(df, "aBcDE")} # uses the preset key in the .Renviron-file
 
-dw_data_to_chart(df, chart_id = "a1B2Cd", api_key = "1234ABCD") # uses the specified key
+\dontrun{dw_data_to_chart(df, chart_id = "a1B2Cd", api_key = "1234ABCD")} # uses the specified key
 
-dw_data_to_chart(df, chart_id = "a1B2Cd", display_response = FALSE) # wont't return response
+\dontrun{dw_data_to_chart(df, chart_id = "a1B2Cd", display_response = FALSE)} # wont't return response
 
 }
 \author{

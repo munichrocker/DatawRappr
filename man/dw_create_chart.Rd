@@ -7,7 +7,7 @@
 dw_create_chart(api_key = "environment")
 }
 \arguments{
-\item{api_key}{Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file.}
+\item{api_key}{Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.}
 }
 \value{
 A list with the elements from the Datawrapper-API, the same as in dw_retrieve_chart_metadata()
