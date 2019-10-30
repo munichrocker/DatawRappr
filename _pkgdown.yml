@@ -1,0 +1,8 @@
+destination: docs
+home:
+  links:
+  - text: Datawrapper Developers Page
+    href: https://developer.datawrapper.de/docs
+authors:
+  Benedict Witzenberger:
+    href: "https://www.benedict-witzenberger.de"

@@ -1,4 +1,15 @@
-# pkgdown <img src="man/figures/logo.png" align="right" />
+---
+output: github_document
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/"
+)
+```
+
 # DatawRappr
 
 The goal of DatawRappr is to provide a wrapper for Datawrapper's API to connect data from R directly with Datawrapper's charts capabilities. Currently this package uses Datawrapper API [v1.0](https://developer.datawrapper.de/docs) - while [version 3.0](https://developer.datawrapper.de/v3.0/docs) is still in beta. Once 3.0 is out of beta, this package will be adapted.
@@ -39,7 +50,7 @@ Click on **Dashboard** - **Settings** and move down to the section that says **A
 
 Click on **Create new personal access token**, enter a name and save the token:
 
-![](man/figures/gif_api_key.gif)
+![](gif_api_key.gif)
 
 Copy the API key in the clipboard and use
 
