@@ -7,7 +7,7 @@
 #' @param title Optional. Adds a title to the plot.
 #' @param intro Optional. Adds an intro below the title.
 #' @param annotate Optional. Adds a annotation below the plot.
-#' @param type Optional. Changes the type of the chart. See \href{https://developer.datawrapper.de/docs/chart-types-2}{the documentation} for the ids.
+#' @param type Optional. Changes the type of the chart. See \href{https://developer.datawrapper.de/docs/chart-types-2}{the documentation} for the different types.
 #' @param source_name Optional. Adds a source name to the plot.
 #' @param source_url Optional. Adds a URL to the source name (displayed only, if source name specified). Include http(s):// before URL.
 #' @param data Optional. A list. Add separate arguments for the data. See \href{https://developer.datawrapper.de/docs/chart-properties-1}{the documentation} for details.
@@ -21,12 +21,12 @@
 #' @note Check their \href{https://developer.datawrapper.de/docs/reference-guide}{reference guide for examples}.
 #' @examples
 #'
-#' dw_edit_chart("aBcDE") # uses the preset key in the .Renviron-file
+#' \dontrun{dw_edit_chart("aBcDE")} # uses the preset key in the .Renviron-file
 #'
-#' dw_edit_chart(chart_id = "a1B2Cd", api_key = "1234ABCD") # uses the specified key
+#' \dontrun{dw_edit_chart(chart_id = "a1B2Cd", api_key = "1234ABCD")} # uses the specified key
 #'
-#' dw_edit_chart(chart_id = "a1B2Cd", title = "I'm a title",
-#' intro = "Data showing daily results") # changes title and intro
+#' \dontrun{dw_edit_chart(chart_id = "a1B2Cd", title = "I'm a title",
+#' intro = "Data showing daily results")} # changes title and intro
 #'
 #' \dontrun{dw_edit_chart(chart_id = "a1B2Cd", title = "I'm a title",
 #' visualize = list(`show-tooltips` = "false"))} # adds manual changes as lists

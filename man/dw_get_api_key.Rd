@@ -17,7 +17,8 @@ This is a helper function, that shouldn't be of any use outside of this package.
 }
 \examples{
 
-dw_get_api_key()
+\dontrun{dw_get_api_key()}
+
 }
 \author{
 Benedict Witzenberger

@@ -7,7 +7,8 @@
 #' @note This is a helper function, that shouldn't be of any use outside of this package.
 #' @examples
 #'
-#' dw_get_api_key()
+#' \dontrun{dw_get_api_key()}
+#'
 #' @rdname dw_get_api_key
 #' @export
 dw_get_api_key <- function() {
