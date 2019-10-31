@@ -14,6 +14,7 @@
 #' @note This function uploads a R-dataframe to Datawrapper.
 #' @examples
 #'
+#'
 #' \dontrun{dw_data_to_chart(df, "aBcDE")} # uses the preset key in the .Renviron-file
 #'
 #' \dontrun{dw_data_to_chart(df, chart_id = "a1B2Cd", api_key = "1234ABCD")} # uses the specified key
