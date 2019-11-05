@@ -12,7 +12,7 @@ dw_delete_chart(chart_id, api_key = "environment")
 \item{api_key}{Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.}
 }
 \value{
-A message that specifies, if the deletion was successfull.
+A message that specifies, if the deletion was successful.
 }
 \description{
 Deletes a chart on Datawrapper.

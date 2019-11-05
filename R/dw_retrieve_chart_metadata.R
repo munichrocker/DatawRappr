@@ -5,7 +5,7 @@
 #' @param chart_id Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe".
 #' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
 #'
-#' @return A list with the elements from the Datawrapper-API
+#' @return A S3-structure of type dw_chart with the elements from the Datawrapper-API stored under content.
 #' \item{status}{Returns 'ok' if the API-key used was correct.}
 #' \item{$data$id}{Returns the internal id of the chart - the same as used in chart_id.}
 #' \item{$data$title}{Returns the chart's title.}
@@ -19,11 +19,12 @@
 #' \item{$data$author$id}{The chart-author's id.}
 #' @author Benedict Witzenberger
 #' @note This function retrieves all metadata about a chart that's stored by Datawrapper. It is helpful to gain insights in the different options that might be changed via the API.
+#' @importFrom utils str
 #' @examples
 #'
-#' dw_retrieve_chart_metadata("aBcDE") # uses the preset key in the .Renviron-file
+#' \dontrun{dw_retrieve_chart_metadata("aBcDE")} # uses the preset key in the .Renviron-file
 #'
-#' dw_retrieve_chart_metadata(chart_id = "a1B2Cd", api_key = "1234ABCD") # uses the specified key
+#' \dontrun{dw_retrieve_chart_metadata(chart_id = "a1B2Cd", api_key = "1234ABCD")} # uses the specified key
 #' @rdname dw_retrieve_chart_metadata
 #' @export
 dw_retrieve_chart_metadata <- function(chart_id, api_key = "environment") {
@@ -36,7 +37,42 @@ dw_retrieve_chart_metadata <- function(chart_id, api_key = "environment") {
 
   r <- httr::GET(url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")))
 
-  try(if(httr::status_code(r) != 200) stop("Fehler bei der Verbindung. Statuscode ist nicht 200."))
+  # error handling
+  if (httr::http_type(r) != "application/json") {
+    stop("API did not return json", call. = FALSE)
+  }
 
-  return(httr::content(r))
+  parsed <- jsonlite::fromJSON(httr::content(r, "text"), simplifyVector = FALSE)
+
+  if (httr::http_error(r)) {
+    stop(
+      sprintf(
+        "Datawrapper API request failed [%s]\n%s\n<%s>",
+        httr::status_code(r),
+        parsed$message,
+        parsed$documentation_url
+      ),
+      call. = FALSE
+    )
+  }
+  # end of error handling
+
+  structure(
+    list(
+      content = parsed,
+      path = "https://api.datawrapper.de/charts",
+      response = r,
+      key = api_key
+    ),
+    class = "dw_chart"
+  )
+}
+
+#' @export
+
+print.dw_chart <- function(x, ...) {
+  cat("<Datawrapper ", x$path, ">\n", sep = "")
+  cat("API-Key: ", x$key, "\n", sep = "")
+  str(x$content)
+  invisible(x)
 }

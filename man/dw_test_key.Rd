@@ -10,7 +10,7 @@ dw_test_key(api_key = "environment")
 \item{api_key}{Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.}
 }
 \value{
-A list with the elements from the \href{https://developer.datawrapper.de/}{Datawrapper-API}
+A S3-structure of type dw_user with the elements from the \href{https://developer.datawrapper.de/}{Datawrapper-API}
 \item{status}{Returns 'ok' if the API-key used was correct.}
 \item{data$user$id}{Returns the internal user id.}
 \item{data$user$email}{The users e-mail adress.}
@@ -26,9 +26,9 @@ This function tests the API key by retrieving information about the current user
 }
 \examples{
 
-dw_test_key() # uses the preset key in the .Renviron-file
+\dontrun{dw_test_key()} # uses the preset key in the .Renviron-file
 
-dw_test_key(api_key = "1234ABCD") # uses the specified key
+\dontrun{dw_test_key(api_key = "1234ABCD")} # uses the specified key
 }
 \author{
 Benedict Witzenberger

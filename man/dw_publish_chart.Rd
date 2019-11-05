@@ -14,7 +14,7 @@ dw_publish_chart(chart_id, api_key = "environment", return_urls = TRUE)
 \item{return_urls}{Optional. If TRUE (default) it returns the code for the responsive iFrame and an URL to the chart.}
 }
 \value{
-A message that specifies, if the publication was successfull. If set, including the iFrame-Code and chart-URL.
+A message that specifies, if the publication was successful. If set, including the iFrame-Code and chart-URL.
 }
 \description{
 Publish a chart on Datawrapper.

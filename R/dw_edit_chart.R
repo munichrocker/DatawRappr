@@ -97,18 +97,34 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
   # upload modified data
   url_upload <- paste0("https://api.datawrapper.de/charts/", chart_id)
 
-  r_upload <- httr::PUT(url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+  r <- httr::PUT(url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                         body = call_body, encode = "json")
 
-  chart_id_response <- httr::content(r_upload)$data$id
-
   # error handling
+  if (httr::http_type(r) != "application/json") {
+    stop("API did not return json", call. = FALSE)
+  }
 
-  try(if (httr::status_code(r_upload) != 200) stop("Error while connection. Response status is not 200."))
+  parsed <- jsonlite::fromJSON(httr::content(r, "text"), simplifyVector = FALSE)
+
+  if (httr::http_error(r)) {
+    stop(
+      sprintf(
+        "Datawrapper API request failed [%s]\n%s\n<%s>",
+        httr::status_code(r),
+        parsed$message,
+        parsed$documentation_url
+      ),
+      call. = FALSE
+    )
+  }
+  # end of error handling
+
+  chart_id_response <- parsed$data$id
 
   try(if (chart_id != chart_id_response) stop("The chart_ids between call and response do not match. Try again and check API."))
 
-  if (httr::status_code(r_upload) == 200) {
+  if (httr::status_code(r) == 200) {
     print(paste0("Chart ", chart_id_response, " succesfully updated."))
   }
 

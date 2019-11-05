@@ -5,7 +5,7 @@
 #' @param chart_id Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe".
 #' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
 #'
-#' @return A message that specifies, if the deletion was successfull.
+#' @return A message that specifies, if the deletion was successful.
 #' @author Benedict Witzenberger
 #' @note This function deletes a chart in Datawrapper.
 #' @examples
@@ -25,11 +25,27 @@ dw_delete_chart <- function(chart_id, api_key = "environment") {
 
   r <- httr::DELETE(url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")))
 
-  try(if(httr::status_code(r) != 200) stop("Fehler bei der Verbindung. Statuscode ist nicht 200."))
+  # error handling
+  if (httr::http_type(r) != "application/json") {
+    stop("API did not return json", call. = FALSE)
+  }
 
-  response_content <- httr::content(r)
+  parsed <- jsonlite::fromJSON(httr::content(r, "text"), simplifyVector = FALSE)
 
-  if (response_content$data == "" & response_content$status == "ok") {
+  if (httr::http_error(r)) {
+    stop(
+      sprintf(
+        "Datawrapper API request failed [%s]\n%s\n<%s>",
+        httr::status_code(r),
+        parsed$message,
+        parsed$documentation_url
+      ),
+      call. = FALSE
+    )
+  }
+  # end of error handling
+
+  if (parsed$data == "" & parsed$status == "ok") {
     print(paste0("Chart ", chart_id, " sucessfully deleted!"))
   }
 

@@ -6,7 +6,7 @@
 #' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
 #' @param return_urls Optional. If TRUE (default) it returns the code for the responsive iFrame and an URL to the chart.
 #'
-#' @return A message that specifies, if the publication was successfull. If set, including the iFrame-Code and chart-URL.
+#' @return A message that specifies, if the publication was successful. If set, including the iFrame-Code and chart-URL.
 #' @author Benedict Witzenberger
 #' @note This function publishes a chart in Datawrapper.
 #' @examples
@@ -29,15 +29,33 @@ dw_publish_chart <- function(chart_id, api_key = "environment", return_urls = TR
 
   r <- httr::POST(url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")))
 
-  try(if(httr::status_code(r) != 200) stop("Fehler bei der Verbindung. Statuscode ist nicht 200."))
+  # error handling
+  if (httr::http_type(r) != "application/json") {
+    stop("API did not return json", call. = FALSE)
+  }
+
+  parsed <- jsonlite::fromJSON(httr::content(r, "text"), simplifyVector = FALSE)
+
+  if (httr::http_error(r)) {
+    stop(
+      sprintf(
+        "Datawrapper API request failed [%s]\n%s\n<%s>",
+        httr::status_code(r),
+        parsed$message,
+        parsed$documentation_url
+      ),
+      call. = FALSE
+    )
+  }
+  # end of error handling
 
   if (httr::status_code(r) == 200) {
     print(paste0("Chart ", chart_id, " published!"))
 
     if (return_urls == TRUE){
-      response_content <- httr::content(r)
-      iframe_code <- response_content$data$metadata$publish$`embed-codes`$`embed-method-responsive`
-      chart_url <- response_content$data$publicUrl
+
+      iframe_code <- parsed$data$metadata$publish$`embed-codes`$`embed-method-responsive`
+      chart_url <- parsed$data$publicUrl
 
       print(paste0("### Responsive iFrame-code: ###\n", iframe_code, "\n\n", "### Chart-URL:###\n", chart_url))
     }
