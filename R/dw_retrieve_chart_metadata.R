@@ -29,11 +29,15 @@
 #' @export
 dw_retrieve_chart_metadata <- function(chart_id, api_key = "environment") {
 
-  url <- paste0("https://api.datawrapper.de/charts/", chart_id)
-
   if (api_key == "environment") {
     api_key <- dw_get_api_key()
   }
+
+  if (class(chart_id) == "dw_chart") {
+    chart_id <- chart_id[["content"]][["data"]][[1]][["id"]]
+  }
+
+  url <- paste0("https://api.datawrapper.de/charts/", chart_id)
 
   r <- httr::GET(url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")))
 

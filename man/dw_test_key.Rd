@@ -29,6 +29,7 @@ This function tests the API key by retrieving information about the current user
 \dontrun{dw_test_key()} # uses the preset key in the .Renviron-file
 
 \dontrun{dw_test_key(api_key = "1234ABCD")} # uses the specified key
+
 }
 \author{
 Benedict Witzenberger

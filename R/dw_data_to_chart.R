@@ -29,15 +29,19 @@ dw_data_to_chart <- function(x, chart_id, api_key = "environment", display_respo
     api_key <- dw_get_api_key()
   }
 
+  if (class(chart_id) == "dw_chart") {
+    chart_id <- chart_id[["content"]][["data"]][[1]][["id"]]
+  }
+
   # test class of input dataframe
-  try(if (class(x) != "data.frame") stop("data is not of class data.frame!"))
+  try(if (class(x) != "data.frame") stop("Data is not of class data.frame!"))
 
   # collapse the data in the dataframe as a string
   df_content <- paste(t(sapply(seq(1, nrow(x), by = 1), function(i)
     paste(unlist(x[i,]), collapse = ","))), collapse = "\n")
 
-  # test if header contains seperator symbol
-  try(if (TRUE %in% grepl(",", names(x))) stop("The Dataframe's header contains a comma - which is used as the seperator. Remove the comma (e.g. with names()) and try again."))
+  # test if header contains separator symbol
+  try(if (TRUE %in% grepl(",", names(x))) stop("The Dataframe's header contains a comma - which is used as the column separator. Remove the comma (e.g. with names()) and try again."))
 
   # collapse the header of the data as a string
   df_names <- paste(names(x), collapse = ",")
@@ -50,9 +54,9 @@ dw_data_to_chart <- function(x, chart_id, api_key = "environment", display_respo
   r <- httr::PUT(url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                  body = data_body)
 
-  try(if(httr::status_code(r) != 200) stop("Fehler bei der Verbindung. Statuscode ist nicht 200."))
+  try(if (httr::status_code(r) != 200) stop("Fehler bei der Verbindung. Statuscode ist nicht 200."))
 
-  if(httr::status_code(r) == 200) {
+  if (httr::status_code(r) == 200) {
     print("Chart updated.")
   }
 

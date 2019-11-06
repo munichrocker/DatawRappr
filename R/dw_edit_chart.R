@@ -41,6 +41,10 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
     api_key <- dw_get_api_key()
   }
 
+  if (class(chart_id) == "dw_chart") {
+    chart_id <- chart_id[["content"]][["data"]][[1]][["id"]]
+  }
+
   # create empty body for API-call
   call_body <- list(metadata = list())
 

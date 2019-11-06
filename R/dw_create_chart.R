@@ -1,6 +1,6 @@
 #' Creates a new Datawrapper chart
 #'
-#' Creates and returns the metadata of the new Datawrapper chart.
+#' Creates and returns a new Datawrapper chart object.
 #'
 #' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
 #' @param title Optional. Will set a chart's title on creation.
@@ -8,7 +8,7 @@
 #'
 #' @return It prints the new chart's id and returns a S3-structure of type _dw_chart_ with the elements from the Datawrapper-API, the same as in dw_retrieve_chart_metadata().
 #' @author Benedict Witzenberger
-#' @note This function retrieves all metadata about the new chart that's stored by Datawrapper. If not specified, the new chart will by default be created without a title and with the type d3-lines.
+#' @note If not specified, the new chart will by default be created without a title and with the type d3-lines.
 #' @importFrom utils str
 #' @examples
 #'
@@ -52,6 +52,8 @@ dw_create_chart <- function(api_key = "environment", title = "", type = "") {
   }
   # end of error handling
 
+  print(paste0("New chart's id: ", parsed$data[[1]]$id))
+
   structure(
     list(
       content = parsed,
@@ -61,8 +63,6 @@ dw_create_chart <- function(api_key = "environment", title = "", type = "") {
     ),
     class = "dw_chart"
   )
-
-  print(paste0("New chart's id: ", parsed$data[[1]]$id))
 
 }
 

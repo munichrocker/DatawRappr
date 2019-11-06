@@ -69,7 +69,7 @@ To **create an empty chart**, you can use
 dw_create_chart()
 ```
 
-which will use the API key stored locally on your system. By default, Datawrapper will create an empty linechart, without a title. The function prints a large list with the metadata-elements from the API.
+which will use the API key stored locally on your system. By default, Datawrapper will create an empty linechart, without a title. The function returns a _dw_chart_-object with the metadata-elements from the API. This object can be used to populate the `chart_id`-argument in all other functions - which means you don't have to deal with it.
 
 To **populate that chart with data**, you can run
 
@@ -77,7 +77,7 @@ To **populate that chart with data**, you can run
 dw_data_to_chart(x = DATAFRAME, chart_id = CHART_ID)
 ```
 
-which uploads an R data.frame to an Datawrapper chart. The data.frame should already be in the right format, only including the expected columns for the chart. The API will asume, that the first row contains headers. If that's not true, you have to edit the metadata:
+which uploads an R data.frame to an Datawrapper chart. The data.frame should already be in the right format, only including the expected columns for the chart. The API will asume, that the first row contains headers. If that's not true, you have to edit the metadata afterwards:
 
 ```{r}
 dw_edit_chart(chart_id = CHART_ID, data = list(`horizontal-header` = "false"))
@@ -92,6 +92,8 @@ To speed things up, the `dw_edit_chart()`-function has some built-in arguments f
 * `annotate` which is the text below the plot
 * `source_name` which states the source
 * `source_url` which links to the source - but only if a `source_name` is provided.
+
+If you want to edit specific arguments in your plot, you can use the arguments `data`, `visualize`, `describe` and `publish` to include lists to the API call which change all possible settings in a chart.
 
 When you're finished editing your chart, you might want to publish it:
 

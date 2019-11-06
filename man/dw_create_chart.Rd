@@ -17,10 +17,10 @@ dw_create_chart(api_key = "environment", title = "", type = "")
 It prints the new chart's id and returns a S3-structure of type _dw_chart_ with the elements from the Datawrapper-API, the same as in dw_retrieve_chart_metadata().
 }
 \description{
-Creates and returns the metadata of the new Datawrapper chart.
+Creates and returns a new Datawrapper chart object.
 }
 \note{
-This function retrieves all metadata about the new chart that's stored by Datawrapper. If not specified, the new chart will by default be created without a title and with the type d3-lines.
+If not specified, the new chart will by default be created without a title and with the type d3-lines.
 }
 \examples{
 

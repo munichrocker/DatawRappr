@@ -19,6 +19,7 @@
 #' \dontrun{dw_test_key()} # uses the preset key in the .Renviron-file
 #'
 #' \dontrun{dw_test_key(api_key = "1234ABCD")} # uses the specified key
+#'
 #' @rdname dw_test_key
 #' @export
 dw_test_key <- function(api_key = "environment") {
