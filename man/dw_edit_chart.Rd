@@ -20,7 +20,7 @@ dw_edit_chart(
 )
 }
 \arguments{
-\item{chart_id}{Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe".}
+\item{chart_id}{Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe". Or a \strong{dw_chart}-object.}
 
 \item{api_key}{Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.}
 

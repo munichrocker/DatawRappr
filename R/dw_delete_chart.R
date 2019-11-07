@@ -2,10 +2,10 @@
 #'
 #' Deletes a chart on Datawrapper.
 #'
-#' @param chart_id Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe".
+#' @param chart_id Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe". Or a \strong{dw_chart}-object.
 #' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
 #'
-#' @return A message that specifies, if the deletion was successfull.
+#' @return A message that specifies, if the deletion was successful.
 #' @author Benedict Witzenberger
 #' @note This function deletes a chart in Datawrapper.
 #' @examples
@@ -21,15 +21,15 @@ dw_delete_chart <- function(chart_id, api_key = "environment") {
     api_key <- dw_get_api_key()
   }
 
+  chart_id <- dw_check_chart_id(chart_id)
+
   url <- paste0("https://api.datawrapper.de/charts/", chart_id)
 
   r <- httr::DELETE(url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")))
 
-  try(if(httr::status_code(r) != 200) stop("Fehler bei der Verbindung. Statuscode ist nicht 200."))
+  parsed <- dw_handle_errors(r)
 
-  response_content <- httr::content(r)
-
-  if (response_content$data == "" & response_content$status == "ok") {
+  if (parsed$data == "" & parsed$status == "ok") {
     print(paste0("Chart ", chart_id, " sucessfully deleted!"))
   }
 

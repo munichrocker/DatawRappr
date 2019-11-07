@@ -1,0 +1,20 @@
+{
+    "status": "ok",
+    "data": {
+        "user": {
+            "id": 66969,
+            "email": "benedict.witzenberger@sueddeutsche.de",
+            "name": null,
+            "website": null,
+            "socialmedia": null,
+            "isLoggedIn": true,
+            "isGuest": false,
+            "isActivated": true,
+            "isAdmin": false,
+            "organization": {
+                "id": "sueddeutsche",
+                "name": "Süddeutsche Zeitung"
+            }
+        }
+    }
+}

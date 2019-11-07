@@ -43,7 +43,7 @@
 
 
 <meta property="og:title" content="Creates a new Datawrapper chart — dw_create_chart" />
-<meta property="og:description" content="Creates and returns the metadata of the new Datawrapper chart." />
+<meta property="og:description" content="Creates and returns a new Datawrapper chart object." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -114,7 +114,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Creates and returns the metadata of the new Datawrapper chart.</p>
+    <p>Creates and returns a new Datawrapper chart object.</p>
     </div>
 
     <pre class="usage"><span class='fu'>dw_create_chart</span>(<span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"environment"</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>""</span>)</pre>
@@ -138,149 +138,20 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A list with the elements from the Datawrapper-API, the same as in dw_retrieve_chart_metadata()</p>
+    <p>It prints the new chart's id and returns a S3-structure of type <strong>dw_chart</strong> with the elements from the Datawrapper-API, the same as in <code><a href='dw_retrieve_chart_metadata.html'>dw_retrieve_chart_metadata</a></code>.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>This function retrieves all metadata about the new chart that's stored by Datawrapper. If not specified, the new chart will by default be created without a title and with the type d3-lines.</p>
+    <p>If not specified, the new chart will by default be created without a title and with the type <code>d3-lines</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>dw_create_chart</span>() <span class='co'># uses the preset key in the .Renviron-file</span>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'>dw_create_chart</span>()
+} <span class='co'># uses the preset key in the .Renviron-file</span>
+
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>dw_create_chart</span>(<span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Testtitle"</span>)
 
-<span class='fu'>dw_create_chart</span>(<span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"1234ABCD"</span>) <span class='co'># uses the specified key</span></div><div class='output co'>#&gt; [1] "New chart's id: C6JzZ"</div><div class='output co'>#&gt; $status
-#&gt; [1] "ok"
-#&gt; 
-#&gt; $data
-#&gt; $data[[1]]
-#&gt; $data[[1]]$id
-#&gt; [1] "C6JzZ"
-#&gt; 
-#&gt; $data[[1]]$title
-#&gt; [1] "[ Insert title here ]"
-#&gt; 
-#&gt; $data[[1]]$theme
-#&gt; [1] "datawrapper-data"
-#&gt; 
-#&gt; $data[[1]]$createdAt
-#&gt; [1] "2019-10-31 16:22:41"
-#&gt; 
-#&gt; $data[[1]]$lastModifiedAt
-#&gt; [1] "2019-10-31 16:22:41"
-#&gt; 
-#&gt; $data[[1]]$type
-#&gt; [1] "d3-lines"
-#&gt; 
-#&gt; $data[[1]]$metadata
-#&gt; $data[[1]]$metadata$data
-#&gt; $data[[1]]$metadata$data$transpose
-#&gt; [1] FALSE
-#&gt; 
-#&gt; $data[[1]]$metadata$data$`vertical-header`
-#&gt; [1] TRUE
-#&gt; 
-#&gt; $data[[1]]$metadata$data$`horizontal-header`
-#&gt; [1] TRUE
-#&gt; 
-#&gt; 
-#&gt; $data[[1]]$metadata$visualize
-#&gt; $data[[1]]$metadata$visualize$`highlighted-series`
-#&gt; list()
-#&gt; 
-#&gt; $data[[1]]$metadata$visualize$`highlighted-values`
-#&gt; list()
-#&gt; 
-#&gt; 
-#&gt; $data[[1]]$metadata$describe
-#&gt; $data[[1]]$metadata$describe$`source-name`
-#&gt; [1] ""
-#&gt; 
-#&gt; $data[[1]]$metadata$describe$`source-url`
-#&gt; [1] ""
-#&gt; 
-#&gt; $data[[1]]$metadata$describe$`number-format`
-#&gt; [1] "-"
-#&gt; 
-#&gt; $data[[1]]$metadata$describe$`number-divisor`
-#&gt; [1] 0
-#&gt; 
-#&gt; $data[[1]]$metadata$describe$`number-append`
-#&gt; [1] ""
-#&gt; 
-#&gt; $data[[1]]$metadata$describe$`number-prepend`
-#&gt; [1] ""
-#&gt; 
-#&gt; $data[[1]]$metadata$describe$intro
-#&gt; [1] ""
-#&gt; 
-#&gt; $data[[1]]$metadata$describe$byline
-#&gt; [1] ""
-#&gt; 
-#&gt; 
-#&gt; $data[[1]]$metadata$publish
-#&gt; $data[[1]]$metadata$publish$`embed-width`
-#&gt; [1] 600
-#&gt; 
-#&gt; $data[[1]]$metadata$publish$`embed-height`
-#&gt; [1] 400
-#&gt; 
-#&gt; 
-#&gt; $data[[1]]$metadata$annotate
-#&gt; $data[[1]]$metadata$annotate$notes
-#&gt; [1] ""
-#&gt; 
-#&gt; 
-#&gt; $data[[1]]$metadata$json_error
-#&gt; NULL
-#&gt; 
-#&gt; 
-#&gt; $data[[1]]$authorId
-#&gt; NULL
-#&gt; 
-#&gt; $data[[1]]$showInGallery
-#&gt; [1] FALSE
-#&gt; 
-#&gt; $data[[1]]$language
-#&gt; [1] "en-US"
-#&gt; 
-#&gt; $data[[1]]$guestSession
-#&gt; [1] "mjqocvspmc4qntlssj8d3dkjp7"
-#&gt; 
-#&gt; $data[[1]]$lastEditStep
-#&gt; [1] 0
-#&gt; 
-#&gt; $data[[1]]$publishedAt
-#&gt; NULL
-#&gt; 
-#&gt; $data[[1]]$publicUrl
-#&gt; [1] "https://s3.eu-central-1.amazonaws.com/datawrapper-charts/static/C6JzZ/index.html"
-#&gt; 
-#&gt; $data[[1]]$publicVersion
-#&gt; [1] 0
-#&gt; 
-#&gt; $data[[1]]$organizationId
-#&gt; NULL
-#&gt; 
-#&gt; $data[[1]]$forkedFrom
-#&gt; NULL
-#&gt; 
-#&gt; $data[[1]]$externalData
-#&gt; NULL
-#&gt; 
-#&gt; $data[[1]]$forkable
-#&gt; [1] FALSE
-#&gt; 
-#&gt; $data[[1]]$isFork
-#&gt; [1] FALSE
-#&gt; 
-#&gt; $data[[1]]$inFolder
-#&gt; NULL
-#&gt; 
-#&gt; $data[[1]]$utf8
-#&gt; [1] FALSE
-#&gt; 
-#&gt; 
-#&gt; </div></pre>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>dw_create_chart</span>(<span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"1234ABCD"</span>) <span class='co'># uses the specified key</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

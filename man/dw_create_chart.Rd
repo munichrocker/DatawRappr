@@ -14,20 +14,23 @@ dw_create_chart(api_key = "environment", title = "", type = "")
 \item{type}{Optional. Changes the type of the chart. See \href{https://developer.datawrapper.de/docs/chart-types-2}{the documentation} for the different types.}
 }
 \value{
-A list with the elements from the Datawrapper-API, the same as in dw_retrieve_chart_metadata()
+It prints the new chart's id and returns a S3-structure of type \strong{dw_chart} with the elements from the Datawrapper-API, the same as in \code{\link{dw_retrieve_chart_metadata}}.
 }
 \description{
-Creates and returns the metadata of the new Datawrapper chart.
+Creates and returns a new Datawrapper chart object.
 }
 \note{
-This function retrieves all metadata about the new chart that's stored by Datawrapper. If not specified, the new chart will by default be created without a title and with the type d3-lines.
+If not specified, the new chart will by default be created without a title and with the type \code{d3-lines}.
 }
 \examples{
 
-\dontrun{dw_create_chart()} # uses the preset key in the .Renviron-file
+\dontrun{
+dw_create_chart()
+} # uses the preset key in the .Renviron-file
+
 \dontrun{dw_create_chart(title = "Testtitle")}
 
-dw_create_chart(api_key = "1234ABCD") # uses the specified key
+\dontrun{dw_create_chart(api_key = "1234ABCD")} # uses the specified key
 }
 \author{
 Benedict Witzenberger

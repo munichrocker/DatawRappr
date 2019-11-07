@@ -1,20 +1,24 @@
 #' Creates a new Datawrapper chart
 #'
-#' Creates and returns the metadata of the new Datawrapper chart.
+#' Creates and returns a new Datawrapper chart object.
 #'
 #' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
 #' @param title Optional. Will set a chart's title on creation.
 #' @param type Optional. Changes the type of the chart. See \href{https://developer.datawrapper.de/docs/chart-types-2}{the documentation} for the different types.
 #'
-#' @return A list with the elements from the Datawrapper-API, the same as in dw_retrieve_chart_metadata()
+#' @return It prints the new chart's id and returns a S3-structure of type \strong{dw_chart} with the elements from the Datawrapper-API, the same as in \code{\link{dw_retrieve_chart_metadata}}.
 #' @author Benedict Witzenberger
-#' @note This function retrieves all metadata about the new chart that's stored by Datawrapper. If not specified, the new chart will by default be created without a title and with the type d3-lines.
+#' @note If not specified, the new chart will by default be created without a title and with the type \code{d3-lines}.
+#' @importFrom utils str
 #' @examples
 #'
-#' \dontrun{dw_create_chart()} # uses the preset key in the .Renviron-file
+#' \dontrun{
+#' dw_create_chart()
+#' } # uses the preset key in the .Renviron-file
+#'
 #' \dontrun{dw_create_chart(title = "Testtitle")}
 #'
-#' dw_create_chart(api_key = "1234ABCD") # uses the specified key
+#' \dontrun{dw_create_chart(api_key = "1234ABCD")} # uses the specified key
 #' @rdname dw_create_chart
 #' @export
 dw_create_chart <- function(api_key = "environment", title = "", type = "") {
@@ -31,12 +35,27 @@ dw_create_chart <- function(api_key = "environment", title = "", type = "") {
   r <- httr::POST("https://api.datawrapper.de/charts", httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                   body = call_body, encode = "json")
 
-  try(if(httr::status_code(r) != 200) stop("Fehler bei der Verbindung. Statuscode ist nicht 200."))
+  parsed <- dw_handle_errors(r)
 
-  chart_content <- httr::content(r)
+  print(paste0("New chart's id: ", parsed$data[[1]]$id))
 
-  print(paste0("New chart's id: ", chart_content$data[[1]]$id))
-
-  return(chart_content)
+  structure(
+    list(
+      content = parsed,
+      path = "https://api.datawrapper.de/charts",
+      key = api_key
+    ),
+    class = "dw_chart"
+  )
 
 }
+
+#' @export
+
+print.dw_chart <- function(x, ...) {
+  cat("<Datawrapper ", x$path, ">\n", sep = "")
+  cat("API-Key: ", x$key, "\n", sep = "")
+  str(x$content)
+  invisible(x)
+}
+
