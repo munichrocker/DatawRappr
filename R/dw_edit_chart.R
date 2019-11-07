@@ -104,25 +104,7 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
   r <- httr::PUT(url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                         body = call_body, encode = "json")
 
-  # error handling
-  if (httr::http_type(r) != "application/json") {
-    stop("API did not return json", call. = FALSE)
-  }
-
-  parsed <- jsonlite::fromJSON(httr::content(r, "text"), simplifyVector = FALSE)
-
-  if (httr::http_error(r)) {
-    stop(
-      sprintf(
-        "Datawrapper API request failed [%s]\n%s\n<%s>",
-        httr::status_code(r),
-        parsed$message,
-        parsed$documentation_url
-      ),
-      call. = FALSE
-    )
-  }
-  # end of error handling
+  parsed <- dw_handle_errors(r)
 
   chart_id_response <- parsed$data$id
 

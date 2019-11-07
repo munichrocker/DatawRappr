@@ -10,7 +10,7 @@ dw_test_key(api_key = "environment")
 \item{api_key}{Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.}
 }
 \value{
-A S3-structure of type dw_user with the elements from the \href{https://developer.datawrapper.de/}{Datawrapper-API}
+A S3-structure of type \emph{dw_user} with the elements from the \href{https://developer.datawrapper.de/}{Datawrapper-API}.
 \item{status}{Returns 'ok' if the API-key used was correct.}
 \item{data$user$id}{Returns the internal user id.}
 \item{data$user$email}{The users e-mail adress.}

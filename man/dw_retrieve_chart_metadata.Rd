@@ -12,7 +12,7 @@ dw_retrieve_chart_metadata(chart_id, api_key = "environment")
 \item{api_key}{Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.}
 }
 \value{
-A S3-structure of type dw_chart with the elements from the Datawrapper-API stored under content.
+A S3-structure of type \emph{dw_chart} with the elements from the Datawrapper-API stored under content.
 \item{status}{Returns 'ok' if the API-key used was correct.}
 \item{$data$id}{Returns the internal id of the chart - the same as used in chart_id.}
 \item{$data$title}{Returns the chart's title.}
@@ -36,6 +36,7 @@ This function retrieves all metadata about a chart that's stored by Datawrapper.
 \dontrun{dw_retrieve_chart_metadata("aBcDE")} # uses the preset key in the .Renviron-file
 
 \dontrun{dw_retrieve_chart_metadata(chart_id = "a1B2Cd", api_key = "1234ABCD")} # uses the specified key
+
 }
 \author{
 Benedict Witzenberger

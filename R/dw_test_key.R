@@ -4,7 +4,7 @@
 #'
 #' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
 #'
-#' @return A S3-structure of type dw_user with the elements from the \href{https://developer.datawrapper.de/}{Datawrapper-API}
+#' @return A S3-structure of type \emph{dw_user} with the elements from the \href{https://developer.datawrapper.de/}{Datawrapper-API}.
 #' \item{status}{Returns 'ok' if the API-key used was correct.}
 #' \item{data$user$id}{Returns the internal user id.}
 #' \item{data$user$email}{The users e-mail adress.}
@@ -30,25 +30,7 @@ dw_test_key <- function(api_key = "environment") {
 
   r <- httr::GET("https://api.datawrapper.de/account", httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")))
 
-  # error handling
-  if (httr::http_type(r) != "application/json") {
-    stop("API did not return json", call. = FALSE)
-  }
-
-  parsed <- jsonlite::fromJSON(httr::content(r, "text"), simplifyVector = FALSE)
-
-  if (httr::http_error(r)) {
-    stop(
-      sprintf(
-        "Datawrapper API request failed [%s]\n%s\n<%s>",
-        httr::status_code(r),
-        parsed$message,
-        parsed$documentation_url
-      ),
-      call. = FALSE
-    )
-  }
-  # end of error handling
+  parsed <- dw_handle_errors(r)
 
   structure(
     list(
@@ -66,6 +48,9 @@ dw_test_key <- function(api_key = "environment") {
 print.dw_user <- function(x, ...) {
   cat("<Datawrapper ", x$path, ">\n", sep = "")
   cat("API-Key: ", x$key, "\n", sep = "")
+  cat("Response:\n")
+  str(x$response)
+  cat("Content:\n")
   str(x$content)
   invisible(x)
 }

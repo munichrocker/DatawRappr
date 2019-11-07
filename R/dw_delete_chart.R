@@ -21,33 +21,13 @@ dw_delete_chart <- function(chart_id, api_key = "environment") {
     api_key <- dw_get_api_key()
   }
 
-  if (class(chart_id) == "dw_chart") {
-    chart_id <- chart_id[["content"]][["data"]][[1]][["id"]]
-  }
+  chart_id <- dw_check_chart_id(chart_id)
 
   url <- paste0("https://api.datawrapper.de/charts/", chart_id)
 
   r <- httr::DELETE(url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")))
 
-  # error handling
-  if (httr::http_type(r) != "application/json") {
-    stop("API did not return json", call. = FALSE)
-  }
-
-  parsed <- jsonlite::fromJSON(httr::content(r, "text"), simplifyVector = FALSE)
-
-  if (httr::http_error(r)) {
-    stop(
-      sprintf(
-        "Datawrapper API request failed [%s]\n%s\n<%s>",
-        httr::status_code(r),
-        parsed$message,
-        parsed$documentation_url
-      ),
-      call. = FALSE
-    )
-  }
-  # end of error handling
+  parsed <- dw_handle_errors(r)
 
   if (parsed$data == "" & parsed$status == "ok") {
     print(paste0("Chart ", chart_id, " sucessfully deleted!"))

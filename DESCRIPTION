@@ -9,9 +9,10 @@ Description: Connecting R to Datawrapper, allowing the creation and edits of cha
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports:
+Imports: 
       httr,
       rlist,
       utils,
       jsonlite
 RoxygenNote: 6.1.99.9001
+Suggests: httptest
