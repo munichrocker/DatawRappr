@@ -15,4 +15,6 @@ Imports:
       utils,
       jsonlite
 RoxygenNote: 6.1.99.9001
-Suggests: httptest
+Suggests: 
+    httptest,
+    testthat (>= 2.1.0)
