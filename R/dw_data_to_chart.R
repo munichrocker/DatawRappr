@@ -30,6 +30,9 @@ dw_data_to_chart <- function(x, chart_id, api_key = "environment", display_respo
 
   chart_id <- dw_check_chart_id(chart_id)
 
+  # try conversion - to avoid problems with tibbles
+  x <- as.data.frame(x)
+
   # test class of input dataframe
   try(if (class(x) != "data.frame") stop("Data is not of class data.frame!"))
 
