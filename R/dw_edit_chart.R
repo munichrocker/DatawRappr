@@ -2,12 +2,12 @@
 #'
 #' Modifies an existing Datawrapper chart.
 #'
-#' @param chart_id Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe".
+#' @param chart_id Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe". Or a \strong{dw_chart}-object.
 #' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
 #' @param title Optional. Adds a title to the plot.
 #' @param intro Optional. Adds an intro below the title.
 #' @param annotate Optional. Adds a annotation below the plot.
-#' @param type Optional. Changes the type of the chart. See \href{https://developer.datawrapper.de/docs/chart-types-2}{the documentation} for the ids.
+#' @param type Optional. Changes the type of the chart. See \href{https://developer.datawrapper.de/docs/chart-types-2}{the documentation} for the different types.
 #' @param source_name Optional. Adds a source name to the plot.
 #' @param source_url Optional. Adds a URL to the source name (displayed only, if source name specified). Include http(s):// before URL.
 #' @param data Optional. A list. Add separate arguments for the data. See \href{https://developer.datawrapper.de/docs/chart-properties-1}{the documentation} for details.
@@ -21,12 +21,12 @@
 #' @note Check their \href{https://developer.datawrapper.de/docs/reference-guide}{reference guide for examples}.
 #' @examples
 #'
-#' dw_edit_chart("aBcDE") # uses the preset key in the .Renviron-file
+#' \dontrun{dw_edit_chart("aBcDE")} # uses the preset key in the .Renviron-file
 #'
-#' dw_edit_chart(chart_id = "a1B2Cd", api_key = "1234ABCD") # uses the specified key
+#' \dontrun{dw_edit_chart(chart_id = "a1B2Cd", api_key = "1234ABCD")} # uses the specified key
 #'
-#' dw_edit_chart(chart_id = "a1B2Cd", title = "I'm a title",
-#' intro = "Data showing daily results") # changes title and intro
+#' \dontrun{dw_edit_chart(chart_id = "a1B2Cd", title = "I'm a title",
+#' intro = "Data showing daily results")} # changes title and intro
 #'
 #' \dontrun{dw_edit_chart(chart_id = "a1B2Cd", title = "I'm a title",
 #' visualize = list(`show-tooltips` = "false"))} # adds manual changes as lists
@@ -39,6 +39,10 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
 
   if (api_key == "environment") {
     api_key <- dw_get_api_key()
+  }
+
+  if (class(chart_id) == "dw_chart") {
+    chart_id <- chart_id[["content"]][["data"]][[1]][["id"]]
   }
 
   # create empty body for API-call
@@ -97,18 +101,16 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
   # upload modified data
   url_upload <- paste0("https://api.datawrapper.de/charts/", chart_id)
 
-  r_upload <- httr::PUT(url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+  r <- httr::PUT(url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                         body = call_body, encode = "json")
 
-  chart_id_response <- httr::content(r_upload)$data$id
+  parsed <- dw_handle_errors(r)
 
-  # error handling
-
-  try(if (httr::status_code(r_upload) != 200) stop("Error while connection. Response status is not 200."))
+  chart_id_response <- parsed$data$id
 
   try(if (chart_id != chart_id_response) stop("The chart_ids between call and response do not match. Try again and check API."))
 
-  if (httr::status_code(r_upload) == 200) {
+  if (httr::status_code(r) == 200) {
     print(paste0("Chart ", chart_id_response, " succesfully updated."))
   }
 

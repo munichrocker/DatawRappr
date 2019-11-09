@@ -2,10 +2,10 @@
 #'
 #' Return the metadata of a existing Datawrapper chart.
 #'
-#' @param chart_id Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe".
+#' @param chart_id Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe". Or a \strong{dw_chart}-object.
 #' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
 #'
-#' @return A list with the elements from the Datawrapper-API
+#' @return A S3-structure of type \strong{dw_chart} with the elements from the Datawrapper-API stored under content. Same as in \code{\link{dw_create_chart}}.
 #' \item{status}{Returns 'ok' if the API-key used was correct.}
 #' \item{$data$id}{Returns the internal id of the chart - the same as used in chart_id.}
 #' \item{$data$title}{Returns the chart's title.}
@@ -19,24 +19,47 @@
 #' \item{$data$author$id}{The chart-author's id.}
 #' @author Benedict Witzenberger
 #' @note This function retrieves all metadata about a chart that's stored by Datawrapper. It is helpful to gain insights in the different options that might be changed via the API.
+#' @importFrom utils str
 #' @examples
 #'
-#' dw_retrieve_chart_metadata("aBcDE") # uses the preset key in the .Renviron-file
+#' \dontrun{
+#' dw_retrieve_chart_metadata("aBcDE")
+#' } # uses the preset key in the .Renviron-file
 #'
-#' dw_retrieve_chart_metadata(chart_id = "a1B2Cd", api_key = "1234ABCD") # uses the specified key
+#' \dontrun{dw_retrieve_chart_metadata(chart_id = "a1B2Cd", api_key = "1234ABCD")} # uses the specified key
+#'
 #' @rdname dw_retrieve_chart_metadata
 #' @export
 dw_retrieve_chart_metadata <- function(chart_id, api_key = "environment") {
-
-  url <- paste0("https://api.datawrapper.de/charts/", chart_id)
 
   if (api_key == "environment") {
     api_key <- dw_get_api_key()
   }
 
+  chart_id <- dw_check_chart_id(chart_id)
+
+  url <- paste0("https://api.datawrapper.de/charts/", chart_id)
+
   r <- httr::GET(url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")))
 
-  try(if(httr::status_code(r) != 200) stop("Fehler bei der Verbindung. Statuscode ist nicht 200."))
+  parsed <- dw_handle_errors(r)
 
-  return(httr::content(r))
+  structure(
+    list(
+      content = parsed,
+      path = "https://api.datawrapper.de/charts",
+      key = api_key
+    ),
+    class = "dw_chart"
+  )
+
+}
+
+#' @export
+
+print.dw_chart <- function(x, ...) {
+  cat("<Datawrapper ", x$path, ">\n", sep = "")
+  cat("API-Key: ", x$key, "\n", sep = "")
+  str(x$content)
+  invisible(x)
 }

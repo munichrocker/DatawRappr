@@ -77,12 +77,17 @@
 <h1 class="hasAnchor">
 <a href="#datawrappr" class="anchor"></a>DatawRappr</h1>
 <p>The goal of DatawRappr is to provide a wrapper for Datawrapper’s API to connect data from R directly with Datawrapper’s charts capabilities. Currently this package uses Datawrapper API <a href="https://developer.datawrapper.de/docs">v1.0</a> - while <a href="https://developer.datawrapper.de/v3.0/docs">version 3.0</a> is still in beta. Once 3.0 is out of beta, this package will be adapted.</p>
-<p>Key features:</p>
+<div id="key-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#key-features" class="anchor"></a>Key features:</h2>
 <ul>
-<li>Sets a API-Key to the environment and retrieves it in each R-session via <code><a href="reference/datawrapper_auth.html">datawrapper_auth()</a></code>
+<li>Manages and automatically retrieves the API-key locally via <code><a href="reference/datawrapper_auth.html">datawrapper_auth()</a></code>
+</li>
+<li>Creates, deletes or publishes charts on Datawrapper</li>
+<li>Sends Dataframes from R directly to Datawrapper - without having to copy them in - with <code><a href="reference/dw_data_to_chart.html">dw_data_to_chart()</a></code>
 </li>
 </ul>
-<p>All other functions are preceded by <code>dw_</code>:</p>
+<p>All functions (except <code><a href="reference/datawrapper_auth.html">datawrapper_auth()</a></code>) are preceded by <code>dw_</code>:</p>
 <ul>
 <li>allows test calls to the API via <code><a href="reference/dw_test_key.html">dw_test_key()</a></code>
 </li>
@@ -97,6 +102,7 @@
 <li>deletes an Datawrapper chart via <code><a href="reference/dw_delete_chart.html">dw_delete_chart()</a></code>
 </li>
 </ul>
+</div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -120,20 +126,34 @@ devtools::install_github("munichrocker/DatawRappr")</a></code></pre>
 <p>to save the key to our system. If a key already exists, you will be asked to replace it or not.</p>
 <p>To make sure, your key is working as expected, you can run</p>
 <pre class="{r}"><code><a href="reference/dw_test_key.html">dw_test_key()</a></code></pre>
-<p>with no arguments. It will then use the saved key from the environment. If the key is correct, you will receive a response from the API with personal details about your account.</p>
-<p>Note: If you want to see your currently saved API key, you can use the helper function <code><a href="reference/dw_get_api_key.html">dw_get_api_key()</a></code>.</p>
+<p>with no arguments. It will then use the saved key from the environment. If the key is correct, you will receive a response from the API with personal details about your account - a <code>dw_user</code>-object that has no further use than to check your key.</p>
+<p>Note: If you want to see your currently saved API key, you may use the helper function <code><a href="reference/dw_get_api_key.html">dw_get_api_key()</a></code>.</p>
 <p>Congratulations, you’re good to go!</p>
 </div>
 <div id="making-api-calls" class="section level3">
 <h3 class="hasAnchor">
 <a href="#making-api-calls" class="anchor"></a>Making API-calls</h3>
+<div id="create-a-chart" class="section level4">
+<h4 class="hasAnchor">
+<a href="#create-a-chart" class="anchor"></a>Create a chart</h4>
 <p>To <strong>create an empty chart</strong>, you can use</p>
 <pre class="{r}"><code><a href="reference/dw_create_chart.html">dw_create_chart()</a></code></pre>
-<p>which will use the API key stored locally on your system. By default, Datawrapper will create an empty linechart, without a title. The function prints a large list with the metadata-elements from the API.</p>
-<p>To <strong>populate that chart with data</strong>, you can run</p>
-<pre class="{r}"><code><a href="reference/dw_data_to_chart.html">dw_data_to_chart(x = DATAFRAME, chart_id = CHART_ID)</a></code></pre>
-<p>which uploads an R data.frame to an Datawrapper chart. The data.frame should already be in the right format, only including the expected columns for the chart. The API will asume, that the first row contains headers. If that’s not true, you have to edit the metadata:</p>
-<pre class="{r}"><code><a href="reference/dw_edit_chart.html">dw_edit_chart(chart_id = CHART_ID, data = list(`horizontal-header` = "false"))</a></code></pre>
+<p>which will use the API key stored locally on your system.</p>
+<p>By default, Datawrapper will create an empty linechart, without a title. The function returns a <strong>dw_chart</strong>-object with the metadata-elements from the API. This object can be used to populate the <code>chart_id</code>-argument in all other functions - which means you don’t have to deal with it. Just store the response from <code><a href="reference/dw_create_chart.html">dw_create_chart()</a></code> in your R-environment.</p>
+</div>
+<div id="add-data-to-the-chart" class="section level4">
+<h4 class="hasAnchor">
+<a href="#add-data-to-the-chart" class="anchor"></a>Add data to the chart</h4>
+<p>To populate that chart with data, you can run</p>
+<pre class="{r}"><code><a href="reference/dw_data_to_chart.html">dw_data_to_chart(x = DATAFRAME, chart_id = CHART_ID_OR_dw_chart-object)</a></code></pre>
+<p>which uploads an R data.frame to an Datawrapper chart.</p>
+<p>The data.frame should already be in the right format, only including the expected columns for the chart. The API will asume, that the first row contains headers. If that’s not true, you have to edit the metadata afterwards:</p>
+</div>
+<div id="edit-charts-metadata" class="section level4">
+<h4 class="hasAnchor">
+<a href="#edit-charts-metadata" class="anchor"></a>Edit chart’s metadata</h4>
+<pre class="{r}"><code><a href="reference/dw_edit_chart.html">dw_edit_chart(chart_id = CHART_ID_OR_dw_chart-object, title = "I'm a title", 
+data = list(`horizontal-header` = "false"))</a></code></pre>
 <p>Datawrapper offers a lot of variability in editing it’s charts’ metadata. You can find a whole <a href="https://developer.datawrapper.de/docs/chart-properties-1">Documentation here</a>.</p>
 <p>To speed things up, the <code><a href="reference/dw_edit_chart.html">dw_edit_chart()</a></code>-function has some built-in arguments for common transformations:</p>
 <ul>
@@ -147,9 +167,17 @@ devtools::install_github("munichrocker/DatawRappr")</a></code></pre>
 <li>
 <code>source_url</code> which links to the source - but only if a <code>source_name</code> is provided.</li>
 </ul>
+<p>If you want to edit specific arguments in your plot, you can use the arguments <code>data</code>, <code>visualize</code>, <code>describe</code> and <code>publish</code> to include lists to the API call which change all possible settings in a chart, as shown in the example above.</p>
 <p>When you’re finished editing your chart, you might want to publish it:</p>
-<pre class="{r}"><code><a href="reference/dw_publish_chart.html">dw_publish_chart(chart_id = CHART_ID)</a></code></pre>
-<p>This function returns a URL to the chart and the embed code.</p>
+<pre class="{r}"><code><a href="reference/dw_publish_chart.html">dw_publish_chart(chart_id = CHART_ID_OR_dw_chart-object)</a></code></pre>
+<p>This function returns a URL to the chart and the embed code, if you set the argument <em>return_urls</em> to <code>TRUE</code>.</p>
+</div>
+<div id="delete-chart" class="section level4">
+<h4 class="hasAnchor">
+<a href="#delete-chart" class="anchor"></a>Delete chart</h4>
+<p>Or you might want to delete a chart:</p>
+<pre class="{r}"><code><a href="reference/dw_delete_chart.html">dw_delete_chart(chart_id = CHART_ID_OR_dw_chart-object)</a></code></pre>
+</div>
 </div>
 </div>
 <div id="under-the-hood" class="section level2">

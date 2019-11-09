@@ -1,0 +1,76 @@
+{
+    "status": "ok",
+    "data": [
+        {
+            "id": "VYdbD",
+            "title": "[ Insert title here ]",
+            "theme": "sddeutsche-digital-test",
+            "createdAt": "2019-11-07 15:22:34",
+            "lastModifiedAt": "2019-11-07 15:22:34",
+            "type": "d3-lines",
+            "metadata": {
+                "data": {
+                    "transpose": false,
+                    "vertical-header": true,
+                    "horizontal-header": true
+                },
+                "visualize": {
+                    "highlighted-series": [
+
+                    ],
+                    "highlighted-values": [
+
+                    ]
+                },
+                "describe": {
+                    "source-name": "",
+                    "source-url": "",
+                    "number-format": "-",
+                    "number-divisor": 0,
+                    "number-append": "",
+                    "number-prepend": "",
+                    "intro": "",
+                    "byline": ""
+                },
+                "publish": {
+                    "embed-width": 600,
+                    "embed-height": 400
+                },
+                "annotate": {
+                    "notes": ""
+                },
+                "json_error": null
+            },
+            "authorId": 66969,
+            "showInGallery": false,
+            "language": "de-DE",
+            "guestSession": null,
+            "lastEditStep": 0,
+            "publishedAt": null,
+            "publicUrl": "https://s3.eu-central-1.amazonaws.com/datawrapper-charts/static/VYdbD/index.html",
+            "publicVersion": 0,
+            "organizationId": "sueddeutsche",
+            "forkedFrom": null,
+            "externalData": null,
+            "forkable": false,
+            "isFork": false,
+            "inFolder": null,
+            "utf8": false,
+            "author": {
+                "id": 66969,
+                "email": "benedict.witzenberger@sueddeutsche.de",
+                "name": null,
+                "website": null,
+                "socialmedia": null,
+                "isLoggedIn": true,
+                "isGuest": false,
+                "isActivated": true,
+                "isAdmin": false,
+                "organization": {
+                    "id": "sueddeutsche",
+                    "name": "Süddeutsche Zeitung"
+                }
+            }
+        }
+    ]
+}

@@ -20,7 +20,7 @@ dw_edit_chart(
 )
 }
 \arguments{
-\item{chart_id}{Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe".}
+\item{chart_id}{Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe". Or a \strong{dw_chart}-object.}
 
 \item{api_key}{Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.}
 
@@ -30,7 +30,7 @@ dw_edit_chart(
 
 \item{annotate}{Optional. Adds a annotation below the plot.}
 
-\item{type}{Optional. Changes the type of the chart. See \href{https://developer.datawrapper.de/docs/chart-types-2}{the documentation} for the ids.}
+\item{type}{Optional. Changes the type of the chart. See \href{https://developer.datawrapper.de/docs/chart-types-2}{the documentation} for the different types.}
 
 \item{source_name}{Optional. Adds a source name to the plot.}
 
@@ -57,12 +57,12 @@ Check their \href{https://developer.datawrapper.de/docs/reference-guide}{referen
 }
 \examples{
 
-dw_edit_chart("aBcDE") # uses the preset key in the .Renviron-file
+\dontrun{dw_edit_chart("aBcDE")} # uses the preset key in the .Renviron-file
 
-dw_edit_chart(chart_id = "a1B2Cd", api_key = "1234ABCD") # uses the specified key
+\dontrun{dw_edit_chart(chart_id = "a1B2Cd", api_key = "1234ABCD")} # uses the specified key
 
-dw_edit_chart(chart_id = "a1B2Cd", title = "I'm a title",
-intro = "Data showing daily results") # changes title and intro
+\dontrun{dw_edit_chart(chart_id = "a1B2Cd", title = "I'm a title",
+intro = "Data showing daily results")} # changes title and intro
 
 \dontrun{dw_edit_chart(chart_id = "a1B2Cd", title = "I'm a title",
 visualize = list(`show-tooltips` = "false"))} # adds manual changes as lists
