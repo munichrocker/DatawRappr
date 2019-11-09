@@ -1,4 +1,4 @@
-#' Set Datawrapper-API-Key to Systemenvironment
+#' Set Datawrapper-API-Key to system environment
 #'
 #' Adds Key to Environment to be available on Startup.
 #'
@@ -6,7 +6,7 @@
 #'
 #' @return A Message in the command line.
 #' @author Benedict Witzenberger
-#' @note This is a very simple function that adds the API-key to the .Renviron-file in the user's home folder. If a key already exists and the user wants to, it will get replaced.
+#' @note This is a very simple function that adds the API-key to the .Renviron-file in the user's home folder. If a key already exists and the user requests to, it will get replaced.
 #' @examples
 #'
 #' \dontrun{datawrapper_auth(api_key = "1234ABC")}
@@ -20,9 +20,9 @@ datawrapper_auth <- function(api_key) {
   # read_key-function allows input selection - and removes key if wanted:
   read_key <- function()
   {
-    n <- readline(prompt = "Overwrite existing key? J/N: ")
+    n <- readline(prompt = "Overwrite existing key? Y/N: ")
 
-    if (n == "J"| n == "j"){
+    if (n == "Y"| n == "y"){
 
       # delete DW_KEY from .Renviron
       command <- paste0("sed -i '' '/^DW_KEY/d' ", filename)
@@ -31,6 +31,8 @@ datawrapper_auth <- function(api_key) {
       # write new Key to to environment file
       new_key <- paste0('DW_KEY = ', api_key)
       write(new_key, file = filename, append = TRUE)
+
+      readRenviron(filename)
 
       warning("Existing key overwritten!", call. = FALSE)
 
@@ -54,6 +56,7 @@ datawrapper_auth <- function(api_key) {
     # write new Key to to environment file
     new_key <- paste0('DW_KEY = ', api_key)
     write(new_key, file = filename, append = TRUE)
+    readRenviron(filename)
     print("New key was saved!")
 
   }

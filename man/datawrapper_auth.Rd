@@ -2,7 +2,7 @@
 % Please edit documentation in R/datawrapper_auth.R
 \name{datawrapper_auth}
 \alias{datawrapper_auth}
-\title{Set Datawrapper-API-Key to Systemenvironment}
+\title{Set Datawrapper-API-Key to system environment}
 \usage{
 datawrapper_auth(api_key)
 }
@@ -16,7 +16,7 @@ A Message in the command line.
 Adds Key to Environment to be available on Startup.
 }
 \note{
-This is a very simple function that adds the API-key to the .Renviron-file in the user's home folder. If a key already exists and the user wants to, it will get replaced.
+This is a very simple function that adds the API-key to the .Renviron-file in the user's home folder. If a key already exists and the user requests to, it will get replaced.
 }
 \examples{
 
