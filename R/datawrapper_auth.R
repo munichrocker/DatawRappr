@@ -3,6 +3,7 @@
 #' Adds Key to Environment to be available on Startup.
 #'
 #' @param api_key Required. A character string, containing the API-Key.
+#' @param overwrite Optional. Should an existing key be overwritten? Defaults to \emph{FALSE}.
 #'
 #' @return A Message in the command line.
 #' @author Benedict Witzenberger
@@ -10,19 +11,24 @@
 #' @examples
 #'
 #' \dontrun{datawrapper_auth(api_key = "1234ABC")}
+#'
+#' \dontrun{datawrapper_auth(api_key = "1234ABC", overwrite = TRUE)}
+#'
 #' @rdname datawrapper_auth
 #' @export
-datawrapper_auth <- function(api_key) {
+datawrapper_auth <- function(api_key, overwrite = FALSE) {
 
-  # Access environment file:
+  # Access global environment file:
   filename <- paste0(Sys.getenv("HOME"), "/.Renviron")
 
-  # read_key-function allows input selection - and removes key if wanted:
-  read_key <- function()
-  {
-    n <- readline(prompt = "Overwrite existing key? Y/N: ")
+  if (!file.exists(filename)) { # create .Renviron, if it doesn't exist
+    file.create(filename)
+  }
 
-    if (n == "Y"| n == "y"){
+  # check if key already exists - if yes, check for overwrite = TRUE, else: write new key
+  if (Sys.getenv("DW_KEY") != "") {
+
+    if (overwrite == TRUE) {
 
       # delete DW_KEY from .Renviron
       command <- paste0("sed -i '' '/^DW_KEY/d' ", filename)
@@ -34,22 +40,12 @@ datawrapper_auth <- function(api_key) {
 
       readRenviron(filename)
 
-      warning("Existing key overwritten!", call. = FALSE)
+    } else if (overwrite == FALSE) { # if key exists, but overwrite is FALSE: throw warning and end function
 
-    } else if (n == "N" | n == "n") {
+      warning(paste0("A Datawrapper-key ", Sys.getenv("DW_KEY"), " already exists on this system.\nSet `overwrite = TRUE` to delete it."), immediate. = TRUE)
 
-      warning("Existing key remains!", call. = FALSE)
+      }
 
-    } else {
-      read_key()
-    }
-  }
-
-  # check if key already exists - throw warning if yes, else, write new key
-  if (Sys.getenv("DW_KEY") != "") {
-
-    warning(paste0("A Datawrapper-key ", Sys.getenv("DW_KEY"), " already exists on this system."), immediate. = TRUE)
-    read_key()
 
   } else {
 
