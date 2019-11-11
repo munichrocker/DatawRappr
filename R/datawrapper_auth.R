@@ -34,6 +34,12 @@ datawrapper_auth <- function(api_key, overwrite = FALSE) {
       command <- paste0("sed -i '' '/^DW_KEY/d' ", filename)
       system(command = command)
 
+      # base R-solution:
+      # txt_vector <- readLines(filename, n = -1)
+      # lines_delete <- which(grepl("^DW_KEY.*$", txt_vector))
+      # output_txt <- txt_vector[-which(grepl("^DW_KEY.*$", lines_delete))]
+      # writeLines(output_txt, filename)
+
       # write new Key to to environment file
       new_key <- paste0('DW_KEY = ', api_key)
       write(new_key, file = filename, append = TRUE)
