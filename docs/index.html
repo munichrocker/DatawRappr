@@ -123,7 +123,7 @@ devtools::install_github("munichrocker/DatawRappr")</a></code></pre>
 <p><img src="reference/figures/gif_api_key.gif"></p>
 <p>Copy the API key in the clipboard and use</p>
 <pre class="{r}"><code><a href="reference/datawrapper_auth.html">datawrapper_auth(api_key = "12345678")</a></code></pre>
-<p>to save the key to our system. If a key already exists, you will be asked to replace it or not.</p>
+<p>to save the key to our system. If a key already exists, you may add the argument <code>overwrite = TRUE</code> to <code><a href="reference/datawrapper_auth.html">datawrapper_auth()</a></code>.</p>
 <p>To make sure, your key is working as expected, you can run</p>
 <pre class="{r}"><code><a href="reference/dw_test_key.html">dw_test_key()</a></code></pre>
 <p>with no arguments. It will then use the saved key from the environment. If the key is correct, you will receive a response from the API with personal details about your account - a <code>dw_user</code>-object that has no further use than to check your key.</p>
