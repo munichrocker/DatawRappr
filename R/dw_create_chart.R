@@ -42,8 +42,7 @@ dw_create_chart <- function(api_key = "environment", title = "", type = "") {
   structure(
     list(
       content = parsed,
-      path = "https://api.datawrapper.de/charts",
-      key = api_key
+      path = "https://api.datawrapper.de/charts"
     ),
     class = "dw_chart"
   )
@@ -54,7 +53,6 @@ dw_create_chart <- function(api_key = "environment", title = "", type = "") {
 
 print.dw_chart <- function(x, ...) {
   cat("<Datawrapper ", x$path, ">\n", sep = "")
-  cat("API-Key: ", x$key, "\n", sep = "")
   str(x$content)
   invisible(x)
 }

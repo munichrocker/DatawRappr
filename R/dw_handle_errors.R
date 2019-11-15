@@ -27,7 +27,7 @@ dw_handle_errors <- function(r) {
   if (httr::http_error(r)) {
     stop(
       sprintf(
-        "Datawrapper API request failed [%s]\n%s\n<%s>",
+        "Datawrapper API request failed [%s]\n%s",
         httr::status_code(r),
         parsed$message
       ),

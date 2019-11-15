@@ -30,26 +30,27 @@ datawrapper_auth <- function(api_key, overwrite = FALSE) {
 
     if (overwrite == TRUE) {
 
-      # delete DW_KEY from .Renviron
-      command <- paste0("sed -i '' '/^DW_KEY/d' ", filename)
-      system(command = command)
 
-      # base R-solution:
-      # txt_vector <- readLines(filename, n = -1)
-      # lines_delete <- which(grepl("^DW_KEY.*$", txt_vector))
-      # output_txt <- txt_vector[-which(grepl("^DW_KEY.*$", lines_delete))]
+      # old solution:
+      # delete DW_KEY from .Renviron:
+      # command <- paste0("sed -i '' '/^DW_KEY/d' ", filename)
+      # system(command = command)
       #
-      # add new key:
+      # # write new Key to to environment file:
       # new_key <- paste0('DW_KEY = ', api_key)
-      # output_txt <- c(test, new_key)
-      # writeLines(output_txt, filename)
-
-      # write new Key to to environment file
-      new_key <- paste0('DW_KEY = ', api_key)
-      write(new_key, file = filename, append = TRUE)
+      # write(new_key, file = filename, append = TRUE)
 
       # base R-solution:
+      txt_vector <- readLines(filename, n = -1)
+      lines_delete <- which(grepl("^DW_KEY.*$", txt_vector))
+      output_txt <- txt_vector[-lines_delete]
 
+      # add new key:
+      new_key <- paste0('DW_KEY = ', api_key)
+      output_txt <- c(output_txt, new_key)
+      writeLines(output_txt, filename)
+
+      # reload Renviron after changing it:
       readRenviron(filename)
 
     } else if (overwrite == FALSE) { # if key exists, but overwrite is FALSE: throw warning and end function

@@ -4,10 +4,12 @@
 \alias{datawrapper_auth}
 \title{Set Datawrapper-API-Key to system environment}
 \usage{
-datawrapper_auth(api_key)
+datawrapper_auth(api_key, overwrite = FALSE)
 }
 \arguments{
 \item{api_key}{Required. A character string, containing the API-Key.}
+
+\item{overwrite}{Optional. Should an existing key be overwritten? Defaults to \emph{FALSE}.}
 }
 \value{
 A Message in the command line.
@@ -21,6 +23,9 @@ This is a very simple function that adds the API-key to the .Renviron-file in th
 \examples{
 
 \dontrun{datawrapper_auth(api_key = "1234ABC")}
+
+\dontrun{datawrapper_auth(api_key = "1234ABC", overwrite = TRUE)}
+
 }
 \author{
 Benedict Witzenberger

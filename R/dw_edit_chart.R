@@ -108,9 +108,9 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
 
   chart_id_response <- parsed$data$id
 
-  try(if (chart_id != chart_id_response) stop("The chart_ids between call and response do not match. Try again and check API."))
+  try(if (chart_id != chart_id_response) stop(paste0("The chart_ids between call (",  chart_id ,") and response (",  chart_id_response ,") do not match. Try again and check API.")))
 
-  if (httr::status_code(r) == 200) {
+  if (chart_id == chart_id_response & httr::status_code(r) == 200) {
     print(paste0("Chart ", chart_id_response, " succesfully updated."))
   }
 

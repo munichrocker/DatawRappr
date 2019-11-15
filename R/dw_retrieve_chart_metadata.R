@@ -47,8 +47,7 @@ dw_retrieve_chart_metadata <- function(chart_id, api_key = "environment") {
   structure(
     list(
       content = parsed,
-      path = "https://api.datawrapper.de/charts",
-      key = api_key
+      path = "https://api.datawrapper.de/charts"
     ),
     class = "dw_chart"
   )
@@ -59,7 +58,6 @@ dw_retrieve_chart_metadata <- function(chart_id, api_key = "environment") {
 
 print.dw_chart <- function(x, ...) {
   cat("<Datawrapper ", x$path, ">\n", sep = "")
-  cat("API-Key: ", x$key, "\n", sep = "")
   str(x$content)
   invisible(x)
 }

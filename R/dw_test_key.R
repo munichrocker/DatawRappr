@@ -36,8 +36,7 @@ dw_test_key <- function(api_key = "environment") {
     list(
       content = parsed,
       path = "https://api.datawrapper.de/account",
-      response = r,
-      key = api_key
+      response = r
     ),
     class = "dw_user"
   )
@@ -47,7 +46,6 @@ dw_test_key <- function(api_key = "environment") {
 
 print.dw_user <- function(x, ...) {
   cat("<Datawrapper ", x$path, ">\n", sep = "")
-  cat("API-Key: ", x$key, "\n", sep = "")
   cat("Response:\n")
   str(x$response)
   cat("Content:\n")
