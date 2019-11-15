@@ -117,7 +117,7 @@
     <p>Adds Key to Environment to be available on Startup.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>datawrapper_auth</span>(<span class='no'>api_key</span>)</pre>
+    <pre class="usage"><span class='fu'>datawrapper_auth</span>(<span class='no'>api_key</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -125,6 +125,10 @@
     <tr>
       <th>api_key</th>
       <td><p>Required. A character string, containing the API-Key.</p></td>
+    </tr>
+    <tr>
+      <th>overwrite</th>
+      <td><p>Optional. Should an existing key be overwritten? Defaults to <em>FALSE</em>.</p></td>
     </tr>
     </table>
 
@@ -137,7 +141,9 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>datawrapper_auth</span>(<span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"1234ABC"</span>)</div></pre>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>datawrapper_auth</span>(<span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"1234ABC"</span>)
+
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>datawrapper_auth</span>(<span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"1234ABC"</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
