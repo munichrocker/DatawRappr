@@ -41,9 +41,7 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
     api_key <- dw_get_api_key()
   }
 
-  if (class(chart_id) == "dw_chart") {
-    chart_id <- chart_id[["content"]][["data"]][[1]][["id"]]
-  }
+  chart_id <- dw_check_chart_id(chart_id)
 
   # create empty body for API-call
   call_body <- list(metadata = list())
@@ -106,7 +104,7 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
 
   parsed <- dw_handle_errors(r)
 
-  chart_id_response <- parsed$data$id
+  chart_id_response <- parsed$data[[1]]$id
 
   try(if (chart_id != chart_id_response) stop(paste0("The chart_ids between call (",  chart_id ,") and response (",  chart_id_response ,") do not match. Try again and check API.")))
 
