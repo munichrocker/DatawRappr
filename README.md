@@ -49,7 +49,7 @@ Copy the API key in the clipboard and use
 datawrapper_auth(api_key = "12345678")
 ```
 
-to save the key to our system. If a key already exists, you will be asked to replace it or not.
+to save the key to our system. If a key already exists, you may add the argument `overwrite = TRUE` to `datawrapper_auth()`.
 
 To make sure, your key is working as expected, you can run
 
