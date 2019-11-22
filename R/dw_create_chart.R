@@ -32,7 +32,7 @@ dw_create_chart <- function(api_key = "environment", title = "", type = "") {
   if (title != "") {call_body <- rlist::list.append(call_body, title = title)}
   if (type != "") {call_body <- rlist::list.append(call_body, type = type)}
 
-  r <- httr::POST("https://api.datawrapper.de/charts", httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+  r <- httr::POST("https://api.datawrapper.de/v3/charts", httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                   body = call_body, encode = "json")
 
   parsed <- dw_handle_errors(r)
@@ -42,7 +42,7 @@ dw_create_chart <- function(api_key = "environment", title = "", type = "") {
   structure(
     list(
       content = parsed,
-      path = "https://api.datawrapper.de/charts",
+      path = "https://api.datawrapper.de/v3/charts",
       id = parsed$data[[1]]$id
     ),
     class = "dw_chart"

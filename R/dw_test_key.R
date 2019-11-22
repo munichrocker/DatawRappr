@@ -28,14 +28,14 @@ dw_test_key <- function(api_key = "environment") {
     api_key <- dw_get_api_key()
   }
 
-  r <- httr::GET("https://api.datawrapper.de/account", httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")))
+  r <- httr::GET("https://api.datawrapper.de/v3/me", httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")))
 
   parsed <- dw_handle_errors(r)
 
   structure(
     list(
       content = parsed,
-      path = "https://api.datawrapper.de/account",
+      path = "https://api.datawrapper.de/v3/me",
       response = r
     ),
     class = "dw_user"

@@ -49,7 +49,7 @@ dw_data_to_chart <- function(x, chart_id, api_key = "environment", display_respo
   # combine header and content of dataframe into character string
   data_body <- paste(df_names, df_content, sep = "\n")
 
-  url <- paste0("https://api.datawrapper.de/charts/", chart_id, "/data")
+  url <- paste0("https://api.datawrapper.de/v3/charts/", chart_id, "/data")
 
   r <- httr::PUT(url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                  body = data_body)

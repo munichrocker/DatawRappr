@@ -97,9 +97,9 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
 
   # send call to API
   # upload modified data
-  url_upload <- paste0("https://api.datawrapper.de/charts/", chart_id)
+  url_upload <- paste0("https://api.datawrapper.de/v3/charts/", chart_id)
 
-  r <- httr::PUT(url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+  r <- httr::PATCH(url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                         body = call_body, encode = "json")
 
   parsed <- dw_handle_errors(r)
