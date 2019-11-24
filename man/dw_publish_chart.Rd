@@ -28,7 +28,7 @@ This function publishes a chart in Datawrapper.
 
 \dontrun{dw_publish_chart(chart_id = "a1B2Cd", api_key = "1234ABCD")} # uses the specified key
 
-\dontrun{dw_publish_chart(chart_id = "a1B2Cd", return_urls = TRUE)} # won't return code and URLs for chart
+\dontrun{dw_publish_chart(chart_id = "a1B2Cd", return_urls = FALSE)} # won't return code and URLs for chart
 
 }
 \author{

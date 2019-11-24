@@ -48,7 +48,7 @@ dw_retrieve_chart_metadata <- function(chart_id, api_key = "environment") {
     list(
       content = parsed,
       path = url,
-      id = parsed$data[[1]]$id
+      id = parsed[["id"]]
     ),
     class = "dw_chart"
   )

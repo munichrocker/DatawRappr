@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
 
 # DatawRappr
 
-The goal of DatawRappr is to provide a wrapper for Datawrapper's API to connect data from R directly with Datawrapper's charts capabilities. Currently this package uses Datawrapper API [v1.0](https://developer.datawrapper.de/docs) - while [version 3.0](https://developer.datawrapper.de/v3.0/docs) is still in beta. Once 3.0 is out of beta, this package will be adapted.
+The goal of DatawRappr is to provide a wrapper for Datawrapper's API to connect data from R directly with Datawrapper's charts capabilities. It uses the new [API version 3.0](https://developer.datawrapper.de/v3.0/docs).
 
 ## Key features:
 
@@ -23,6 +23,8 @@ The goal of DatawRappr is to provide a wrapper for Datawrapper's API to connect 
 All functions (except `datawrapper_auth()`) are preceded by `dw_`:
 
 * allows test calls to the API via `dw_test_key()`
+* lists all created charts: `dw_list_charts()`.
+* lists all folders: `dw_list_folders()`.
 * creates a new Datawrapper chart via `dw_create_chart()`
 * adds data from a R-dataframe to an existing Datawrapper chart via `dw_data_to_chart()`
 * retrieves (`dw_retrieve_chart_metadata()`) or edits metadata, description and visualization of an existing chart via `dw_edit_chart()`
@@ -141,4 +143,4 @@ This package makes heavy use of the [`httr`](https://github.com/r-lib/httr)-pack
 
 ## Further Links
 
-There is a API-documentation with examples [from Datawrapper](https://developer.datawrapper.de/docs/getting-started).
+There is a [API-documentation](https://developer.datawrapper.de/reference) and a [Getting Started guide with examples](https://developer.datawrapper.de/docs/getting-started) from Datawrapper.

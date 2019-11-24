@@ -2,7 +2,7 @@
 #'
 #' Tests the key by querying the \href{https://developer.datawrapper.de/}{Datawrapper-API} for user information.
 #'
-#' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
+#' @param api_key Required. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
 #'
 #' @return A S3-structure of type \strong{dw_user} with the elements from the \href{https://developer.datawrapper.de/}{Datawrapper-API}, and the following fields:
 #' \item{status}{Returns 'ok' if the API-key used was correct.}

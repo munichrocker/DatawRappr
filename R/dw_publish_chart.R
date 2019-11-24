@@ -15,7 +15,7 @@
 #'
 #' \dontrun{dw_publish_chart(chart_id = "a1B2Cd", api_key = "1234ABCD")} # uses the specified key
 #'
-#' \dontrun{dw_publish_chart(chart_id = "a1B2Cd", return_urls = TRUE)} # won't return code and URLs for chart
+#' \dontrun{dw_publish_chart(chart_id = "a1B2Cd", return_urls = FALSE)} # won't return code and URLs for chart
 #'
 #' @rdname dw_publish_chart
 #' @export
@@ -36,7 +36,7 @@ dw_publish_chart <- function(chart_id, api_key = "environment", return_urls = TR
   if (httr::status_code(r) == 200) {
     print(paste0("Chart ", chart_id, " published!"))
 
-    if (return_urls == TRUE){
+    if (return_urls == TRUE) {
 
       iframe_code <- parsed$data[[1]]$metadata$publish$`embed-codes`$`embed-method-responsive`
       chart_url <- parsed$data[[1]]$publicUrl
