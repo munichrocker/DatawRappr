@@ -144,3 +144,5 @@ This package makes heavy use of the [`httr`](https://github.com/r-lib/httr)-pack
 ## Further Links
 
 There is a [API-documentation](https://developer.datawrapper.de/reference) and a [Getting Started guide with examples](https://developer.datawrapper.de/docs/getting-started) from Datawrapper.
+
+A full Package-documentation [can be found here](https://munichrocker.github.io/DatawRappr/).
