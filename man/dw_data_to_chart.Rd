@@ -4,7 +4,7 @@
 \alias{dw_data_to_chart}
 \title{Fill a Datawrapper chart with data from R}
 \usage{
-dw_data_to_chart(x, chart_id, api_key = "environment", display_response = TRUE)
+dw_data_to_chart(x, chart_id, api_key = "environment")
 }
 \arguments{
 \item{x}{Required. A R object of class 'data.frame',to be uploaded as the Datawrapper data.}
@@ -12,16 +12,12 @@ dw_data_to_chart(x, chart_id, api_key = "environment", display_response = TRUE)
 \item{chart_id}{Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe". Or a \emph{dw_chart}-object.}
 
 \item{api_key}{Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.}
-
-\item{display_response}{Optional. It TRUE (default) returns the status code and URL to the uploaded data as CSV.}
 }
 \value{
-A list with the elements from the Datawrapper-API
-\item{status}{Returns 'ok' if the upload was successfull.}
-\item{data}{Returns a URL to the uploaded data in csv-format.}
+A terminal message.
 }
 \description{
-Uploads a dataframe to Datawrapper, returns a status code and a URL to the uploaded data.
+Uploads a dataframe to Datawrapper, returns a message.
 }
 \note{
 This function uploads a R-dataframe to Datawrapper.
@@ -31,8 +27,6 @@ This function uploads a R-dataframe to Datawrapper.
 \dontrun{dw_data_to_chart(df, "aBcDE")} # uses the preset key in the .Renviron-file
 
 \dontrun{dw_data_to_chart(df, chart_id = "a1B2Cd", api_key = "1234ABCD")} # uses the specified key
-
-\dontrun{dw_data_to_chart(df, chart_id = "a1B2Cd", display_response = FALSE)} # wont't return response
 
 }
 \author{

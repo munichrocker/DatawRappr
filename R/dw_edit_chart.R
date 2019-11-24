@@ -3,13 +3,14 @@
 #' Modifies an existing Datawrapper chart.
 #'
 #' @param chart_id Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe". Or a \strong{dw_chart}-object.
-#' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
+#' @param api_key Required. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
 #' @param title Optional. Adds a title to the plot.
 #' @param intro Optional. Adds an intro below the title.
 #' @param annotate Optional. Adds a annotation below the plot.
 #' @param type Optional. Changes the type of the chart. See \href{https://developer.datawrapper.de/docs/chart-types-2}{the documentation} for the different types.
 #' @param source_name Optional. Adds a source name to the plot.
 #' @param source_url Optional. Adds a URL to the source name (displayed only, if source name specified). Include http(s):// before URL.
+#' @param folderId Optional. Moves the chart to the specified folder (by folder-id, which can be found using \code{\link{dw_list_folders}}).
 #' @param data Optional. A list. Add separate arguments for the data. See \href{https://developer.datawrapper.de/docs/chart-properties-1}{the documentation} for details.
 #' @param visualize Optional. A list. Add separate arguments for the visualization. See \href{https://developer.datawrapper.de/docs/chart-properties-1}{the documentation} for details.
 #' @param describe Optional. A list. Add separate arguments for the description. See \href{https://developer.datawrapper.de/docs/chart-properties-1}{the documentation} for details.
@@ -18,23 +19,23 @@
 #' @return A terminal message: "Chart xyz succesfully updated." - or an error message.
 #' @author Benedict Witzenberger
 #' @note This function builds a body for a API-call to the Datawrapper-API, which contains changes to an existing chart.
-#' @note Check their \href{https://developer.datawrapper.de/docs/reference-guide}{reference guide for examples}.
+#' @note Check their \href{https://developer.datawrapper.de/docs/reference-guide}{reference guide} or \href{https://developer.datawrapper.de/reference#patchchartsid}{API-documentation}.
 #' @examples
 #'
-#' \dontrun{dw_edit_chart("aBcDE")} # uses the preset key in the .Renviron-file
+#' \dontrun{dw_edit_chart("aBcDE")} # uses the preset key in the .Renviron-file, no changes
 #'
-#' \dontrun{dw_edit_chart(chart_id = "a1B2Cd", api_key = "1234ABCD")} # uses the specified key
+#' \dontrun{dw_edit_chart(chart_id = "a1B2Cd", api_key = "1234ABCD")} # uses the specified key, no changes
 #'
 #' \dontrun{dw_edit_chart(chart_id = "a1B2Cd", title = "I'm a title",
 #' intro = "Data showing daily results")} # changes title and intro
 #'
 #' \dontrun{dw_edit_chart(chart_id = "a1B2Cd", title = "I'm a title",
-#' visualize = list(`show-tooltips` = "false"))} # adds manual changes as lists
+#' data = list("transpose" = "true"))} # transpose data
 #'
 #' @rdname dw_edit_chart
 #' @export
 dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro = "", annotate = "",
-                          type = "", source_name = "", source_url = "", data = list(), visualize = list(),
+                          type = "", source_name = "", source_url = "", folderId = "", data = list(), visualize = list(),
                           describe = list(), publish = list()) {
 
   if (api_key == "environment") {
@@ -49,6 +50,7 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
   # change only specified parts of existing data
   if (title != "") {call_body <- rlist::list.append(call_body, title = title)}
   if (type != "") {call_body <- rlist::list.append(call_body, type = type)}
+  if (folderId != "") {call_body <- rlist::list.append(call_body, folderId = folderId)}
 
   if (intro != "") {call_body$metadata$describe$intro <- intro}
   if (annotate != "") {call_body$metadata$annotate$notes <- annotate}
@@ -97,14 +99,14 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
 
   # send call to API
   # upload modified data
-  url_upload <- paste0("https://api.datawrapper.de/charts/", chart_id)
+  url_upload <- paste0("https://api.datawrapper.de/v3/charts/", chart_id)
 
-  r <- httr::PUT(url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+  r <- httr::PATCH(url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                         body = call_body, encode = "json")
 
   parsed <- dw_handle_errors(r)
 
-  chart_id_response <- parsed$data[[1]]$id
+  chart_id_response <- parsed["id"][[1]]
 
   try(if (chart_id != chart_id_response) stop(paste0("The chart_ids between call (",  chart_id ,") and response (",  chart_id_response ,") do not match. Try again and check API.")))
 

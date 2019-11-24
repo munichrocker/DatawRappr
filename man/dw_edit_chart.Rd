@@ -13,6 +13,7 @@ dw_edit_chart(
   type = "",
   source_name = "",
   source_url = "",
+  folderId = "",
   data = list(),
   visualize = list(),
   describe = list(),
@@ -22,7 +23,7 @@ dw_edit_chart(
 \arguments{
 \item{chart_id}{Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe". Or a \strong{dw_chart}-object.}
 
-\item{api_key}{Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.}
+\item{api_key}{Required. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.}
 
 \item{title}{Optional. Adds a title to the plot.}
 
@@ -35,6 +36,8 @@ dw_edit_chart(
 \item{source_name}{Optional. Adds a source name to the plot.}
 
 \item{source_url}{Optional. Adds a URL to the source name (displayed only, if source name specified). Include http(s):// before URL.}
+
+\item{folderId}{Optional. Moves the chart to the specified folder (by folder-id, which can be found using \code{\link{dw_list_folders}}).}
 
 \item{data}{Optional. A list. Add separate arguments for the data. See \href{https://developer.datawrapper.de/docs/chart-properties-1}{the documentation} for details.}
 
@@ -53,19 +56,19 @@ Modifies an existing Datawrapper chart.
 \note{
 This function builds a body for a API-call to the Datawrapper-API, which contains changes to an existing chart.
 
-Check their \href{https://developer.datawrapper.de/docs/reference-guide}{reference guide for examples}.
+Check their \href{https://developer.datawrapper.de/docs/reference-guide}{reference guide} or \href{https://developer.datawrapper.de/reference#patchchartsid}{API-documentation}.
 }
 \examples{
 
-\dontrun{dw_edit_chart("aBcDE")} # uses the preset key in the .Renviron-file
+\dontrun{dw_edit_chart("aBcDE")} # uses the preset key in the .Renviron-file, no changes
 
-\dontrun{dw_edit_chart(chart_id = "a1B2Cd", api_key = "1234ABCD")} # uses the specified key
+\dontrun{dw_edit_chart(chart_id = "a1B2Cd", api_key = "1234ABCD")} # uses the specified key, no changes
 
 \dontrun{dw_edit_chart(chart_id = "a1B2Cd", title = "I'm a title",
 intro = "Data showing daily results")} # changes title and intro
 
 \dontrun{dw_edit_chart(chart_id = "a1B2Cd", title = "I'm a title",
-visualize = list(`show-tooltips` = "false"))} # adds manual changes as lists
+data = list("transpose" = "true"))} # transpose data
 
 }
 \author{

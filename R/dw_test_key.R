@@ -2,7 +2,7 @@
 #'
 #' Tests the key by querying the \href{https://developer.datawrapper.de/}{Datawrapper-API} for user information.
 #'
-#' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
+#' @param api_key Required. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
 #'
 #' @return A S3-structure of type \strong{dw_user} with the elements from the \href{https://developer.datawrapper.de/}{Datawrapper-API}, and the following fields:
 #' \item{status}{Returns 'ok' if the API-key used was correct.}
@@ -28,14 +28,14 @@ dw_test_key <- function(api_key = "environment") {
     api_key <- dw_get_api_key()
   }
 
-  r <- httr::GET("https://api.datawrapper.de/account", httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")))
+  r <- httr::GET("https://api.datawrapper.de/v3/me", httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")))
 
   parsed <- dw_handle_errors(r)
 
   structure(
     list(
       content = parsed,
-      path = "https://api.datawrapper.de/account",
+      path = "https://api.datawrapper.de/v3/me",
       response = r
     ),
     class = "dw_user"

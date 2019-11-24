@@ -38,7 +38,7 @@ dw_retrieve_chart_metadata <- function(chart_id, api_key = "environment") {
 
   chart_id <- dw_check_chart_id(chart_id)
 
-  url <- paste0("https://api.datawrapper.de/charts/", chart_id)
+  url <- paste0("https://api.datawrapper.de/v3/charts/", chart_id)
 
   r <- httr::GET(url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")))
 
@@ -47,8 +47,8 @@ dw_retrieve_chart_metadata <- function(chart_id, api_key = "environment") {
   structure(
     list(
       content = parsed,
-      path = "https://api.datawrapper.de/charts",
-      id = parsed$data[[1]]$id
+      path = url,
+      id = parsed[["id"]]
     ),
     class = "dw_chart"
   )

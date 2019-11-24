@@ -117,14 +117,14 @@
     <p>Creates and returns a new Datawrapper chart object.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dw_create_chart</span>(<span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"environment"</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>""</span>)</pre>
+    <pre class="usage"><span class='fu'>dw_create_chart</span>(<span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"environment"</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>folderId</span> <span class='kw'>=</span> <span class='st'>""</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>api_key</th>
-      <td><p>Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by <code><a href='datawrapper_auth.html'>datawrapper_auth</a></code>.</p></td>
+      <td><p>Required. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by <code><a href='datawrapper_auth.html'>datawrapper_auth</a></code>.</p></td>
     </tr>
     <tr>
       <th>title</th>
@@ -132,7 +132,11 @@
     </tr>
     <tr>
       <th>type</th>
-      <td><p>Optional. Changes the type of the chart. See <a href='https://developer.datawrapper.de/docs/chart-types-2'>the documentation</a> for the different types.</p></td>
+      <td><p>Optional. Changes the type of the chart. E.g. "d3-bars" for bars, "tables" for a table. Default is "d3-lines". See <a href='https://developer.datawrapper.de/docs/chart-types-2'>the documentation</a> for the different types.</p></td>
+    </tr>
+    <tr>
+      <th>folderId</th>
+      <td><p>Optional. Creates chart in specified folder.</p></td>
     </tr>
     </table>
 

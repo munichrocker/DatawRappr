@@ -1,0 +1,29 @@
+{
+    "id": "Kqysh",
+    "type": "d3-bars",
+    "title": "",
+    "theme": "default",
+    "lastEditStep": 0,
+    "publishedAt": null,
+    "publicUrl": null,
+    "publicVersion": 0,
+    "deleted": false,
+    "deletedAt": null,
+    "forkable": false,
+    "isFork": false,
+    "metadata": {
+        "data": {
+
+        }
+    },
+    "language": "en-US",
+    "externalData": null,
+    "utf8": false,
+    "createdAt": "2019-11-24T17:31:33.000Z",
+    "lastModifiedAt": "2019-11-24T17:31:33.000Z",
+    "forkedFrom": null,
+    "organizationId": null,
+    "authorId": 66969,
+    "folderId": null,
+    "url": "/v3/charts/Kqysh"
+}
