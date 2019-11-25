@@ -1,6 +1,8 @@
 destination: docs
 home:
   links:
+  - text: DatawRappr on Github
+    href: https://github.com/munichrocker/DatawRappr
   - text: Datawrapper Developers Page
     href: https://developer.datawrapper.de/docs
 authors:
