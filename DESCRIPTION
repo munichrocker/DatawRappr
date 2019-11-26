@@ -3,9 +3,9 @@ Type: Package
 Title: Provides Access to Datawrapper's API
 Version: 1.0.0
 Author: Benedict Witzenberger
-Maintainer: Benedict Witzenberger <benedict.witzenberger@sueddeutsche.de>
+Maintainer: Benedict Witzenberger <b.witzenberger@googlemail.com>
 Description: Connecting R to Datawrapper, allowing the creation and edits of charts via Datawrapper's API.
-    It makes heavy use of the _httr_-library and tries to manage the API-token for the user in the .Renviron-file.
+    It makes heavy use of the httr-library and tries to manage the API-token for the user in the .Renviron-file.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
