@@ -77,7 +77,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DatawRappr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1</span>
       </span>
     </div>
 
@@ -91,6 +91,9 @@
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -117,7 +120,7 @@
     <p>Uploads a dataframe to Datawrapper, returns a message.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dw_data_to_chart</span>(<span class='no'>x</span>, <span class='no'>chart_id</span>, <span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"environment"</span>)</pre>
+    <pre class="usage"><span class='fu'>dw_data_to_chart</span>(<span class='no'>x</span>, <span class='no'>chart_id</span>, <span class='kw'>parse_dates</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"environment"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -129,6 +132,10 @@
     <tr>
       <th>chart_id</th>
       <td><p>Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe". Or a <em>dw_chart</em>-object.</p></td>
+    </tr>
+    <tr>
+      <th>parse_dates</th>
+      <td><p>Optional. Defaults to TRUE. Should columns that contain a Date or as POSIX-object be automatically converted to a character vector?</p></td>
     </tr>
     <tr>
       <th>api_key</th>
@@ -147,7 +154,9 @@
     <pre class="examples"><div class='input'>
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>dw_data_to_chart</span>(<span class='no'>df</span>, <span class='st'>"aBcDE"</span>) <span class='co'># uses the preset key in the .Renviron-file</span>
 
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>dw_data_to_chart</span>(<span class='no'>df</span>, <span class='kw'>chart_id</span> <span class='kw'>=</span> <span class='st'>"a1B2Cd"</span>, <span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"1234ABCD"</span>) <span class='co'># uses the specified key</span></div></pre>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>dw_data_to_chart</span>(<span class='no'>df</span>, <span class='kw'>chart_id</span> <span class='kw'>=</span> <span class='st'>"a1B2Cd"</span>, <span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"1234ABCD"</span>) <span class='co'># uses the specified key</span>
+
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>dw_data_to_chart</span>(<span class='no'>df</span>, <span class='kw'>chart_id</span> <span class='kw'>=</span> <span class='st'>"a1B2Cd"</span>, <span class='kw'>parse_dates</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>) <span class='co'># do not parse Dates to characters</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

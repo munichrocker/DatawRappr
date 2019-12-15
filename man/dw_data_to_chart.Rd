@@ -4,12 +4,14 @@
 \alias{dw_data_to_chart}
 \title{Fill a Datawrapper chart with data from R}
 \usage{
-dw_data_to_chart(x, chart_id, api_key = "environment")
+dw_data_to_chart(x, chart_id, parse_dates = TRUE, api_key = "environment")
 }
 \arguments{
 \item{x}{Required. A R object of class 'data.frame',to be uploaded as the Datawrapper data.}
 
 \item{chart_id}{Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe". Or a \emph{dw_chart}-object.}
+
+\item{parse_dates}{Optional. Defaults to TRUE. Should columns that contain a Date or as POSIX-object be automatically converted to a character vector?}
 
 \item{api_key}{Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.}
 }
@@ -27,6 +29,8 @@ This function uploads a R-dataframe to Datawrapper.
 \dontrun{dw_data_to_chart(df, "aBcDE")} # uses the preset key in the .Renviron-file
 
 \dontrun{dw_data_to_chart(df, chart_id = "a1B2Cd", api_key = "1234ABCD")} # uses the specified key
+
+\dontrun{dw_data_to_chart(df, chart_id = "a1B2Cd", parse_dates = FALSE)} # do not parse Dates to characters
 
 }
 \author{
