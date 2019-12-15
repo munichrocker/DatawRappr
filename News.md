@@ -6,4 +6,4 @@
 
 # DatawRappr 1.0.0
 
-Is the first public release of DataRappr.
+Is the first public release of DatawRappr.
