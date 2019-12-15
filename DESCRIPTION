@@ -1,7 +1,7 @@
 Package: DatawRappr
 Type: Package
 Title: Provides Access to Datawrapper's API
-Version: 1.0.0
+Version: 1.0.1
 Author: Benedict Witzenberger
 Maintainer: Benedict Witzenberger <b.witzenberger@googlemail.com>
 Description: Connecting R to Datawrapper, allowing the creation and edits of charts via Datawrapper's API.

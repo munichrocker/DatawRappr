@@ -4,6 +4,7 @@
 #'
 #' @param x Required. A R object of class 'data.frame',to be uploaded as the Datawrapper data.
 #' @param chart_id Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe". Or a \emph{dw_chart}-object.
+#' @param parse_dates Optional. Defaults to TRUE. Should columns that contain a Date or as POSIX-object be automatically converted to a character vector?
 #' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
 #'
 #' @return A terminal message.
@@ -15,9 +16,11 @@
 #'
 #' \dontrun{dw_data_to_chart(df, chart_id = "a1B2Cd", api_key = "1234ABCD")} # uses the specified key
 #'
+#' \dontrun{dw_data_to_chart(df, chart_id = "a1B2Cd", parse_dates = FALSE)} # do not parse Dates to characters
+#'
 #' @rdname dw_data_to_chart
 #' @export
-dw_data_to_chart <- function(x, chart_id, api_key = "environment") {
+dw_data_to_chart <- function(x, chart_id, parse_dates = TRUE, api_key = "environment") {
 
   if (api_key == "environment") {
     api_key <- dw_get_api_key()
@@ -30,6 +33,12 @@ dw_data_to_chart <- function(x, chart_id, api_key = "environment") {
 
   # test class of input dataframe
   try(if (class(x) != "data.frame") stop("Data is not of class data.frame!"))
+
+  # find indices that contain vectors of type Data or POSIXt (which includes both POSIXct and POSIXlt)
+  if (parse_dates == TRUE) {
+    idx <- sapply(x, function(df_x) inherits(df_x, "Date") || inherits(df_x, "POSIXt"))
+    x[idx] <- lapply(x[idx], as.character)
+  }
 
   # collapse the data in the dataframe as a string
   df_content <- paste(t(sapply(seq(1, nrow(x), by = 1), function(i)
