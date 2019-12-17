@@ -15,7 +15,7 @@ datawrapper_auth(api_key, overwrite = FALSE)
 A Message in the command line.
 }
 \description{
-Adds Key to Environment to be available on Startup.
+Adds Environment Key \code{DW_KEY} to your local \code{.Renviron} file to be available on Startup.
 }
 \note{
 This is a very simple function that adds the API-key to the .Renviron-file in the user's home folder. If a key already exists and the user requests to, it will get replaced.

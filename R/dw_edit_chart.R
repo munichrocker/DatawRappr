@@ -2,12 +2,38 @@
 #'
 #' Modifies an existing Datawrapper chart.
 #'
+#' @section Chart Types:
+#'
+#' - `d3-bars` : Bar Chart
+#' - `d3-bars-split` : Split Bars
+#' - `d3-bars-stacked` : Stacked Bars
+#' - `d3-bars-bullet` : Bullet Bars
+#' - `d3-dot-plot` : Dot Plot
+#' - `d3-range-plot` : Range Plot
+#' - `d3-arrow-plot` : Arrow Plot
+#' - `column-chart` : Column Chart
+#' - `grouped-column-chart` : Grouped Column Chart
+#' - `stacked-column-chart` : Stacked Column Chart
+#' - `d3-area` : Area Chart
+#' - `d3-lines` : Line Chart
+#' - `d3-pies` : Pie Chart
+#' - `d3-donuts` : Donut Chart
+#' - `d3-multiple-pies` : Multiple Pies
+#' - `d3-multiple-donuts` : Multiple Donuts
+#' - `d3-scatter-plot` : Scatter Plot
+#' - `election-donut-chart` : Election Donut
+#' - `tables` : Table
+#' - `d3-maps-choropleth` : Choropleth Map
+#' - `d3-maps-symbols` : Symbol Map
+#' - `locator-map` : Locator Map
+#'
+#' @md
 #' @param chart_id Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe". Or a \strong{dw_chart}-object.
 #' @param api_key Required. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
 #' @param title Optional. Adds a title to the plot.
 #' @param intro Optional. Adds an intro below the title.
 #' @param annotate Optional. Adds a annotation below the plot.
-#' @param type Optional. Changes the type of the chart. See \href{https://developer.datawrapper.de/docs/chart-types-2}{the documentation} for the different types.
+#' @param type Optional. Changes the type of the chart. See \href{https://developer.datawrapper.de/docs/chart-types-2}{the documentation} for the different types or the Chart Type section below.
 #' @param source_name Optional. Adds a source name to the plot.
 #' @param source_url Optional. Adds a URL to the source name (displayed only, if source name specified). Include http(s):// before URL.
 #' @param folderId Optional. Moves the chart to the specified folder (by folder-id, which can be found using \code{\link{dw_list_folders}}).
@@ -102,7 +128,7 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
   url_upload <- paste0("https://api.datawrapper.de/v3/charts/", chart_id)
 
   r <- httr::PATCH(url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
-                        body = call_body, encode = "json")
+                        body = call_body, encode = "json", .DATAWRAPPR_UA)
 
   parsed <- dw_handle_errors(r)
 
