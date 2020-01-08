@@ -42,7 +42,7 @@ dw_publish_chart <- function(chart_id, api_key = "environment", return_urls = TR
       iframe_code <- parsed$data[[1]]$metadata$publish$`embed-codes`$`embed-method-responsive`
       chart_url <- parsed$data[[1]]$publicUrl
 
-      print(paste0("### Responsive iFrame-code: ###\n", iframe_code, "\n\n", "### Chart-URL:###\n", chart_url))
+      writeLines(paste0("### Responsive iFrame-code: ###\n", iframe_code, "\n\n", "### Chart-URL:###\n", chart_url))
     }
 
   } else {

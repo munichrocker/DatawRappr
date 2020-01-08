@@ -30,7 +30,7 @@ dw_list_charts(
 \item{limit}{Optional. A numeric. Defaults to 100. Number of charts to be retrieved.}
 }
 \value{
-A list of all created charts. Not including all metadata, which can be retrievd for a single chart using \code{\link{dw_retrieve_chart_metadata}}.
+A tibble of all created charts. Not including all metadata, which can be retrievd for a single chart using \code{\link{dw_retrieve_chart_metadata}}.
 \item{total}{Total number of created charts.}
 \item{next}{Returns the API-call for the next page}
 }
@@ -45,5 +45,5 @@ Returns all created Datawrapper charts by the current user.
 
 }
 \author{
-Benedict Witzenberger
+Benedict Witzenberger, Bob Rudis
 }

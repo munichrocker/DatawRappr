@@ -76,7 +76,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DatawRappr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1</span>
       </span>
     </div>
 
@@ -119,6 +119,31 @@
       <small>Source: <a href='https://github.com/munichrocker/DatawRappr/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="datawrappr-11" class="section level1">
+<h1 class="page-header">
+<a href="#datawrappr-11" class="anchor"></a>DatawRappr 1.1</h1>
+<div id="bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>Bug Fixes</h2>
+<ul>
+<li>
+<code><a href="../reference/dw_edit_chart.html">dw_edit_chart()</a></code> now makes calls to Datawrapper API v1, until there’s an error fixed in API v3. Datawrapper is working on it. (<a href='https://github.com/munichrocker/DatawRappr/issues/29'>#29</a>)</li>
+</ul>
+</div>
+<div id="enhancements" class="section level2">
+<h2 class="hasAnchor">
+<a href="#enhancements" class="anchor"></a>Enhancements</h2>
+<ul>
+<li><p><code><a href="../reference/dw_export_chart.html">dw_export_chart()</a></code> returns the published chart as png, pdf or svg (the later two only in paid plans) in R. Thanks to Bob Rudis (<a href='https://github.com/hrbrmstr'>@hrbrmstr</a>) for including this function.</p></li>
+<li><p><code><a href="../reference/dw_list_charts.html">dw_list_charts()</a></code> now returns a data frame (classed as a tibble).</p></li>
+<li><p><code><a href="../reference/dw_edit_chart.html">dw_edit_chart()</a></code> now also includes a <em>byline</em> argument to include the name of the chart’s creator. (<a href='https://github.com/munichrocker/DatawRappr/issues/30'>#30</a>)</p></li>
+<li><p>The DESCRIPTION now uses the person() format.</p></li>
+<li><p>There is now a package-level documentation file that also includes the hex logo.</p></li>
+<li><p>There is now a package user-agent string added to the API-call.</p></li>
+<li><p>Adds a “Chart Types” section to create and edit functions to avoid the need to go to the online reference.</p></li>
+</ul>
+</div>
+</div>
     <div id="datawrappr-101" class="section level1">
 <h1 class="page-header">
 <a href="#datawrappr-101" class="anchor"></a>DatawRappr 1.0.1</h1>
@@ -142,6 +167,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#datawrappr-11">1.1</a></li>
         <li><a href="#datawrappr-101">1.0.1</a></li>
         <li><a href="#datawrappr-100">1.0.0</a></li>
       </ul>
@@ -153,7 +179,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='https://www.benedict-witzenberger.de'>Benedict Witzenberger</a>.</p>
+  <p>Developed by <a href='https://www.benedict-witzenberger.de'>Benedict Witzenberger</a>, Bob Rudis.</p>
 </div>
 
 <div class="pkgdown">

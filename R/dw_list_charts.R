@@ -10,10 +10,10 @@
 #' @param orderBy Optional. A string. Is set to "createdAt" by default. Might be changed to: "id", "email", "name".
 #' @param limit Optional. A numeric. Defaults to 100. Number of charts to be retrieved.
 #'
-#' @return A list of all created charts. Not including all metadata, which can be retrievd for a single chart using \code{\link{dw_retrieve_chart_metadata}}.
+#' @return A tibble of all created charts. Not including all metadata, which can be retrievd for a single chart using \code{\link{dw_retrieve_chart_metadata}}.
 #' \item{total}{Total number of created charts.}
 #' \item{next}{Returns the API-call for the next page}
-#' @author Benedict Witzenberger
+#' @author Benedict Witzenberger, Bob Rudis
 #' @examples
 #'
 #' \dontrun{dw_list_charts("aBcDE")} # uses the preset key in the .Renviron-file

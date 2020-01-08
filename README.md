@@ -19,6 +19,7 @@ All functions (except `datawrapper_auth()`) are preceded by `dw_`:
 * retrieves (`dw_retrieve_chart_metadata()`) or edits metadata, description and visualization of an existing chart via `dw_edit_chart()`
 * publishes and republishes a Datawrapper chart via `dw_publish_chart()`
 * deletes an Datawrapper chart via `dw_delete_chart()`
+* exports a chart as png, pdf or svg (latter two only in paid accounts) with `dw_export_chart()`
 
 ## Installation
 
@@ -105,8 +106,9 @@ To speed things up, the `dw_edit_chart()`-function has some built-in arguments f
 * `title`
 * `intro` which is the text below the title
 * `annotate` which is the text below the plot
+* `byline` which is the name of the author
 * `source_name` which states the source
-* `source_url` which links to the source - but only if a `source_name` is provided.
+* `source_url` which links to the source - but only if a `source_name` is provided
 
 If you want to edit specific arguments in your plot, you can use the arguments `data`, `visualize`, `describe` and `publish` to include lists to the API call which change all possible settings in a chart, as shown in the example above.
 
@@ -124,6 +126,14 @@ Or you might want to delete a chart:
 
 ```{r}
 dw_delete_chart(chart_id = CHART_ID_OR_dw_chart-object)
+```
+
+#### Export chart
+
+You can export charts as png - or even in pdf or svg, if you're using a paid plan.
+
+```{r}
+exported_chart <- dw_export_chart(chart_id = CHART_ID_OR_dw_chart-object, type = c("png", "pdf", "svg"))
 ```
 
 ## Under the hood

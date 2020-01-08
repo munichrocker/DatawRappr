@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>DatawRappr 1.0.1 • DatawRappr</title>
+<title>DatawRappr 1.1 • DatawRappr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -42,7 +42,7 @@
 
 
 
-<meta property="og:title" content="DatawRappr 1.0.1" />
+<meta property="og:title" content="DatawRappr 1.1" />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -76,7 +76,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">DatawRappr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1</span>
       </span>
     </div>
 
@@ -115,12 +115,37 @@
 <div class="row">
   <div class="contents col-md-9">
     <div class="page-header">
-      <h1>DatawRappr 1.0.1</h1>
+      <h1>DatawRappr 1.1</h1>
     </div>
 
 
-<div id="datawrappr-101" class="section level1">
+<div id="datawrappr-11" class="section level1">
 
+<div id="bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>Bug Fixes</h2>
+<ul>
+<li>
+<code><a href="reference/dw_edit_chart.html">dw_edit_chart()</a></code> now makes calls to Datawrapper API v1, until there’s an error fixed in API v3. Datawrapper is working on it. (#29)</li>
+</ul>
+</div>
+<div id="enhancements" class="section level2">
+<h2 class="hasAnchor">
+<a href="#enhancements" class="anchor"></a>Enhancements</h2>
+<ul>
+<li><p><code><a href="reference/dw_export_chart.html">dw_export_chart()</a></code> returns the published chart as png, pdf or svg (the later two only in paid plans) in R. Thanks to Bob Rudis (@hrbrmstr) for including this function.</p></li>
+<li><p><code><a href="reference/dw_list_charts.html">dw_list_charts()</a></code> now returns a data frame (classed as a tibble).</p></li>
+<li><p><code><a href="reference/dw_edit_chart.html">dw_edit_chart()</a></code> now also includes a <em>byline</em> argument to include the name of the chart’s creator. (#30)</p></li>
+<li><p>The DESCRIPTION now uses the person() format.</p></li>
+<li><p>There is now a package-level documentation file that also includes the hex logo.</p></li>
+<li><p>There is now a package user-agent string added to the API-call.</p></li>
+<li><p>Adds a “Chart Types” section to create and edit functions to avoid the need to go to the online reference.</p></li>
+</ul>
+</div>
+</div>
+<div id="datawrappr-101" class="section level1">
+<h1 class="hasAnchor">
+<a href="#datawrappr-101" class="anchor"></a>DatawRappr 1.0.1</h1>
 <div id="bug-fixes--enhancements" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bug-fixes--enhancements" class="anchor"></a>Bug Fixes / enhancements</h2>
@@ -145,7 +170,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='https://www.benedict-witzenberger.de'>Benedict Witzenberger</a>.</p>
+  <p>Developed by <a href='https://www.benedict-witzenberger.de'>Benedict Witzenberger</a>, Bob Rudis.</p>
 </div>
 
 <div class="pkgdown">

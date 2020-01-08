@@ -8,9 +8,9 @@
 
 * `dw_export_chart()` returns the published chart as png, pdf or svg (the later two only in paid plans) in R. Thanks to Bob Rudis (@hrbrmstr) for including this function.
 
-* `dw_list_charts()` now returns a data frame (classed as a tibble)
+* `dw_list_charts()` now returns a data frame (classed as a tibble).
 
-* `dw_edit_chart()` now also includes a _byline_ argument to include the name of the chart's creator.
+* `dw_edit_chart()` now also includes a _byline_ argument to include the name of the chart's creator. (#30)
 
 * The DESCRIPTION now uses the person() format.
 

@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">DatawRappr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1</span>
       </span>
     </div>
 
@@ -113,6 +113,8 @@
 </li>
 <li>deletes an Datawrapper chart via <code><a href="reference/dw_delete_chart.html">dw_delete_chart()</a></code>
 </li>
+<li>exports a chart as png, pdf or svg (latter two only in paid accounts) with <code><a href="reference/dw_export_chart.html">dw_export_chart()</a></code>
+</li>
 </ul>
 </div>
 <div id="installation" class="section level2">
@@ -175,9 +177,11 @@ data = list(`horizontal-header` = "false"))</a></code></pre>
 <li>
 <code>annotate</code> which is the text below the plot</li>
 <li>
+<code>byline</code> which is the name of the author</li>
+<li>
 <code>source_name</code> which states the source</li>
 <li>
-<code>source_url</code> which links to the source - but only if a <code>source_name</code> is provided.</li>
+<code>source_url</code> which links to the source - but only if a <code>source_name</code> is provided</li>
 </ul>
 <p>If you want to edit specific arguments in your plot, you can use the arguments <code>data</code>, <code>visualize</code>, <code>describe</code> and <code>publish</code> to include lists to the API call which change all possible settings in a chart, as shown in the example above.</p>
 <p>When you’re finished editing your chart, you might want to publish it:</p>
@@ -189,6 +193,12 @@ data = list(`horizontal-header` = "false"))</a></code></pre>
 <a href="#delete-chart" class="anchor"></a>Delete chart</h4>
 <p>Or you might want to delete a chart:</p>
 <pre class="{r}"><code><a href="reference/dw_delete_chart.html">dw_delete_chart(chart_id = CHART_ID_OR_dw_chart-object)</a></code></pre>
+</div>
+<div id="export-chart" class="section level4">
+<h4 class="hasAnchor">
+<a href="#export-chart" class="anchor"></a>Export chart</h4>
+<p>You can export charts as png - or even in pdf or svg, if you’re using a paid plan.</p>
+<pre class="{r}"><code>exported_chart &lt;- dw_export_chart(chart_id = CHART_ID_OR_dw_chart-object, type = c("png", "pdf", "svg"))</code></pre>
 </div>
 </div>
 </div>
@@ -215,8 +225,6 @@ data = list(`horizontal-header` = "false"))</a></code></pre>
 </li>
 <li>Report a bug at <br><a href="https://github.com/munichrocker/DatawRappr/issues">https://​github.com/​munichrocker/​DatawRappr/​issues</a>
 </li>
-<li>DatawRappr on Github at <br><a href="https://github.com/munichrocker/DatawRappr">https://​github.com/​munichrocker/​DatawRappr</a>
-</li>
 <li>Datawrapper Developers Page at <br><a href="https://developer.datawrapper.de/docs">https://​developer.datawrapper.de/​docs</a>
 </li>
 </ul>
@@ -234,6 +242,7 @@ data = list(`horizontal-header` = "false"))</a></code></pre>
 <ul class="list-unstyled">
 <li>
 <a href="https://www.benedict-witzenberger.de">Benedict Witzenberger</a> <br><small class="roles"> Author, maintainer </small>  </li>
+<li>Bob Rudis <br><small class="roles"> Author </small>  </li>
 </ul>
 </div>
 
@@ -242,7 +251,7 @@ data = list(`horizontal-header` = "false"))</a></code></pre>
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://www.benedict-witzenberger.de">Benedict Witzenberger</a>.</p>
+  <p>Developed by <a href="https://www.benedict-witzenberger.de">Benedict Witzenberger</a>, Bob Rudis.</p>
 </div>
 
 <div class="pkgdown">
