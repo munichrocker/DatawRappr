@@ -1,9 +1,10 @@
 Package: DatawRappr
 Type: Package
 Title: Provides Access to Datawrapper's API
-Version: 1.0.1
+Version: 1.1
 Authors@R: c(
-      person("Benedict", "Witzenberger", email = "b.witzenberger@googlemail.com", role = c("aut", "cre"))
+      person("Benedict", "Witzenberger", email = "b.witzenberger@googlemail.com", role = c("aut", "cre")),
+      person("Bob", "Rudis", email = "bob@@rud.is", role = c("aut"))
     )
 Description: Connecting R to Datawrapper, allowing the creation and edits of charts via Datawrapper's API.
     It makes heavy use of the 'httr'-library and tries to manage the API-token for the user in the .Renviron-file.

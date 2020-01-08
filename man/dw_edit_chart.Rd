@@ -10,6 +10,7 @@ dw_edit_chart(
   title = "",
   intro = "",
   annotate = "",
+  byline = "",
   type = "",
   source_name = "",
   source_url = "",
@@ -30,6 +31,8 @@ dw_edit_chart(
 \item{intro}{Optional. Adds an intro below the title.}
 
 \item{annotate}{Optional. Adds a annotation below the plot.}
+
+\item{byline}{Optional. Adds the name of the chart's creator.}
 
 \item{type}{Optional. Changes the type of the chart. See \href{https://developer.datawrapper.de/docs/chart-types-2}{the documentation} for the different types or the Chart Type section below.}
 
@@ -54,7 +57,7 @@ A terminal message: "Chart xyz succesfully updated." - or an error message.
 Modifies an existing Datawrapper chart.
 }
 \note{
-This function builds a body for a API-call to the Datawrapper-API, which contains changes to an existing chart.
+This function builds a body for a API-call to the Datawrapper-API v1 (until changes are made to v3).
 
 Check their \href{https://developer.datawrapper.de/docs/reference-guide}{reference guide} or \href{https://developer.datawrapper.de/reference#patchchartsid}{API-documentation}.
 }

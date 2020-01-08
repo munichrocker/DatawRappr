@@ -21,5 +21,10 @@ Useful links:
 \author{
 \strong{Maintainer}: Benedict Witzenberger \email{b.witzenberger@googlemail.com}
 
+Authors:
+\itemize{
+  \item Bob Rudis \email{bob@@rud.is}
+}
+
 }
 \keyword{internal}

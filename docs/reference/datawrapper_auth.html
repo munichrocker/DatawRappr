@@ -43,7 +43,7 @@
 
 
 <meta property="og:title" content="Set Datawrapper-API-Key to system environment — datawrapper_auth" />
-<meta property="og:description" content="Adds Key to Environment to be available on Startup." />
+<meta property="og:description" content="Adds Environment Key DW_KEY to your local .Renviron file to be available on Startup." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -97,7 +97,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/munichrocker/DatawRappr">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -112,12 +117,12 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Set Datawrapper-API-Key to system environment</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/munichrocker/DatawRappr/blob/master/R/datawrapper_auth.R'><code>R/datawrapper_auth.R</code></a></small>
     <div class="hidden name"><code>datawrapper_auth.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Adds Key to Environment to be available on Startup.</p>
+    <p>Adds Environment Key <code>DW_KEY</code> to your local <code>.Renviron</code> file to be available on Startup.</p>
     </div>
 
     <pre class="usage"><span class='fu'>datawrapper_auth</span>(<span class='no'>api_key</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>

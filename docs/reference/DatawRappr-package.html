@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tests the Datawrapper-API-key — dw_test_key • DatawRappr</title>
+<title>Provides Access to Datawrapper's API — DatawRappr-package • DatawRappr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,10 @@
 
 
 
-<meta property="og:title" content="Tests the Datawrapper-API-key — dw_test_key" />
-<meta property="og:description" content="Tests the key by querying the Datawrapper-API for user information." />
+<meta property="og:title" content="Provides Access to Datawrapper's API — DatawRappr-package" />
+<meta property="og:description" content="Connecting R to Datawrapper, allowing the creation and edits of charts via Datawrapper's API.
+It makes heavy use of the httr-library and tries to manage the API-token for the user in the .Renviron-file.
+" />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -116,57 +118,37 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Tests the Datawrapper-API-key</h1>
-    <small class="dont-index">Source: <a href='https://github.com/munichrocker/DatawRappr/blob/master/R/dw_test_key.R'><code>R/dw_test_key.R</code></a></small>
-    <div class="hidden name"><code>dw_test_key.Rd</code></div>
+    <h1>Provides Access to Datawrapper's API</h1>
+    <small class="dont-index">Source: <a href='https://github.com/munichrocker/DatawRappr/blob/master/R/DatawRappr-package.R'><code>R/DatawRappr-package.R</code></a></small>
+    <div class="hidden name"><code>DatawRappr-package.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Tests the key by querying the <a href='https://developer.datawrapper.de/'>Datawrapper-API</a> for user information.</p>
+    <p>Connecting R to Datawrapper, allowing the creation and edits of charts via Datawrapper's API.
+It makes heavy use of the httr-library and tries to manage the API-token for the user in the .Renviron-file.
+<img src='figures/logo.png' align="right" style="width:125px; height:145px; padding-top:16px" /></p>
     </div>
 
-    <pre class="usage"><span class='fu'>dw_test_key</span>(<span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"environment"</span>)</pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>api_key</th>
-      <td><p>Required. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by <code><a href='datawrapper_auth.html'>datawrapper_auth</a></code>.</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>A S3-structure of type <strong>dw_user</strong> with the elements from the <a href='https://developer.datawrapper.de/'>Datawrapper-API</a>, and the following fields:</p>
-<dt>status</dt><dd><p>Returns 'ok' if the API-key used was correct.</p></dd>
-<dt>data$user$id</dt><dd><p>Returns the internal user id.</p></dd>
-<dt>data$user$email</dt><dd><p>The users e-mail adress.</p></dd>
-<dt>data$user$isAdmin</dt><dd><p>Specifies, if the current user is admin in his/her organization.</p></dd>
-<dt>data$user$organization$id</dt><dd><p>Returns the organization's id or short name.</p></dd>
-<dt>data$user$organization$name</dt><dd><p>Returns the organization's full name.</p></dd>
+    <div class='dont-index'><p>Useful links:</p><ul>
+<li><p><a href='https://github.com/munichrocker/DatawRappr'>https://github.com/munichrocker/DatawRappr</a></p></li>
+<li><p>Report bugs at <a href='https://github.com/munichrocker/DatawRappr/issues'>https://github.com/munichrocker/DatawRappr/issues</a></p></li>
+</ul>
 
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+</div>
 
-    <p>This function tests the API key by retrieving information about the current user from the API. If this works, the API-key is set correctly and ready to go.</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>dw_test_key</span>() <span class='co'># uses the preset key in the .Renviron-file</span>
-
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>dw_test_key</span>(<span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"1234ABCD"</span>) <span class='co'># uses the specified key</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#note">Note</a></li>
-      <li><a href="#examples">Examples</a></li>
+      <li><a href="#see-also">See also</a></li>
     </ul>
 
     <h2>Author</h2>
-    <p>Benedict Witzenberger</p>
+    <p><strong>Maintainer</strong>: Benedict Witzenberger <a href='mailto:b.witzenberger@googlemail.com'>b.witzenberger@googlemail.com</a></p>
   </div>
 </div>
 

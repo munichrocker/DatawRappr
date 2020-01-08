@@ -33,6 +33,7 @@
 #' @param title Optional. Adds a title to the plot.
 #' @param intro Optional. Adds an intro below the title.
 #' @param annotate Optional. Adds a annotation below the plot.
+#' @param byline Optional. Adds the name of the chart's creator.
 #' @param type Optional. Changes the type of the chart. See \href{https://developer.datawrapper.de/docs/chart-types-2}{the documentation} for the different types or the Chart Type section below.
 #' @param source_name Optional. Adds a source name to the plot.
 #' @param source_url Optional. Adds a URL to the source name (displayed only, if source name specified). Include http(s):// before URL.
@@ -44,7 +45,7 @@
 #'
 #' @return A terminal message: "Chart xyz succesfully updated." - or an error message.
 #' @author Benedict Witzenberger
-#' @note This function builds a body for a API-call to the Datawrapper-API, which contains changes to an existing chart.
+#' @note This function builds a body for a API-call to the Datawrapper-API v1 (until changes are made to v3).
 #' @note Check their \href{https://developer.datawrapper.de/docs/reference-guide}{reference guide} or \href{https://developer.datawrapper.de/reference#patchchartsid}{API-documentation}.
 #' @examples
 #'
@@ -60,7 +61,7 @@
 #'
 #' @rdname dw_edit_chart
 #' @export
-dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro = "", annotate = "",
+dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro = "", annotate = "", byline = "",
                           type = "", source_name = "", source_url = "", folderId = "", data = list(), visualize = list(),
                           describe = list(), publish = list()) {
 
@@ -81,6 +82,7 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
   if (intro != "") {call_body$metadata$describe$intro <- intro}
   if (annotate != "") {call_body$metadata$annotate$notes <- annotate}
 
+  if (byline != "") {call_body$metadata$describe$byline <- byline}
   if (source_name != "") {call_body$metadata$describe$`source-name` <- source_name}
   if (source_url != "") {
 
@@ -125,14 +127,19 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
 
   # send call to API
   # upload modified data
-  url_upload <- paste0("https://api.datawrapper.de/v3/charts/", chart_id)
+  # returned to v1, since there's an error in v3
+  # url_upload <- paste0("https://api.datawrapper.de/v3/charts/", chart_id)
+  # r <- httr::PATCH(url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+  #                  body = call_body, encode = "json", .DATAWRAPPR_UA)
 
-  r <- httr::PATCH(url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+  url_upload <- paste0("https://api.datawrapper.de/charts/", chart_id)
+
+  r <- httr::PUT(url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                         body = call_body, encode = "json", .DATAWRAPPR_UA)
 
   parsed <- dw_handle_errors(r)
 
-  chart_id_response <- parsed["id"][[1]]
+  chart_id_response <- parsed[["data"]][[1]][["id"]] #for v3: parsed["id"][[1]]
 
   try(if (chart_id != chart_id_response) stop(paste0("The chart_ids between call (",  chart_id ,") and response (",  chart_id_response ,") do not match. Try again and check API.")))
 
