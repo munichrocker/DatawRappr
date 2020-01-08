@@ -25,7 +25,8 @@ dw_delete_chart <- function(chart_id, api_key = "environment") {
 
   url <- paste0("https://api.datawrapper.de/v3/charts/", chart_id)
 
-  r <- httr::DELETE(url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")))
+  r <- httr::DELETE(url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+                    .DATAWRAPPR_UA)
 
   if (httr::status_code(r) == "204") {
     print(paste0("Chart ", chart_id, " sucessfully deleted!"))

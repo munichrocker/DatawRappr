@@ -29,7 +29,8 @@ dw_publish_chart <- function(chart_id, api_key = "environment", return_urls = TR
 
   url <- paste0("https://api.datawrapper.de/charts/", chart_id, "/publish")
 
-  r <- httr::POST(url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")))
+  r <- httr::POST(url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+                  .DATAWRAPPR_UA)
 
   parsed <- dw_handle_errors(r)
 

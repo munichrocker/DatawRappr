@@ -11,7 +11,7 @@ dw_create_chart(api_key = "environment", title = "", type = "", folderId = "")
 
 \item{title}{Optional. Will set a chart's title on creation.}
 
-\item{type}{Optional. Changes the type of the chart. E.g. "d3-bars" for bars, "tables" for a table. Default is "d3-lines". See \href{https://developer.datawrapper.de/docs/chart-types}{the documentation} for the different types.}
+\item{type}{Optional. Changes the type of the chart. E.g. "d3-bars" for bars, "tables" for a table. Default is "d3-lines". See \href{https://developer.datawrapper.de/docs/chart-types-2}{the documentation} for the different types or the Chart Types section below. If you do not set this here you can set it with \code{\link[=dw_exit_chart]{dw_exit_chart()}}}
 
 \item{folderId}{Optional. Creates chart in specified folder.}
 }
@@ -19,11 +19,39 @@ dw_create_chart(api_key = "environment", title = "", type = "", folderId = "")
 It prints the new chart's id and returns a S3-structure of type \strong{dw_chart} with the elements from the Datawrapper-API, the same as in \code{\link{dw_retrieve_chart_metadata}}.
 }
 \description{
-Creates and returns a new Datawrapper chart object.
+Creates and returns a new Datawrapper chart object. This function starts the chart-making process
 }
 \note{
 If not specified, the new chart will by default be created without a title and with the type \code{d3-lines}.
 }
+\section{Chart Types}{
+
+\itemize{
+\item \code{d3-bars} : Bar Chart
+\item \code{d3-bars-split} : Split Bars
+\item \code{d3-bars-stacked} : Stacked Bars
+\item \code{d3-bars-bullet} : Bullet Bars
+\item \code{d3-dot-plot} : Dot Plot
+\item \code{d3-range-plot} : Range Plot
+\item \code{d3-arrow-plot} : Arrow Plot
+\item \code{column-chart} : Column Chart
+\item \code{grouped-column-chart} : Grouped Column Chart
+\item \code{stacked-column-chart} : Stacked Column Chart
+\item \code{d3-area} : Area Chart
+\item \code{d3-lines} : Line Chart
+\item \code{d3-pies} : Pie Chart
+\item \code{d3-donuts} : Donut Chart
+\item \code{d3-multiple-pies} : Multiple Pies
+\item \code{d3-multiple-donuts} : Multiple Donuts
+\item \code{d3-scatter-plot} : Scatter Plot
+\item \code{election-donut-chart} : Election Donut
+\item \code{tables} : Table
+\item \code{d3-maps-choropleth} : Choropleth Map
+\item \code{d3-maps-symbols} : Symbol Map
+\item \code{locator-map} : Locator Map
+}
+}
+
 \examples{
 
 \dontrun{

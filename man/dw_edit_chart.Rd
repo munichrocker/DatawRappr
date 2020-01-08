@@ -10,6 +10,7 @@ dw_edit_chart(
   title = "",
   intro = "",
   annotate = "",
+  byline = "",
   type = "",
   source_name = "",
   source_url = "",
@@ -31,7 +32,9 @@ dw_edit_chart(
 
 \item{annotate}{Optional. Adds a annotation below the plot.}
 
-\item{type}{Optional. Changes the type of the chart. See \href{https://developer.datawrapper.de/docs/chart-types-2}{the documentation} for the different types.}
+\item{byline}{Optional. Adds the name of the chart's creator.}
+
+\item{type}{Optional. Changes the type of the chart. See \href{https://developer.datawrapper.de/docs/chart-types-2}{the documentation} for the different types or the Chart Type section below.}
 
 \item{source_name}{Optional. Adds a source name to the plot.}
 
@@ -54,10 +57,38 @@ A terminal message: "Chart xyz succesfully updated." - or an error message.
 Modifies an existing Datawrapper chart.
 }
 \note{
-This function builds a body for a API-call to the Datawrapper-API, which contains changes to an existing chart.
+This function builds a body for a API-call to the Datawrapper-API v1 (until changes are made to v3).
 
 Check their \href{https://developer.datawrapper.de/docs/reference-guide}{reference guide} or \href{https://developer.datawrapper.de/reference#patchchartsid}{API-documentation}.
 }
+\section{Chart Types}{
+
+\itemize{
+\item \code{d3-bars} : Bar Chart
+\item \code{d3-bars-split} : Split Bars
+\item \code{d3-bars-stacked} : Stacked Bars
+\item \code{d3-bars-bullet} : Bullet Bars
+\item \code{d3-dot-plot} : Dot Plot
+\item \code{d3-range-plot} : Range Plot
+\item \code{d3-arrow-plot} : Arrow Plot
+\item \code{column-chart} : Column Chart
+\item \code{grouped-column-chart} : Grouped Column Chart
+\item \code{stacked-column-chart} : Stacked Column Chart
+\item \code{d3-area} : Area Chart
+\item \code{d3-lines} : Line Chart
+\item \code{d3-pies} : Pie Chart
+\item \code{d3-donuts} : Donut Chart
+\item \code{d3-multiple-pies} : Multiple Pies
+\item \code{d3-multiple-donuts} : Multiple Donuts
+\item \code{d3-scatter-plot} : Scatter Plot
+\item \code{election-donut-chart} : Election Donut
+\item \code{tables} : Table
+\item \code{d3-maps-choropleth} : Choropleth Map
+\item \code{d3-maps-symbols} : Symbol Map
+\item \code{locator-map} : Locator Map
+}
+}
+
 \examples{
 
 \dontrun{dw_edit_chart("aBcDE")} # uses the preset key in the .Renviron-file, no changes

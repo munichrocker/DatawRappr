@@ -97,7 +97,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/munichrocker/DatawRappr">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -112,7 +117,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Edits a existing Datawrapper chart</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/munichrocker/DatawRappr/blob/master/R/dw_edit_chart.R'><code>R/dw_edit_chart.R</code></a></small>
     <div class="hidden name"><code>dw_edit_chart.Rd</code></div>
     </div>
 
@@ -161,7 +166,7 @@
     </tr>
     <tr>
       <th>type</th>
-      <td><p>Optional. Changes the type of the chart. See <a href='https://developer.datawrapper.de/docs/chart-types-2'>the documentation</a> for the different types.</p></td>
+      <td><p>Optional. Changes the type of the chart. See <a href='https://developer.datawrapper.de/docs/chart-types-2'>the documentation</a> for the different types or the Chart Type section below.</p></td>
     </tr>
     <tr>
       <th>source_name</th>
@@ -200,6 +205,35 @@
 
     <p>This function builds a body for a API-call to the Datawrapper-API, which contains changes to an existing chart.</p>
 <p>Check their <a href='https://developer.datawrapper.de/docs/reference-guide'>reference guide</a> or <a href='https://developer.datawrapper.de/reference#patchchartsid'>API-documentation</a>.</p>
+    <h2 class="hasAnchor" id="chart-types"><a class="anchor" href="#chart-types"></a>Chart Types</h2>
+
+    
+
+<ul>
+<li><p><code>d3-bars</code> : Bar Chart</p></li>
+<li><p><code>d3-bars-split</code> : Split Bars</p></li>
+<li><p><code>d3-bars-stacked</code> : Stacked Bars</p></li>
+<li><p><code>d3-bars-bullet</code> : Bullet Bars</p></li>
+<li><p><code>d3-dot-plot</code> : Dot Plot</p></li>
+<li><p><code>d3-range-plot</code> : Range Plot</p></li>
+<li><p><code>d3-arrow-plot</code> : Arrow Plot</p></li>
+<li><p><code>column-chart</code> : Column Chart</p></li>
+<li><p><code>grouped-column-chart</code> : Grouped Column Chart</p></li>
+<li><p><code>stacked-column-chart</code> : Stacked Column Chart</p></li>
+<li><p><code>d3-area</code> : Area Chart</p></li>
+<li><p><code>d3-lines</code> : Line Chart</p></li>
+<li><p><code>d3-pies</code> : Pie Chart</p></li>
+<li><p><code>d3-donuts</code> : Donut Chart</p></li>
+<li><p><code>d3-multiple-pies</code> : Multiple Pies</p></li>
+<li><p><code>d3-multiple-donuts</code> : Multiple Donuts</p></li>
+<li><p><code>d3-scatter-plot</code> : Scatter Plot</p></li>
+<li><p><code>election-donut-chart</code> : Election Donut</p></li>
+<li><p><code>tables</code> : Table</p></li>
+<li><p><code>d3-maps-choropleth</code> : Choropleth Map</p></li>
+<li><p><code>d3-maps-symbols</code> : Symbol Map</p></li>
+<li><p><code>locator-map</code> : Locator Map</p></li>
+</ul>
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
@@ -219,6 +253,7 @@
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#note">Note</a></li>
+      <li><a href="#chart-types">Chart Types</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 

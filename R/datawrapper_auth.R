@@ -1,7 +1,8 @@
 #' Set Datawrapper-API-Key to system environment
 #'
-#' Adds Key to Environment to be available on Startup.
+#' Adds Environment Key `DW_KEY` to your local `.Renviron` file to be available on Startup.
 #'
+#' @md
 #' @param api_key Required. A character string, containing the API-Key.
 #' @param overwrite Optional. Should an existing key be overwritten? Defaults to \emph{FALSE}.
 #'
@@ -57,7 +58,7 @@ datawrapper_auth <- function(api_key, overwrite = FALSE) {
 
       warning(paste0("A Datawrapper-key ", Sys.getenv("DW_KEY"), " already exists on this system.\nSet `overwrite = TRUE` to delete it."), immediate. = TRUE)
 
-      }
+    }
 
 
   } else {

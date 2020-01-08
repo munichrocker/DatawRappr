@@ -43,7 +43,8 @@
 
 
 <meta property="og:title" content="Get Datawrapper-API-Key — dw_get_api_key" />
-<meta property="og:description" content="Retrieves the Datawrapper-API-key from the .Renviron-file, if it was saved there earlier by datawrapper_auth." />
+<meta property="og:description" content="Retrieves the Datawrapper-API-key from the DW_KEY
+environment variable if it exists." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -97,7 +98,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/munichrocker/DatawRappr">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -112,12 +118,13 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get Datawrapper-API-Key</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/munichrocker/DatawRappr/blob/master/R/dw_get_api_key.R'><code>R/dw_get_api_key.R</code></a></small>
     <div class="hidden name"><code>dw_get_api_key.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Retrieves the <a href='https://developer.datawrapper.de/'>Datawrapper-API</a>-key from the .Renviron-file, if it was saved there earlier by <code><a href='datawrapper_auth.html'>datawrapper_auth</a></code>.</p>
+    <p>Retrieves the <a href='https://developer.datawrapper.de/'>Datawrapper-API</a>-key from the <code>DW_KEY</code>
+environment variable if it exists.</p>
     </div>
 
     <pre class="usage"><span class='fu'>dw_get_api_key</span>()</pre>
@@ -126,6 +133,9 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>The API-key as a character string</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>You can use <code><a href='datawrapper_auth.html'>datawrapper_auth()</a></code> to store your API key into your local <code>.Renviron</code> file.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>This is a helper function, that shouldn't be of any use outside of this package.</p>
@@ -138,6 +148,7 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
       <li><a href="#note">Note</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tests the Datawrapper-API-key — dw_test_key • DatawRappr</title>
+<title>Export a Datawrapper chart to PNG, PDF, or SVG — dw_export_chart • DatawRappr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,9 @@
 
 
 
-<meta property="og:title" content="Tests the Datawrapper-API-key — dw_test_key" />
-<meta property="og:description" content="Tests the key by querying the Datawrapper-API for user information." />
+<meta property="og:title" content="Export a Datawrapper chart to PNG, PDF, or SVG — dw_export_chart" />
+<meta property="og:description" content="Uses the export endpoint to export a chart as PNG, PDF, or SVG
+(the latter two require paid plans)." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -116,45 +117,86 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Tests the Datawrapper-API-key</h1>
-    <small class="dont-index">Source: <a href='https://github.com/munichrocker/DatawRappr/blob/master/R/dw_test_key.R'><code>R/dw_test_key.R</code></a></small>
-    <div class="hidden name"><code>dw_test_key.Rd</code></div>
+    <h1>Export a Datawrapper chart to PNG, PDF, or SVG</h1>
+    <small class="dont-index">Source: <a href='https://github.com/munichrocker/DatawRappr/blob/master/R/de_export_chart.R'><code>R/de_export_chart.R</code></a></small>
+    <div class="hidden name"><code>dw_export_chart.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Tests the key by querying the <a href='https://developer.datawrapper.de/'>Datawrapper-API</a> for user information.</p>
+    <p>Uses the <a href='https://developer.datawrapper.de/docs/exporting-as-pdfsvg'>export endpoint</a> to export a chart as PNG, PDF, or SVG
+(the latter two require paid plans).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dw_test_key</span>(<span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"environment"</span>)</pre>
+    <pre class="usage"><span class='fu'>dw_export_chart</span>(
+  <span class='no'>chart_id</span>,
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"png"</span>, <span class='st'>"pdf"</span>, <span class='st'>"svg"</span>),
+  <span class='kw'>unit</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"px"</span>, <span class='st'>"inch"</span>, <span class='st'>"mm"</span>),
+  <span class='kw'>mode</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"rgb"</span>, <span class='st'>"cmyk"</span>),
+  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>plain</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>2</span>,
+  <span class='kw'>border_width</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>border_color</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"environment"</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>chart_id</th>
+      <td><p>Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe". Or a <strong>dw_chart</strong>-object.</p></td>
+    </tr>
+    <tr>
+      <th>type</th>
+      <td><p>Required. One of <code>png</code>, <code>pdf</code>, or <code>svg</code>. Defaults to <code>png</code>.</p></td>
+    </tr>
+    <tr>
+      <th>unit</th>
+      <td><p>Define units which <code>border_width</code>, <code>height</code> and <code>width</code> are measured in. <code>png</code> only works with <code>px</code>;
+<code>pdf</code> works with any of them; <code>svg</code> should have this set to <code>NULL</code>.</p></td>
+    </tr>
+    <tr>
+      <th>mode</th>
+      <td><p>color movde for output. Defaults to <code>rgb</code>. Only applicable to <code>pdf</code> output type.</p></td>
+    </tr>
+    <tr>
+      <th>width, height</th>
+      <td><p>width and height of the visualization; if not specified it takes the chart width/height.</p></td>
+    </tr>
+    <tr>
+      <th>plain</th>
+      <td><p>if <code>TRUE</code> (the default) only the visualization will be exported; <code>FALSE</code> includes header and footer.</p></td>
+    </tr>
+    <tr>
+      <th>scale</th>
+      <td><p>defines multiplier for the size; e.g. if <code>3</code> then the chart will be 3x wider and taller; Defaults to <code>2</code>.</p></td>
+    </tr>
+    <tr>
+      <th>border_width</th>
+      <td><p>margin around the visualization; e.g. if <code>border_width</code> is <code>20</code> and <code>unit</code> is <code>px</code>, the visualization
+will have a 20px margin. Default is <code>0</code>.</p></td>
+    </tr>
+    <tr>
+      <th>border_color</th>
+      <td><p>color of the border; The default is the same as the visualization (likely <code>white</code>).</p></td>
+    </tr>
+    <tr>
       <th>api_key</th>
-      <td><p>Required. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by <code><a href='datawrapper_auth.html'>datawrapper_auth</a></code>.</p></td>
+      <td><p>Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by <code><a href='datawrapper_auth.html'>datawrapper_auth</a></code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A S3-structure of type <strong>dw_user</strong> with the elements from the <a href='https://developer.datawrapper.de/'>Datawrapper-API</a>, and the following fields:</p>
-<dt>status</dt><dd><p>Returns 'ok' if the API-key used was correct.</p></dd>
-<dt>data$user$id</dt><dd><p>Returns the internal user id.</p></dd>
-<dt>data$user$email</dt><dd><p>The users e-mail adress.</p></dd>
-<dt>data$user$isAdmin</dt><dd><p>Specifies, if the current user is admin in his/her organization.</p></dd>
-<dt>data$user$organization$id</dt><dd><p>Returns the organization's id or short name.</p></dd>
-<dt>data$user$organization$name</dt><dd><p>Returns the organization's full name.</p></dd>
-
+    <p>for <code>png</code>, a <code>{magick}</code> object; for <code>pdf</code>, invisible raw vector with PDF content; for <code>svg</code>, invisible character vector with SVG content</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>This function tests the API key by retrieving information about the current user from the API. If this works, the API-key is set correctly and ready to go.</p>
+    <p>PDF and SVG export require paid plans</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>dw_test_key</span>() <span class='co'># uses the preset key in the .Renviron-file</span>
-
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>dw_test_key</span>(<span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"1234ABCD"</span>) <span class='co'># uses the specified key</span></div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>dw_export_chart</span>(<span class='st'>"aBcDE"</span>) <span class='co'># uses the preset key in the .Renviron-file</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -166,7 +208,7 @@
     </ul>
 
     <h2>Author</h2>
-    <p>Benedict Witzenberger</p>
+    <p>Bob Rudis <a href='mailto:bob@rud.is'>bob@rud.is</a></p>
   </div>
 </div>
 
