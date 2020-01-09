@@ -2,7 +2,7 @@
 
 ## Bug Fixes
 
-* `dw_edit_chart()` now makes calls to Datawrapper API v1, until there's an error fixed in API v3. Datawrapper is working on it. (#29)
+* `dw_edit_chart()` is working as expected again, after an API-error was resolved by Datawrapper. (#29)
 
 ## Enhancements
 

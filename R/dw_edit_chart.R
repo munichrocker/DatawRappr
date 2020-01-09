@@ -127,19 +127,19 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
 
   # send call to API
   # upload modified data
-  # returned to v1, since there's an error in v3
-  # url_upload <- paste0("https://api.datawrapper.de/v3/charts/", chart_id)
-  # r <- httr::PATCH(url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
-  #                  body = call_body, encode = "json", .DATAWRAPPR_UA)
+  # solution for API v1:
+  # url_upload <- paste0("https://api.datawrapper.de/charts/", chart_id)
+  #
+  # r <- httr::PUT(url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+  #                       body = call_body, encode = "json", .DATAWRAPPR_UA)
 
-  url_upload <- paste0("https://api.datawrapper.de/charts/", chart_id)
-
-  r <- httr::PUT(url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
-                        body = call_body, encode = "json", .DATAWRAPPR_UA)
+  url_upload <- paste0("https://api.datawrapper.de/v3/charts/", chart_id)
+  r <- httr::PATCH(url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+                   body = call_body, encode = "json", .DATAWRAPPR_UA)
 
   parsed <- dw_handle_errors(r)
 
-  chart_id_response <- parsed[["data"]][[1]][["id"]] #for v3: parsed["id"][[1]]
+  chart_id_response <- parsed["id"][[1]] #for v3: parsed["id"][[1]], for v1: parsed[["data"]][[1]][["id"]]
 
   try(if (chart_id != chart_id_response) stop(paste0("The chart_ids between call (",  chart_id ,") and response (",  chart_id_response ,") do not match. Try again and check API.")))
 
