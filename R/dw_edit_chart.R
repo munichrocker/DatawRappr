@@ -45,7 +45,7 @@
 #'
 #' @return A terminal message: "Chart xyz succesfully updated." - or an error message.
 #' @author Benedict Witzenberger
-#' @note This function builds a body for a API-call to the Datawrapper-API v1 (until changes are made to v3).
+#' @note This function builds a body for a API-call to the Datawrapper-API.
 #' @note Check their \href{https://developer.datawrapper.de/docs/reference-guide}{reference guide} or \href{https://developer.datawrapper.de/reference#patchchartsid}{API-documentation}.
 #' @examples
 #'

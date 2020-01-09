@@ -57,7 +57,7 @@ A terminal message: "Chart xyz succesfully updated." - or an error message.
 Modifies an existing Datawrapper chart.
 }
 \note{
-This function builds a body for a API-call to the Datawrapper-API v1 (until changes are made to v3).
+This function builds a body for a API-call to the Datawrapper-API.
 
 Check their \href{https://developer.datawrapper.de/docs/reference-guide}{reference guide} or \href{https://developer.datawrapper.de/reference#patchchartsid}{API-documentation}.
 }
