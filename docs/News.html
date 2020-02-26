@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>DatawRappr 1.1 • DatawRappr</title>
+<title>DatawRappr 1.1.1 • DatawRappr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -42,7 +42,7 @@
 
 
 
-<meta property="og:title" content="DatawRappr 1.1" />
+<meta property="og:title" content="DatawRappr 1.1.1" />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -76,7 +76,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">DatawRappr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
       </span>
     </div>
 
@@ -115,15 +115,26 @@
 <div class="row">
   <div class="contents col-md-9">
     <div class="page-header">
-      <h1>DatawRappr 1.1</h1>
+      <h1>DatawRappr 1.1.1</h1>
     </div>
 
 
-<div id="datawrappr-11" class="section level1">
+<div id="datawrappr-111" class="section level1">
 
 <div id="bug-fixes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bug-fixes" class="anchor"></a>Bug Fixes</h2>
+<ul>
+<li>Adds a <code>handle_reset()</code> to <code>dw_edit_chart</code> to allow multiple edit-calls to the API during a session. Until now a 401-error was raised. (fixes #31)</li>
+</ul>
+</div>
+</div>
+<div id="datawrappr-11" class="section level1">
+<h1 class="hasAnchor">
+<a href="#datawrappr-11" class="anchor"></a>DatawRappr 1.1</h1>
+<div id="bug-fixes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes-1" class="anchor"></a>Bug Fixes</h2>
 <ul>
 <li>
 <code><a href="reference/dw_edit_chart.html">dw_edit_chart()</a></code> is working as expected again, after an API-error was resolved by Datawrapper. (#29)</li>
