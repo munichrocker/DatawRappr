@@ -147,6 +147,6 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
     print(paste0("Chart ", chart_id_response, " succesfully updated."))
   }
 
-  handle_reset(url_upload)
+  httr::handle_reset(url_upload)
 
 }
