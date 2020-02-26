@@ -1,3 +1,9 @@
+# DatawRappr 1.1.1
+
+## Bug Fixes
+
+* Adds a `handle_reset()` to `dw_edit_chart` to allow multiple edit-calls to the API during a session. Until now a 401-error was raised. (fixes #31)
+
 # DatawRappr 1.1
 
 ## Bug Fixes
