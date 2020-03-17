@@ -34,6 +34,10 @@ dw_publish_chart <- function(chart_id, api_key = "environment", return_urls = TR
 
   parsed <- dw_handle_errors(r)
 
+  httr::handle_reset("https://api.datawrapper.de/")
+
+  parsed
+
   if (httr::status_code(r) == 200) {
     print(paste0("Chart ", chart_id, " published!"))
 
@@ -48,5 +52,4 @@ dw_publish_chart <- function(chart_id, api_key = "environment", return_urls = TR
   } else {
     warning("There has been an error in the publication process.", immediate. = TRUE)
   }
-
 }
