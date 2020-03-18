@@ -1,3 +1,13 @@
+# DatawRappr 1.1.2
+
+## Bug Fixes
+
+* Fixes `handle_reset()`-issue - hopefully permanently by including it into `dw_publish_chart()`. Thanks to @fin! (fixes #31)
+
+* Adds a new way to `dw_data_to_chart()` to allow data which contain commas, quotes or newlines to be parsed correctly before sending it to Datawrapper. (fixes #34)
+
+* Clearifies error messages in case something goes wrong when communicating with the API. (fixes #32)
+
 # DatawRappr 1.1.1
 
 ## Bug Fixes
