@@ -143,8 +143,10 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
 
   try(if (chart_id != chart_id_response) stop(paste0("The chart_ids between call (",  chart_id ,") and response (",  chart_id_response ,") do not match. Try again and check API.")))
 
-  if (chart_id == chart_id_response & httr::status_code(r) == 200) {
+  if (chart_id == chart_id_response & httr::status_code(r) %in% c(200, 201, 202, 204)) {
     print(paste0("Chart ", chart_id_response, " succesfully updated."))
+  } else {
+    warning(paste0("There has been an error in the upload process. Statuscode of the response: ", httr::status_code(r)), immediate. = TRUE)
   }
 
   httr::handle_reset(url_upload)
