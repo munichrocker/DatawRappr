@@ -11,7 +11,7 @@ dw_create_chart(api_key = "environment", title = "", type = "", folderId = "")
 
 \item{title}{Optional. Will set a chart's title on creation.}
 
-\item{type}{Optional. Changes the type of the chart. E.g. "d3-bars" for bars, "tables" for a table. Default is "d3-lines". See \href{https://developer.datawrapper.de/docs/chart-types-2}{the documentation} for the different types or the Chart Types section below. If you do not set this here you can set it with \code{\link[=dw_exit_chart]{dw_exit_chart()}}}
+\item{type}{Optional. Changes the type of the chart. E.g. "d3-bars" for bars, "tables" for a table. Default is "d3-lines". See \href{https://developer.datawrapper.de/docs/chart-types-2}{the documentation} for the different types or the Chart Types section below. If you do not set this here you can set it with \code{\link[=dw_edit_chart]{dw_edit_chart()}}}
 
 \item{folderId}{Optional. Creates chart in specified folder.}
 }
