@@ -15,6 +15,7 @@ BugReports: https://github.com/munichrocker/DatawRappr/issues
 LazyData: true
 Imports: 
       httr,
+      readr,
       rlist,
       utils,
       magick,

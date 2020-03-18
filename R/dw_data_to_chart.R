@@ -41,25 +41,24 @@ dw_data_to_chart <- function(x, chart_id, parse_dates = TRUE, api_key = "environ
   }
 
   # collapse the data in the dataframe as a string
-  df_content <- paste(t(sapply(seq(1, nrow(x), by = 1), function(i)
-    paste(unlist(x[i,]), collapse = ","))), collapse = "\n")
+  data_body <- readr::format_csv(x)
 
-  # test if header contains separator symbol
-  try(if (TRUE %in% grepl(",", names(x))) stop("The Dataframe's header contains a comma - which is used as the column separator. Remove the comma (e.g. with names()) and try again."))
-
-  # collapse the header of the data as a string
-  df_names <- paste(names(x), collapse = ",")
-
-  # combine header and content of dataframe into character string
-  data_body <- paste(df_names, df_content, sep = "\n")
+  # # test if header contains separator symbol
+  # try(if (TRUE %in% grepl(",", names(x))) stop("The Dataframe's header contains a comma - which is used as the column separator. Remove the comma (e.g. with names()) and try again."))
+  #
+  # # collapse the header of the data as a string
+  # df_names <- paste(names(x), collapse = ",")
+  #
+  # # combine header and content of dataframe into character string
+  # data_body <- paste(df_names, df_content, sep = "\n")
 
   url <- paste0("https://api.datawrapper.de/v3/charts/", chart_id, "/data")
 
   r <- httr::PUT(url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                  body = data_body, .DATAWRAPPR_UA)
 
-  if (httr::status_code(r) == 200) {
-    print("Chart updated.")
+  if (httr::status_code(r) %in% c(200, 201, 202, 204)) {
+    print("Chart data updated.")
   }
 
 }
