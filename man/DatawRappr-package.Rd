@@ -26,5 +26,10 @@ Authors:
   \item Bob Rudis \email{bob@@rud.is}
 }
 
+Other contributors:
+\itemize{
+  \item Markus 'Fin' Hametner [contributor]
+}
+
 }
 \keyword{internal}

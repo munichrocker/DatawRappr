@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • DatawRappr</title>
+<title>Returns the Datawrapper-Map-keys — dw_get_map_key • DatawRappr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,7 +42,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Returns the Datawrapper-Map-keys — dw_get_map_key" />
+<meta property="og:description" content="Retrieve the keys for a certain basemap from the Datawrapper-API." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -63,7 +64,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -113,126 +114,67 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Returns the Datawrapper-Map-keys</h1>
+    <small class="dont-index">Source: <a href='https://github.com/munichrocker/DatawRappr/blob/master/R/dw_get_map_key.R'><code>R/dw_get_map_key.R</code></a></small>
+    <div class="hidden name"><code>dw_get_map_key.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Retrieve the keys for a certain basemap from the <a href='https://developer.datawrapper.de/'>Datawrapper-API</a>.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>dw_get_map_key</span>(<span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"environment"</span>, <span class='no'>basemap_id</span>, <span class='no'>basemap_value</span>)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="datawrapper_auth.html">datawrapper_auth()</a></code> </p>
-        </td>
-        <td><p>Set Datawrapper-API-Key to system environment</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_basemaps.html">dw_basemaps</a></code> </p>
-        </td>
-        <td><p>Datawrapper Basemaps</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_create_chart.html">dw_create_chart()</a></code> </p>
-        </td>
-        <td><p>Creates a new Datawrapper chart</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_data_to_chart.html">dw_data_to_chart()</a></code> </p>
-        </td>
-        <td><p>Fill a Datawrapper chart with data from R</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_delete_chart.html">dw_delete_chart()</a></code> </p>
-        </td>
-        <td><p>Delete a Datawrapper chart</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_edit_chart.html">dw_edit_chart()</a></code> </p>
-        </td>
-        <td><p>Edits a existing Datawrapper chart</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_export_chart.html">dw_export_chart()</a></code> </p>
-        </td>
-        <td><p>Export a Datawrapper chart to PNG, PDF, or SVG</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_get_api_key.html">dw_get_api_key()</a></code> </p>
-        </td>
-        <td><p>Get Datawrapper-API-Key</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_get_map_key.html">dw_get_map_key()</a></code> </p>
-        </td>
-        <td><p>Returns the Datawrapper-Map-keys</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_handle_errors.html">dw_handle_errors()</a></code> </p>
-        </td>
-        <td><p>Handle errors in API call</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_list_charts.html">dw_list_charts()</a></code> </p>
-        </td>
-        <td><p>Lists all charts</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_list_folders.html">dw_list_folders()</a></code> </p>
-        </td>
-        <td><p>Lists all folders</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_publish_chart.html">dw_publish_chart()</a></code> </p>
-        </td>
-        <td><p>Publish or republish a Datawrapper chart</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_retrieve_chart_metadata.html">dw_retrieve_chart_metadata()</a></code> </p>
-        </td>
-        <td><p>Retrieves a Datawrapper chart's metadata</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_test_key.html">dw_test_key()</a></code> </p>
-        </td>
-        <td><p>Tests the Datawrapper-API-key</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>api_key</th>
+      <td><p>Required. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by <code><a href='datawrapper_auth.html'>datawrapper_auth</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>basemap_id</th>
+      <td><p>Required. Can be retrieved by looking at <code><a href='dw_basemaps.html'>dw_basemaps</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>basemap_value</th>
+      <td><p>Required. Can be retrieved by looking at <code><a href='dw_basemaps.html'>dw_basemaps</a></code>.</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A S3-structure of type <strong>dw_basemap_keys</strong> with the elements from the <a href='https://developer.datawrapper.de/'>Datawrapper-API</a>, and the following fields:</p>
+<dt>content</dt><dd><p>A data.frame of the returned keys.</p></dd>
+<dt>path</dt><dd><p>The url of the API call.</p></dd>
+<dt>id</dt><dd><p>The basemap id provided.</p></dd>
+<dt>value</dt><dd><p>The basemap value provided.</p></dd>
+
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>This function returns a data.frame with the keys for the requested map. These keys can be used to map data to the basemap.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+
+<span class='fu'>dw_get_map_key</span>(<span class='kw'>basemap_id</span> <span class='kw'>=</span> <span class='st'>"world2019"</span>, <span class='kw'>basemap_value</span> <span class='kw'>=</span> <span class='st'>"DW_NAME"</span>) <span class='co'># uses the preset key in the .Renviron-file</span>
+
+}</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#note">Note</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
+    <h2>Author</h2>
+    <p>Benedict Witzenberger</p>
   </div>
 </div>
 

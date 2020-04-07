@@ -13,4 +13,4 @@ dw_basemaps %<>%
   unnest_wider(keys) %>%
   select(-keys)
 
-usethis::use_data(dw_basemaps)
+usethis::use_data(dw_basemaps, overwrite = TRUE)

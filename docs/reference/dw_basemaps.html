@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • DatawRappr</title>
+<title>Datawrapper Basemaps — dw_basemaps • DatawRappr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,7 +42,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Datawrapper Basemaps — dw_basemaps" />
+<meta property="og:description" content="Look up basemaps with their available keys." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -63,7 +64,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -113,126 +114,58 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Datawrapper Basemaps</h1>
+    <small class="dont-index">Source: <a href='https://github.com/munichrocker/DatawRappr/blob/master/R/dw_basemaps.R'><code>R/dw_basemaps.R</code></a></small>
+    <div class="hidden name"><code>dw_basemaps.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Look up basemaps with their available keys.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='no'>dw_basemaps</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="datawrapper_auth.html">datawrapper_auth()</a></code> </p>
-        </td>
-        <td><p>Set Datawrapper-API-Key to system environment</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_basemaps.html">dw_basemaps</a></code> </p>
-        </td>
-        <td><p>Datawrapper Basemaps</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_create_chart.html">dw_create_chart()</a></code> </p>
-        </td>
-        <td><p>Creates a new Datawrapper chart</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_data_to_chart.html">dw_data_to_chart()</a></code> </p>
-        </td>
-        <td><p>Fill a Datawrapper chart with data from R</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_delete_chart.html">dw_delete_chart()</a></code> </p>
-        </td>
-        <td><p>Delete a Datawrapper chart</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_edit_chart.html">dw_edit_chart()</a></code> </p>
-        </td>
-        <td><p>Edits a existing Datawrapper chart</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_export_chart.html">dw_export_chart()</a></code> </p>
-        </td>
-        <td><p>Export a Datawrapper chart to PNG, PDF, or SVG</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_get_api_key.html">dw_get_api_key()</a></code> </p>
-        </td>
-        <td><p>Get Datawrapper-API-Key</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_get_map_key.html">dw_get_map_key()</a></code> </p>
-        </td>
-        <td><p>Returns the Datawrapper-Map-keys</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_handle_errors.html">dw_handle_errors()</a></code> </p>
-        </td>
-        <td><p>Handle errors in API call</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_list_charts.html">dw_list_charts()</a></code> </p>
-        </td>
-        <td><p>Lists all charts</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_list_folders.html">dw_list_folders()</a></code> </p>
-        </td>
-        <td><p>Lists all folders</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_publish_chart.html">dw_publish_chart()</a></code> </p>
-        </td>
-        <td><p>Publish or republish a Datawrapper chart</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_retrieve_chart_metadata.html">dw_retrieve_chart_metadata()</a></code> </p>
-        </td>
-        <td><p>Retrieves a Datawrapper chart's metadata</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dw_test_key.html">dw_test_key()</a></code> </p>
-        </td>
-        <td><p>Tests the Datawrapper-API-key</p></td>
-      </tr>
-    </tbody>
-    </table>
+
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>Data frame with columns</p><dl class='dl-horizontal'>
+<dt>id</dt><dd><p>id of the basemap. Required for call to <code><a href='dw_get_map_key.html'>dw_get_map_key</a></code>.</p></dd>
+<dt>level</dt><dd><p>Geographic level of this basemap</p></dd>
+<dt>value</dt><dd><p>Value of the keys. Required for call to <code><a href='dw_get_map_key.html'>dw_get_map_key</a></code>.</p></dd>
+<dt>label</dt><dd><p>Short name of the keys</p></dd>
+<dt>description</dt><dd><p>Description of the keys.</p></dd>
+
+</dl>
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p>&lt;https://api.datawrapper.de/plugin/basemaps&gt;</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>  <span class='no'>dw_basemaps</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 3,564 x 5</span><span>
+#&gt;    id         level  value       label        description                       
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                             
+#&gt; </span><span style='color: #555555;'> 1</span><span> world-2019 World  DW_NAME     Name         The three-letter ISO-code of the …
+#&gt; </span><span style='color: #555555;'> 2</span><span> world-2019 World  DW_STATE_C… ISO-Code     The written name of the country.  
+#&gt; </span><span style='color: #555555;'> 3</span><span> world-2019 World  GERMAN_NAME Name (Germa… The written name of the country.  
+#&gt; </span><span style='color: #555555;'> 4</span><span> africa-20… Africa DW_NAME     Name         The three-letter ISO-code of the …
+#&gt; </span><span style='color: #555555;'> 5</span><span> africa-20… Africa DW_STATE_C… ISO-Code     The written name of the country.  
+#&gt; </span><span style='color: #555555;'> 6</span><span> europe     Europe ISO_A3      ISO 3-digit  DE21, FR24, TR42, ...             
+#&gt; </span><span style='color: #555555;'> 7</span><span> europe     Europe ISO_A2      ISO 2-digit  DE21, FR24, TR42, ...             
+#&gt; </span><span style='color: #555555;'> 8</span><span> europe     Europe ADMIN       Names        Olpe, Somerset, Toledo, ...       
+#&gt; </span><span style='color: #555555;'> 9</span><span> europe     Europe GERMAN_NAME Names (Germ… Olpe, Somerset, Toledo, ...       
+#&gt; </span><span style='color: #555555;'>10</span><span> europe     Europe FIPS_10_    FIPS         FIPS codes                        
+#&gt; </span><span style='color: #555555;'># … with 3,554 more rows</span><span></div></span></pre>
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#format">Format</a></li>
+      <li><a href="#source">Source</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
   </div>
 </div>
 

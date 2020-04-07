@@ -17,6 +17,7 @@ LazyData: true
 Imports: 
       httr,
       readr,
+      tidyr,
       rlist,
       utils,
       magick,

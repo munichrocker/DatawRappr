@@ -54,6 +54,8 @@ dw_retrieve_chart_metadata <- function(chart_id, api_key = "environment") {
     class = "dw_chart"
   )
 
+  httr::handle_reset("https://api.datawrapper.de/")
+
 }
 
 #' @export
