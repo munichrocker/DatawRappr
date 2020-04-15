@@ -49,20 +49,30 @@
 #' @note Check their \href{https://developer.datawrapper.de/docs/reference-guide}{reference guide} or \href{https://developer.datawrapper.de/reference#patchchartsid}{API-documentation}.
 #' @examples
 #'
-#' \dontrun{dw_edit_chart("aBcDE")} # uses the preset key in the .Renviron-file, no changes
+#' \dontrun{
+#' dw_edit_chart("aBcDE") # uses the preset key in the .Renviron-file, no changes
+#' }
 #'
-#' \dontrun{dw_edit_chart(chart_id = "a1B2Cd", api_key = "1234ABCD")} # uses the specified key, no changes
+#' \dontrun{
+#' dw_edit_chart(chart_id = "a1B2Cd", api_key = "1234ABCD") # uses the specified key, no changes
+#' }
 #'
-#' \dontrun{dw_edit_chart(chart_id = "a1B2Cd", title = "I'm a title",
-#' intro = "Data showing daily results")} # changes title and intro
+#' \dontrun{
+#' dw_edit_chart(chart_id = "a1B2Cd", title = "I'm a title",
+#' intro = "Data showing daily results")
+#' # changes title and intro
+#' }
 #'
-#' \dontrun{dw_edit_chart(chart_id = "a1B2Cd", title = "I'm a title",
-#' data = list("transpose" = "true"))} # transpose data
+#' \dontrun{
+#' dw_edit_chart(chart_id = "a1B2Cd", title = "I'm a title",
+#' data = list("transpose" = "true"))
+#' # transpose data
+#' }
 #'
 #' @rdname dw_edit_chart
 #' @export
 dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro = "", annotate = "", byline = "",
-                          type = "", source_name = "", source_url = "", folderId = "", data = list(), visualize = list(),
+                          type = "", source_name = "", source_url = "", folderId = "", axes = list(), data = list(), visualize = list(),
                           describe = list(), publish = list()) {
 
   if (api_key == "environment") {
@@ -123,6 +133,13 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
     }
 
     call_body$metadata$publish <- utils::modifyList(call_body$metadata$publish, publish)
+  }
+
+  if (length(axes) > 0) {
+    if (!is.list(call_body$metadata$axes)) {
+      call_body$metadata$axes <- list()
+    }
+    call_body$metadata$axes <- utils::modifyList(call_body$metadata$axes, axes)
   }
 
   # send call to API
