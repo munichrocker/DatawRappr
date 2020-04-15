@@ -34,19 +34,19 @@
 #' @param intro Optional. Adds an intro below the title.
 #' @param annotate Optional. Adds a annotation below the plot.
 #' @param byline Optional. Adds the name of the chart's creator.
-#' @param type Optional. Changes the type of the chart. See \href{https://developer.datawrapper.de/docs/chart-types-2}{the documentation} for the different types or the Chart Type section below.
+#' @param type Optional. Changes the type of the chart. See \href{https://developer.datawrapper.de/docs/chart-types}{the documentation} for the different types or the Chart Type section below.
 #' @param source_name Optional. Adds a source name to the plot.
 #' @param source_url Optional. Adds a URL to the source name (displayed only, if source name specified). Include http(s):// before URL.
 #' @param folderId Optional. Moves the chart to the specified folder (by folder-id, which can be found using \code{\link{dw_list_folders}}).
-#' @param data Optional. A list. Add separate arguments for the data. See \href{https://developer.datawrapper.de/docs/chart-properties-1}{the documentation} for details.
-#' @param visualize Optional. A list. Add separate arguments for the visualization. See \href{https://developer.datawrapper.de/docs/chart-properties-1}{the documentation} for details.
-#' @param describe Optional. A list. Add separate arguments for the description. See \href{https://developer.datawrapper.de/docs/chart-properties-1}{the documentation} for details.
-#' @param publish Optional. A list. Add separate arguments for publication. See \href{https://developer.datawrapper.de/docs/chart-properties-1}{the documentation} for details.
+#' @param data Optional. A list. Add separate arguments for the data. See \href{https://developer.datawrapper.de/docs/chart-properties}{the documentation} for details.
+#' @param visualize Optional. A list. Add separate arguments for the visualization. See \href{https://developer.datawrapper.de/docs/chart-properties}{the documentation} for details.
+#' @param describe Optional. A list. Add separate arguments for the description. See \href{https://developer.datawrapper.de/docs/chart-properties}{the documentation} for details.
+#' @param publish Optional. A list. Add separate arguments for publication. See \href{https://developer.datawrapper.de/docs/chart-properties}{the documentation} for details.
 #'
 #' @return A terminal message: "Chart xyz succesfully updated." - or an error message.
 #' @author Benedict Witzenberger
 #' @note This function builds a body for a API-call to the Datawrapper-API.
-#' @note Check their \href{https://developer.datawrapper.de/docs/reference-guide}{reference guide} or \href{https://developer.datawrapper.de/reference#patchchartsid}{API-documentation}.
+#' @note Check their \href{https://developer.datawrapper.de/docs}{reference guide} or \href{https://developer.datawrapper.de/reference}{API-documentation}.
 #' @examples
 #'
 #' \dontrun{

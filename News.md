@@ -1,3 +1,15 @@
+# DatawRappr 1.1.3
+
+## Bug Fixes
+
+* Fix URLs to chart types and chart properties in `dw_create_chart` and `dw_edit_chart`. (fixes #38)
+
+## Enhancements
+
+* Adds a `axes`-argument to `dw_edit_chart` which enables users to change the axes from within {DatawRappr}.
+
+* Includes a basemap-dump `dw_basemaps` as a data.frame (#36)
+
 # DatawRappr 1.1.2
 
 ## Bug Fixes

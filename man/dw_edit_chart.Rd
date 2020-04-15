@@ -35,7 +35,7 @@ dw_edit_chart(
 
 \item{byline}{Optional. Adds the name of the chart's creator.}
 
-\item{type}{Optional. Changes the type of the chart. See \href{https://developer.datawrapper.de/docs/chart-types-2}{the documentation} for the different types or the Chart Type section below.}
+\item{type}{Optional. Changes the type of the chart. See \href{https://developer.datawrapper.de/docs/chart-types}{the documentation} for the different types or the Chart Type section below.}
 
 \item{source_name}{Optional. Adds a source name to the plot.}
 
@@ -43,13 +43,13 @@ dw_edit_chart(
 
 \item{folderId}{Optional. Moves the chart to the specified folder (by folder-id, which can be found using \code{\link{dw_list_folders}}).}
 
-\item{data}{Optional. A list. Add separate arguments for the data. See \href{https://developer.datawrapper.de/docs/chart-properties-1}{the documentation} for details.}
+\item{data}{Optional. A list. Add separate arguments for the data. See \href{https://developer.datawrapper.de/docs/chart-properties}{the documentation} for details.}
 
-\item{visualize}{Optional. A list. Add separate arguments for the visualization. See \href{https://developer.datawrapper.de/docs/chart-properties-1}{the documentation} for details.}
+\item{visualize}{Optional. A list. Add separate arguments for the visualization. See \href{https://developer.datawrapper.de/docs/chart-properties}{the documentation} for details.}
 
-\item{describe}{Optional. A list. Add separate arguments for the description. See \href{https://developer.datawrapper.de/docs/chart-properties-1}{the documentation} for details.}
+\item{describe}{Optional. A list. Add separate arguments for the description. See \href{https://developer.datawrapper.de/docs/chart-properties}{the documentation} for details.}
 
-\item{publish}{Optional. A list. Add separate arguments for publication. See \href{https://developer.datawrapper.de/docs/chart-properties-1}{the documentation} for details.}
+\item{publish}{Optional. A list. Add separate arguments for publication. See \href{https://developer.datawrapper.de/docs/chart-properties}{the documentation} for details.}
 }
 \value{
 A terminal message: "Chart xyz succesfully updated." - or an error message.
@@ -60,7 +60,7 @@ Modifies an existing Datawrapper chart.
 \note{
 This function builds a body for a API-call to the Datawrapper-API.
 
-Check their \href{https://developer.datawrapper.de/docs/reference-guide}{reference guide} or \href{https://developer.datawrapper.de/reference#patchchartsid}{API-documentation}.
+Check their \href{https://developer.datawrapper.de/docs}{reference guide} or \href{https://developer.datawrapper.de/reference}{API-documentation}.
 }
 \section{Chart Types}{
 
