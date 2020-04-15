@@ -138,7 +138,7 @@ dw_data_to_chart(df_foreign_pop, chart_id = new_choropleth_chart)
 
 ## Set the keys in the metadata
 
-The metadata of a chart gives us the full flexibility to change what we want to change. In this case, we have to set the axes. A chart in Datawrapper returned as a JSON-Object, which contains differents sublevels. One of those is called **metadata* and contains the relevant keys:
+The metadata of a chart gives us the full flexibility to change what we want to change. In this case, we have to set the axes. A chart in Datawrapper returned as a JSON-Object, which contains differents sublevels. One of those is called *metadata* and contains the relevant keys:
 
 ```
 "metadata": {
@@ -262,7 +262,7 @@ dw_data_to_chart(df_foreign_pop_symbol, chart_id = new_symbol_chart)
 
 ## Set the keys in the metadata
 
-The metadata of a chart gives us the full flexibility to change what we want to change. In this case, we have to set the axes. A chart in Datawrapper returned as a JSON-Object, which contains differents sublevels. One of those is called **metadata* and contains the relevant keys:
+The metadata of a chart gives us the full flexibility to change what we want to change. In this case, we have to set the axes. A chart in Datawrapper returned as a JSON-Object, which contains differents sublevels. One of those is called *metadata* and contains the relevant keys:
 
 ```
 "metadata": {
