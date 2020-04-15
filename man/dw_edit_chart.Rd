@@ -15,6 +15,7 @@ dw_edit_chart(
   source_name = "",
   source_url = "",
   folderId = "",
+  axes = list(),
   data = list(),
   visualize = list(),
   describe = list(),
@@ -91,15 +92,25 @@ Check their \href{https://developer.datawrapper.de/docs/reference-guide}{referen
 
 \examples{
 
-\dontrun{dw_edit_chart("aBcDE")} # uses the preset key in the .Renviron-file, no changes
+\dontrun{
+dw_edit_chart("aBcDE") # uses the preset key in the .Renviron-file, no changes
+}
 
-\dontrun{dw_edit_chart(chart_id = "a1B2Cd", api_key = "1234ABCD")} # uses the specified key, no changes
+\dontrun{
+dw_edit_chart(chart_id = "a1B2Cd", api_key = "1234ABCD") # uses the specified key, no changes
+}
 
-\dontrun{dw_edit_chart(chart_id = "a1B2Cd", title = "I'm a title",
-intro = "Data showing daily results")} # changes title and intro
+\dontrun{
+dw_edit_chart(chart_id = "a1B2Cd", title = "I'm a title",
+intro = "Data showing daily results")
+# changes title and intro
+}
 
-\dontrun{dw_edit_chart(chart_id = "a1B2Cd", title = "I'm a title",
-data = list("transpose" = "true"))} # transpose data
+\dontrun{
+dw_edit_chart(chart_id = "a1B2Cd", title = "I'm a title",
+data = list("transpose" = "true"))
+# transpose data
+}
 
 }
 \author{

@@ -60,7 +60,8 @@ key_cols = "iso_codes"
 
 \dontrun{
 
-dw_create_choropleth_map(basemap_id = "world-2019",
+dw_create_choropleth_map(
+basemap_id = "world-2019",
 basemap_value = "DW_STATE_CODE",
 value_cols = "percentage",
 key_cols = "iso_codes",
