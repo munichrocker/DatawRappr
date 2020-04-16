@@ -25,14 +25,14 @@ library(dplyr)
 
 There will probably be a function to create a map in one run in the next major version of {DatawRappr}. In the meantime, I wrote this tutorial:
 
-There are three map types in Datawrapper. I'm trying to explain in short, how you can use DatawRappr to create a map programmatically in each one of them.
+There are three map types in Datawrapper: locator, symbol and choropleth. I'm trying to explain in short, how you can use DatawRappr to create a map programmatically in symbol and choropleth. And as an add-on: How to create a tooltip using {DatawRappr}.
 
 The basic steps are always the same:
 
-+ Create a new chart with chart-type `map`
-+ Upload your data to this chart/map with the required columns (IDs or Lat/Long-coordinates)
-+ Edit the chart to select the matching for the columns
-+ Publish the chart
++ Create a new chart with chart-type `map`.
++ Upload your data to this chart/map with the required columns (IDs or Lat/Long-coordinates).
++ Edit the chart to select the matching for the columns.
++ Publish the chart.
 
 If you want to update the data, you will only need steps 2 and 4.
 
@@ -322,7 +322,26 @@ Locator-maps are a little tricky and probably not so heavily automated than chor
 
 ***
 
-# TBC: Including tooltips
+# Including tooltips
 
-This tutorial will be put out soon.
+Including a tooltip is a task that is not only useful for maps, but also for scatterplots. The way to change them via tha API are pretty easy. Just use the `visualize`-argument in `dw_edit_chart()`: Add a list which includes another list called `tooltip`.
+
+tooltip has three different keys:
+
+* body: which is the body text of the tooltip. Add double brackets ton include a variable: `{{ variable }}`.
+* title: is the title of the tooltip. It may also contain a variable with double brackets.
+* fields: is a list that contains the mapping between the chart data and the variables in the tooltips. You have to include each variable here that is used in the tooltip double brackets. You may (although it makes things more complicated) map variables differently, as shown below where `"name" = "b"`.
+
+```{r eval=FALSE}
+dw_edit_chart(CHART_ID, visualize = list(
+  tooltip = list(
+    body = "{{ name }} has value {{ a }}.",
+    title = "{{ name }}",
+    fields = list(
+      "name" = "b",
+      "a" = "a"
+    )
+    )))
+```
+
 
