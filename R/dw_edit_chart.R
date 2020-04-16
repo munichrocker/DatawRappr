@@ -27,6 +27,67 @@
 #' - `d3-maps-symbols` : Symbol Map
 #' - `locator-map` : Locator Map
 #'
+#' @section Chart Properties
+#'
+#' Datawrapper defines the properties of a chart in the following structure.
+#'
+#' Note: Not all possibilities are displayed, as different chart-types offer different design features.
+#'
+#' You can find more on this structure in the \href{https://developer.datawrapper.de/docs/chart-properties}{API-Guide}.
+#'
+#'```
+#'  {
+#' "id": "6Ba3L",
+#' "type": "d3-scatter-plot",
+#' "title": "A grat chart",
+#' ...
+#'
+#' "metadata": {
+#'
+#'   "data": {
+#'     "transpose": false,
+#'     ...
+#'   },
+#'
+#'   "publish": {
+#'     "embed-codes": {
+#'       "embed-method-iframe": "<iframe title=\"\" aria-label=\"Scatter Plot\" src=\"//datawrapper.dwcdn.net/6Ba3L/1/\" scrolling=\"no\" frameborder=\"0\" style=\"border: none;\" width=\"600\" height=\"294\"></iframe>",
+#'       ...
+#'     },
+#'     "embed-width": 600,
+#'     "chart-height": 33.859375,
+#'     ...
+#'   }
+#' },
+#'
+#' "annotate": {
+#'   "notes": "Updates from 2018 are excluded."
+#' },
+#'
+#' "describe": {
+#'   "intro": "",
+#'   "byline": "",
+#'   ...
+#' },
+#'
+#' "visualize": {
+#'   "size": "fixed",
+#'   "rules": false,
+#'   "shape": "fixed",
+#'   ...
+#' },
+#'
+#' "json_error": null
+#' },
+#'
+#' "language": "en-US",
+#' "externalData": null,
+#' ...
+#' },
+#' "url": "/v3/charts/6Ba3L"
+#' }
+#' ```
+#'
 #' @md
 #' @param chart_id Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe". Or a \strong{dw_chart}-object.
 #' @param api_key Required. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
@@ -42,6 +103,7 @@
 #' @param visualize Optional. A list. Add separate arguments for the visualization. See \href{https://developer.datawrapper.de/docs/chart-properties}{the documentation} for details.
 #' @param describe Optional. A list. Add separate arguments for the description. See \href{https://developer.datawrapper.de/docs/chart-properties}{the documentation} for details.
 #' @param publish Optional. A list. Add separate arguments for publication. See \href{https://developer.datawrapper.de/docs/chart-properties}{the documentation} for details.
+#' @param ... Optional. Will be added as a list to the top-level of the call-body. Use with caution, as it may overwrite some values defined earlier.
 #'
 #' @return A terminal message: "Chart xyz succesfully updated." - or an error message.
 #' @author Benedict Witzenberger
@@ -73,7 +135,7 @@
 #' @export
 dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro = "", annotate = "", byline = "",
                           type = "", source_name = "", source_url = "", folderId = "", axes = list(), data = list(), visualize = list(),
-                          describe = list(), publish = list()) {
+                          describe = list(), publish = list(), ...) {
 
   if (api_key == "environment") {
     api_key <- dw_get_api_key()
@@ -140,6 +202,12 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
       call_body$metadata$axes <- list()
     }
     call_body$metadata$axes <- utils::modifyList(call_body$metadata$axes, axes)
+  }
+
+  additional_arguments <- list(...)
+
+  if (length(additional_arguments) > 0) {
+    call_body <- rlist::list.append(call_body, additional_arguments)
   }
 
   # send call to API
