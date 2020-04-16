@@ -19,7 +19,8 @@ dw_edit_chart(
   data = list(),
   visualize = list(),
   describe = list(),
-  publish = list()
+  publish = list(),
+  ...
 )
 }
 \arguments{
@@ -50,6 +51,8 @@ dw_edit_chart(
 \item{describe}{Optional. A list. Add separate arguments for the description. See \href{https://developer.datawrapper.de/docs/chart-properties}{the documentation} for details.}
 
 \item{publish}{Optional. A list. Add separate arguments for publication. See \href{https://developer.datawrapper.de/docs/chart-properties}{the documentation} for details.}
+
+\item{...}{Optional. Will be added as a list to the top-level of the call-body. Use with caution, as it may overwrite some values defined earlier.}
 }
 \value{
 A terminal message: "Chart xyz succesfully updated." - or an error message.
