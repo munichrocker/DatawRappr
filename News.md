@@ -10,6 +10,8 @@
 
 * Includes a basemap-dump `dw_basemaps` as a data.frame (#36)
 
+* Adds the three dots ... to `dw_edit_chart` to allow any modification to the call-body.
+
 # DatawRappr 1.1.2
 
 ## Bug Fixes

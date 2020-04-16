@@ -1,5 +1,4 @@
-# pkgdown <img src="man/figures/logo.png" align="right" />
-# DatawRappr
+# DatawRappr <img src="man/figures/logo.png" align="right" />
 
 The goal of DatawRappr is to provide a wrapper for Datawrapper's API to connect data from R directly with Datawrapper's charts capabilities. It uses the new [API version 3.0](https://developer.datawrapper.de/v3.0/docs).
 
@@ -31,6 +30,8 @@ devtools::install_github("munichrocker/DatawRappr")
 ```
 
 ## Usage
+
+Add the package to your environment by running: 
 
 ```{r}
 library(DatawRappr)

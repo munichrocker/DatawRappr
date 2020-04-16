@@ -25,7 +25,9 @@ library(dplyr)
 
 There will probably be a function to create a map in one run in the next major version of {DatawRappr}. In the meantime, I wrote this tutorial:
 
-There are three map types in Datawrapper: locator, symbol and choropleth. I'm trying to explain in short, how you can use DatawRappr to create a map programmatically in symbol and choropleth. And as an add-on: How to create a tooltip using {DatawRappr}.
+There are three map types in Datawrapper: locator, symbol and choropleth. I'm trying to explain in short, how you can use DatawRappr to create a map programmatically for **symbols** and **choropleths**. And as an add-on: How to **create a tooltip** using {DatawRappr}.
+
+Why exclude Locator-maps? They are a little tricky and probably not so heavily automated compared to choropleths and symbols. That's why I decided place them a little lower on my priority list and keep them out here. There is a [tutorial on Locator-maps with the API by Datawrapper](https://developer.datawrapper.de/docs/creating-a-locator-map) using `curl`.
 
 The basic steps are always the same:
 
@@ -98,8 +100,9 @@ Otherwise, you will have to wrangle the data anyway.
 
 **Getting Country IDs**
 
-You can easily transform country names in German or English with the [{countrycode}](https://cran.r-project.org/web/packages/countrycode/)-package. In most cases you won't need a manual translation table.
-Simply add a column with something like 
+You can easily transform country names in various formats and languages with the [{countrycode}](https://github.com/vincentarelbundock/countrycode)-package. In most cases you won't need a manual translation table. The package is available via CRAN or Github.
+
+After installation, simply add a column with something like 
 `countrycode::countrycode(sourcevar = SOURCE VARIABLE, origin = "country.name.de", destination = "iso3c")`
 to your dataframe.
 
@@ -153,7 +156,7 @@ The metadata of a chart gives us the full flexibility to change what we want to 
 }    
 ```
 
-In our example from above, we are using the names of the German federal states as the IDs. We will therefore use the basemap *germany-states* with the value *name*. *name* consists of the keys that are already present in our dataset in the _state_-column. So we don't need any transformation here. We just need to tell Datawrapper which column to use.
+In our example from above, we are using the names of the German federal states as the IDs. We will therefore use the basemap **germany-states** with the value **name**. **name** consists of the keys that are already present in our dataset in the _state_-column. So we don't need any transformation here. We just need to tell Datawrapper which column to use.
 
 ```{r}
 dw_edit_chart(new_choropleth_chart, 
@@ -242,7 +245,7 @@ df_foreign_pop_symbol <- read.csv("data/foreign_pop_symbol.csv", stringsAsFactor
 str(df_foreign_pop_symbol)
 ```
 
-The data is already geocoded into the *Lat* and *Lon*-columns. They are required for the symbol map.
+The data is already geocoded into the **Lat** and **Lon**-columns. They are required for the symbol map.
 
 ***
 
@@ -278,7 +281,7 @@ The metadata of a chart gives us the full flexibility to change what we want to 
 }
 ```
 
-In our example from above, we are using the names of the German federal states as the IDs. We will therefore use the basemap *germany-states*. We just need to tell Datawrapper which basemap and columns to use for the mapping. Further options in `axes` would be: 
+In our example from above, we are using the names of the German federal states as the IDs. We will therefore use the basemap **germany-states**. We just need to tell Datawrapper which basemap and columns to use for the mapping. Further options in `axes` would be: 
 
 * `area`: for the area/size of the symbol
 * `value`: for the color of the symbol
@@ -316,21 +319,15 @@ dw_delete_chart(new_symbol_chart)
 
 ***
 
-# TBC: Create a Locator map
-
-Locator-maps are a little tricky and probably not so heavily automated than choropleths and symbols. That's why I decided place this section a little lower on my priority list.
-
-***
-
 # Including tooltips
 
-Including a tooltip is a task that is not only useful for maps, but also for scatterplots. The way to change them via tha API are pretty easy. Just use the `visualize`-argument in `dw_edit_chart()`: Add a list which includes another list called `tooltip`.
+Including a tooltip is a task that is not only useful for maps, but also for scatterplots. The way to change them via tha API are pretty easy. Just use the `visualize`-argument in `dw_edit_chart()` and add a list which includes another list called `tooltip`.
 
 tooltip has three different keys:
 
-* body: which is the body text of the tooltip. Add double brackets ton include a variable: `{{ variable }}`.
-* title: is the title of the tooltip. It may also contain a variable with double brackets.
-* fields: is a list that contains the mapping between the chart data and the variables in the tooltips. You have to include each variable here that is used in the tooltip double brackets. You may (although it makes things more complicated) map variables differently, as shown below where `"name" = "b"`.
+* `body`: which is the body text of the tooltip. Add double brackets ton include a variable: `{{ variable }}`.
+* `title`: is the title of the tooltip. It may also contain a variable with double brackets.
+* `fields`: is a list that contains the mapping between the chart data and the variables in the tooltips. You have to include each variable here that is used in the tooltip double brackets in the format: `"variable in tooltip" = "variable in data"`. You may (although it makes things more complicated) map variables to different names, as shown below where `"name" = "b"`.
 
 ```{r eval=FALSE}
 dw_edit_chart(CHART_ID, visualize = list(

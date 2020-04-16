@@ -43,6 +43,8 @@ devtools::install_github("munichrocker/DatawRappr")
 
 ## Usage
 
+Add the package to your environment by running: 
+
 ```{r}
 library(DatawRappr)
 ```

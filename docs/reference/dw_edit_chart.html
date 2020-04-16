@@ -155,7 +155,8 @@
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
   <span class='kw'>visualize</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
   <span class='kw'>describe</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
-  <span class='kw'>publish</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>()
+  <span class='kw'>publish</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
+  <span class='no'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -216,6 +217,10 @@
     <tr>
       <th>publish</th>
       <td><p>Optional. A list. Add separate arguments for publication. See <a href='https://developer.datawrapper.de/docs/chart-properties'>the documentation</a> for details.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Optional. Will be added as a list to the top-level of the call-body. Use with caution, as it may overwrite some values defined earlier.</p></td>
     </tr>
     </table>
 
