@@ -45,7 +45,7 @@ dw_retrieve_chart_metadata <- function(chart_id, api_key = "environment") {
 
   parsed <- dw_handle_errors(r)
 
-  structure(
+  returnvalue <- structure(
     list(
       content = parsed,
       path = url,
@@ -56,6 +56,7 @@ dw_retrieve_chart_metadata <- function(chart_id, api_key = "environment") {
 
   httr::handle_reset("https://api.datawrapper.de/")
 
+  returnvalue
 }
 
 #' @export
