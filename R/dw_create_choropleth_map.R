@@ -51,7 +51,7 @@
 #' @export
 dw_create_choropleth_map <- function(basemap_id, basemap_value,
                                      values_col, keys_col, api_key = "environment",
-                                     title = "", tooltip = list(), folderId = "") {
+                                     title = "", tooltip = list(title, body, fields = c()), folderId = "") {
 
   if (api_key == "environment") {
     api_key <- dw_get_api_key()
@@ -72,7 +72,7 @@ dw_create_choropleth_map <- function(basemap_id, basemap_value,
     call_body$metadata$visualize$tooltip <- list(
     body = tooltip$body,
     title = tooltip$title,
-    fields = list(tooltip$fields)
+    fields = setNames(tooltip$fields, tooltip$fields)
     )
   }
 
