@@ -1,6 +1,5 @@
 #' Creates a new Datawrapper Chroropleth Map
 #'
-#' NOT YET FULLY IMPLEMENTED!!!
 #' Creates and returns a new Datawrapper Chroropleth map object. This function starts the map-making process
 #'
 #' @param basemap_id Required. Can be retrieved by looking at \code{\link{dw_basemaps}}.
