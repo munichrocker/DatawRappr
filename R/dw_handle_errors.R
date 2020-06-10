@@ -32,7 +32,7 @@ dw_handle_errors <- function(r) {
   # separate check for type application/json;
   # to avoid raising an error when exporting a chart which returns application/octet-stream
 
-  if (httr::http_type(r) != "application/json") {
+  if (httr::http_type(r) == "application/json") {
     parsed <- jsonlite::fromJSON(httr::content(r, "text"), simplifyVector = FALSE)
 
     if (length(parsed[["data"]]) > 1) {
