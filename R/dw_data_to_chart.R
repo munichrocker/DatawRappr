@@ -57,8 +57,10 @@ dw_data_to_chart <- function(x, chart_id, parse_dates = TRUE, api_key = "environ
   r <- httr::PUT(url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                  body = data_body, .DATAWRAPPR_UA)
 
+  parsed <- dw_handle_errors(r)
+
   if (httr::status_code(r) %in% c(200, 201, 202, 204)) {
-    print("Chart data updated.")
+    print(paste0("Chart data in ", chart_id, " successfully updated."))
   } else {
     warning(paste0("There has been an error in the upload process. Statuscode of the response: ", httr::status_code(r)), immediate. = TRUE)
   }
