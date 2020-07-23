@@ -58,6 +58,7 @@ dw_edit_chart(
 A terminal message: "Chart xyz succesfully updated." - or an error message.
 }
 \description{
+\lifecycle{maturing}
 Modifies an existing Datawrapper chart.
 }
 \note{

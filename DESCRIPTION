@@ -15,14 +15,19 @@ URL: https://github.com/munichrocker/DatawRappr
 BugReports: https://github.com/munichrocker/DatawRappr/issues
 LazyData: true
 Imports: 
-      httr,
-      readr,
-      tidyr,
-      rlist,
-      utils,
-      magick,
-      jsonlite
-RoxygenNote: 7.0.2
+    httr,
+    readr,
+    tidyr,
+    rlist,
+    utils,
+    magick,
+    needs,
+    jsonlite,
+    lifecycle
+RoxygenNote: 7.1.1
 Suggests: 
     httptest,
     testthat (>= 2.1.0)
+Depends: 
+    R (>= 2.10)
+RdMacros: lifecycle

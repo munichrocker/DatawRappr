@@ -4,14 +4,16 @@
 \name{dw_basemaps}
 \alias{dw_basemaps}
 \title{Datawrapper Basemaps}
-\format{Data frame with columns
+\format{
+Data frame with columns
 \describe{
 \item{id}{id of the basemap. Required for call to \code{\link{dw_get_map_key}}.}
 \item{level}{Geographic level of this basemap}
 \item{value}{Value of the keys. Required for call to \code{\link{dw_get_map_key}}.}
 \item{label}{Short name of the keys}
 \item{description}{Description of the keys.}
-}}
+}
+}
 \source{
 <https://api.datawrapper.de/plugin/basemaps>
 }

@@ -19,6 +19,7 @@ dw_data_to_chart(x, chart_id, parse_dates = TRUE, api_key = "environment")
 A terminal message.
 }
 \description{
+\lifecycle{stable}
 Uploads a dataframe to Datawrapper, returns a message.
 }
 \note{

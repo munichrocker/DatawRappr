@@ -1,5 +1,6 @@
 #' Fill a Datawrapper chart with data from R
 #'
+#' \lifecycle{stable}
 #' Uploads a dataframe to Datawrapper, returns a message.
 #'
 #' @param x Required. A R object of class 'data.frame',to be uploaded as the Datawrapper data.
