@@ -1,15 +1,14 @@
 #' Creates a new Datawrapper Symbol Map
 #'
-#' NOT YET FULLY IMPLEMENTED!!!
+#' \lifecycle{experimental}
 #' Creates and returns a new Datawrapper Symbol map object. This function starts the map-making process
 #'
 #' @param basemap_id Required. Can be retrieved by looking at \code{\link{dw_basemaps}}.
-#' @param basemap_value Required. Can be retrieved by looking at \code{\link{dw_basemaps}}.
 #' @param lat_col Required. Which column contains the Latitude values to be plotted on the map?
 #' @param lon_col Required. Which column contains the Latitude values to be plotted on the map?
 #' @param color_col Optional. Which column contains the values that should determine the color.
 #' @param size_col Optional. Which column contains the values that should determine the size.
-#' @param shape Optional. Select a shape. Defaults to ....
+#' @param shape Optional. Select a shape. Defaults to circle.
 #' @param api_key Required. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
 #' @param title Optional. Will set a map's title on creation.
 #' @param tooltip Optional. Specify a list including these vectors: \code{title}, \code{body}, \code{fields}. Include all used variables in fields. Use "{{ variable name }}" as placeholders in \code{title} and \code{body}.
@@ -28,15 +27,11 @@
 #' dw_create_symbol_map(
 #' basemap_id = "world-2019",
 #' basemap_value = "DW_STATE_CODE",
-#' value_cols = "percentage",
-#' key_cols = "iso_codes"
+#' lat_col = "LAT",
+#' lon_col = "LONG"
 #' )
 #'
-#' }
-#'
 #' ## Include a tooltip:
-#'
-#' \dontrun{
 #'
 #' dw_create_choropleth_map(
 #' basemap_id = "world-2019",
@@ -53,7 +48,7 @@
 #'
 #' @rdname dw_create_symbol_map
 #' @export
-dw_create_symbol_map <- function(basemap_id, basemap_value,
+dw_create_symbol_map <- function(basemap_id,
                                  lat_col, lon_col, color_col = "", size_col = "",
                                  shape = "", api_key = "environment",
                                  title = "", tooltip = list(title, body, fields = c()), folderId = "") {
@@ -73,7 +68,7 @@ dw_create_symbol_map <- function(basemap_id, basemap_value,
     "lon" = lon_col
     )
 
-  call_body$metadata$visualize <- list("basemap" = basemap_id, "map-key-attr" = basemap_value)
+  call_body$metadata$visualize <- list("basemap" = basemap_id)
 
   # optional elements:
   if (length(tooltip) > 0) {
