@@ -19,6 +19,7 @@ dw_create_chart(api_key = "environment", title = "", type = "", folderId = "")
 It prints the new chart's id and returns a S3-structure of type \strong{dw_chart} with the elements from the Datawrapper-API, the same as in \code{\link{dw_retrieve_chart_metadata}}.
 }
 \description{
+\lifecycle{stable}
 Creates and returns a new Datawrapper chart object. This function starts the chart-making process
 }
 \note{
