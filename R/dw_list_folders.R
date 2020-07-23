@@ -1,5 +1,6 @@
 #' Lists all folders
 #'
+#' \lifecycle{maturing}
 #' Returns all existing folders
 #'
 #' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
