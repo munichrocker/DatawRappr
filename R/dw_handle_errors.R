@@ -14,14 +14,8 @@
 
 dw_handle_errors <- function(r) {
   # error handling
-  if (httr::http_type(r) != "application/json") {
+  if (httr::http_type(r) != "application/json" & httr::http_type(r) != "application/octet-stream") {
     stop("API did not return json", call. = FALSE)
-  }
-
-  parsed <- jsonlite::fromJSON(httr::content(r, "text"), simplifyVector = FALSE)
-
-  if (length(parsed[["data"]]) > 1) {
-    parsed[["data"]] <- list(parsed[["data"]])
   }
 
   if (httr::http_error(r)) {
@@ -34,8 +28,20 @@ dw_handle_errors <- function(r) {
       call. = FALSE
     )
   }
-  # end of error handling
 
-  return(parsed)
+  # separate check for type application/json;
+  # to avoid raising an error when exporting a chart which returns application/octet-stream
+
+  if (httr::http_type(r) == "application/json") {
+    parsed <- jsonlite::fromJSON(httr::content(r, "text"), simplifyVector = FALSE)
+
+    if (length(parsed[["data"]]) > 1) {
+      parsed[["data"]] <- list(parsed[["data"]])
+    }
+
+    return(parsed)
+  }
+
+  # end of error handling
 
 }

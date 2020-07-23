@@ -59,11 +59,16 @@ dw_export_chart <- function(chart_id,
 
   if (httr::status_code(r) == 200) {
 
-    ct <- httr::headers(r)[["content-type"]]
+    # ct <- httr::headers(r)[["content-type"]]
 
-    if (grepl("png", ct[1])) return(magick::image_read(r$content))
-    if (grepl("pdf", ct[1])) return(invisible(r$content))
-    if (grepl("svg", ct[1])) return(invisible(rawToChar(r$content)))
+    # including a workaround, because API is returning application/octet-stream, instead of specific types
+    if (type == "png") return(magick::image_read(r$content))
+    if (type == "pdf") return(invisible(r$content))
+    if (type == "svg") return(invisible(rawToChar(r$content)))
+
+    # if (grepl("png", ct[1])) return(magick::image_read(r$content))
+    # if (grepl("pdf", ct[1])) return(invisible(r$content))
+    # if (grepl("svg", ct[1])) return(invisible(rawToChar(r$content)))
 
   }
 
