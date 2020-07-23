@@ -1,5 +1,6 @@
 #' Creates a new Datawrapper chart
 #'
+#' \lifecycle{stable}
 #' Creates and returns a new Datawrapper chart object. This function starts the chart-making process
 #'
 #' @section Chart Types:

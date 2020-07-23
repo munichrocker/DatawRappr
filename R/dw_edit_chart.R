@@ -1,5 +1,6 @@
 #' Edits a existing Datawrapper chart
 #'
+#' \lifecycle{maturing}
 #' Modifies an existing Datawrapper chart.
 #'
 #' @section Chart Types:
