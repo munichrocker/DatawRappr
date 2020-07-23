@@ -90,7 +90,7 @@ dw_create_choropleth_map <- function(basemap_id, basemap_value,
 
   parsed <- dw_handle_errors(r)
 
-  print(paste0("New maps's id: ", parsed[["id"]]))
+  cat(paste0("New maps's id: ", parsed[["id"]]))
 
   structure(
     list(

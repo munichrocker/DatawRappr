@@ -39,7 +39,7 @@ dw_publish_chart <- function(chart_id, api_key = "environment", return_urls = TR
   parsed
 
   if (httr::status_code(r) %in% c(200, 201, 202, 203, 204)) {
-    print(paste0("Chart ", chart_id, " published!"))
+    cat(paste0("Chart ", chart_id, " published!"))
 
     if (return_urls == TRUE) {
 

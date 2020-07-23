@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Set Datawrapper-API-Key to system environment — datawrapper_auth • DatawRappr</title>
+<title>Creates a new Datawrapper Symbol Map — dw_create_symbol_map • DatawRappr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,10 @@
 
 
 
-<meta property="og:title" content="Set Datawrapper-API-Key to system environment — datawrapper_auth" />
-<meta property="og:description" content="Adds Environment Key DW_KEY to your local .Renviron file to be available on Startup." />
+<meta property="og:title" content="Creates a new Datawrapper Symbol Map — dw_create_symbol_map" />
+<meta property="og:description" content="
+
+Creates and returns a new Datawrapper Symbol map object. This function starts the map-making process" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -134,42 +136,109 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Set Datawrapper-API-Key to system environment</h1>
-    <small class="dont-index">Source: <a href='https://github.com/munichrocker/DatawRappr/blob/master/R/datawrapper_auth.R'><code>R/datawrapper_auth.R</code></a></small>
-    <div class="hidden name"><code>datawrapper_auth.Rd</code></div>
+    <h1>Creates a new Datawrapper Symbol Map</h1>
+    <small class="dont-index">Source: <a href='https://github.com/munichrocker/DatawRappr/blob/master/R/dw_create_symbol_map.R'><code>R/dw_create_symbol_map.R</code></a></small>
+    <div class="hidden name"><code>dw_create_symbol_map.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Adds Environment Key <code>DW_KEY</code> to your local <code>.Renviron</code> file to be available on Startup.</p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>
+
+Creates and returns a new Datawrapper Symbol map object. This function starts the map-making process</p>
     </div>
 
-    <pre class="usage"><span class='fu'>datawrapper_auth</span>(<span class='no'>api_key</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>dw_create_symbol_map</span>(
+  <span class='no'>basemap_id</span>,
+  <span class='no'>lat_col</span>,
+  <span class='no'>lon_col</span>,
+  <span class='kw'>color_col</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>size_col</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>shape</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"environment"</span>,
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>tooltip</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>title</span>, <span class='no'>body</span>, <span class='kw'>fields</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>()),
+  <span class='kw'>folderId</span> <span class='kw'>=</span> <span class='st'>""</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>api_key</th>
-      <td><p>Required. A character string, containing the API-Key.</p></td>
+      <th>basemap_id</th>
+      <td><p>Required. Can be retrieved by looking at <code><a href='dw_basemaps.html'>dw_basemaps</a></code>.</p></td>
     </tr>
     <tr>
-      <th>overwrite</th>
-      <td><p>Optional. Should an existing key be overwritten? Defaults to <em>FALSE</em>.</p></td>
+      <th>lat_col</th>
+      <td><p>Required. Which column contains the Latitude values to be plotted on the map?</p></td>
+    </tr>
+    <tr>
+      <th>lon_col</th>
+      <td><p>Required. Which column contains the Latitude values to be plotted on the map?</p></td>
+    </tr>
+    <tr>
+      <th>color_col</th>
+      <td><p>Optional. Which column contains the values that should determine the color.</p></td>
+    </tr>
+    <tr>
+      <th>size_col</th>
+      <td><p>Optional. Which column contains the values that should determine the size.</p></td>
+    </tr>
+    <tr>
+      <th>shape</th>
+      <td><p>Optional. Select a shape. Defaults to circle.</p></td>
+    </tr>
+    <tr>
+      <th>api_key</th>
+      <td><p>Required. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by <code><a href='datawrapper_auth.html'>datawrapper_auth</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>title</th>
+      <td><p>Optional. Will set a map's title on creation.</p></td>
+    </tr>
+    <tr>
+      <th>tooltip</th>
+      <td><p>Optional. Specify a list including these vectors: <code>title</code>, <code>body</code>, <code>fields</code>. Include all used variables in fields. Use " variable name " as placeholders in <code>title</code> and <code>body</code>.</p></td>
+    </tr>
+    <tr>
+      <th>folderId</th>
+      <td><p>Optional. Creates chart in specified folder.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A Message in the command line.</p>
+    <p>It prints the new chart's id and returns a S3-structure of type <strong>dw_chart</strong> with the elements from the Datawrapper-API, the same as in <code><a href='dw_retrieve_chart_metadata.html'>dw_retrieve_chart_metadata</a></code>. After creating the chart you can populate and update it with <code>dw_data_to_metadata</code></p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>This is a very simple function that adds the API-key to the .Renviron-file in the user's home folder. If a key already exists and the user requests to, it will get replaced.</p>
+    <p>If not specified, the new chart will by default be created without a title.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>datawrapper_auth</span>(<span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"1234ABC"</span>)
+<span class='co'>## Simple example:</span>
 
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>datawrapper_auth</span>(<span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"1234ABC"</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div></pre>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+
+<span class='fu'>dw_create_symbol_map</span>(
+<span class='kw'>basemap_id</span> <span class='kw'>=</span> <span class='st'>"world-2019"</span>,
+<span class='kw'>basemap_value</span> <span class='kw'>=</span> <span class='st'>"DW_STATE_CODE"</span>,
+<span class='kw'>lat_col</span> <span class='kw'>=</span> <span class='st'>"LAT"</span>,
+<span class='kw'>lon_col</span> <span class='kw'>=</span> <span class='st'>"LONG"</span>
+)
+
+<span class='co'>## Include a tooltip:</span>
+
+<span class='fu'><a href='dw_create_choropleth_map.html'>dw_create_choropleth_map</a></span>(
+<span class='kw'>basemap_id</span> <span class='kw'>=</span> <span class='st'>"world-2019"</span>,
+<span class='kw'>basemap_value</span> <span class='kw'>=</span> <span class='st'>"DW_STATE_CODE"</span>,
+<span class='kw'>value_cols</span> <span class='kw'>=</span> <span class='st'>"percentage"</span>,
+<span class='kw'>key_cols</span> <span class='kw'>=</span> <span class='st'>"iso_codes"</span>,
+<span class='kw'>tooltip</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+<span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"{{ State_Name }}"</span>,
+<span class='kw'>body</span> <span class='kw'>=</span> <span class='st'>"In {{ State_Name }} the value is {{percentage}} percent."</span>,
+<span class='kw'>fields</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"State_Name"</span>, <span class='st'>"percentage"</span>)
+))
+
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

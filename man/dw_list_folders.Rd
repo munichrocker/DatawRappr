@@ -13,6 +13,7 @@ dw_list_folders(api_key = "environment")
 Returns a large list of all folders, created by user or team, which then includes all folders with their designated charts.
 }
 \description{
+\lifecycle{maturing}
 Returns all existing folders
 }
 \note{
