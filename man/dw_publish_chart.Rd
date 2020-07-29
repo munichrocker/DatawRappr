@@ -4,7 +4,12 @@
 \alias{dw_publish_chart}
 \title{Publish or republish a Datawrapper chart}
 \usage{
-dw_publish_chart(chart_id, api_key = "environment", return_urls = TRUE)
+dw_publish_chart(
+  chart_id,
+  api_key = "environment",
+  return_urls = TRUE,
+  return_object = FALSE
+)
 }
 \arguments{
 \item{chart_id}{Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe". Or a \strong{dw_chart}-object.}
@@ -12,9 +17,11 @@ dw_publish_chart(chart_id, api_key = "environment", return_urls = TRUE)
 \item{api_key}{Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.}
 
 \item{return_urls}{Optional. If TRUE (default) it returns the code for the responsive iFrame and an URL to the chart.}
+
+\item{return_object}{Optional. Defaults to FALSE. Returns an object if set to TRUE which contains \code{publicUrl} and \code{iframeCode}.}
 }
 \value{
-A message that specifies, if the publication was successful. If set, including the iFrame-Code and chart-URL.
+A message that specifies, if the publication was successful. If set, including the iFrame-Code and chart-URL. If \code{return_object} is set to TRUE it returns a S3-structure of type \strong{dw_chart}
 }
 \description{
 Publish a chart on Datawrapper.
@@ -24,11 +31,21 @@ This function publishes a chart in Datawrapper.
 }
 \examples{
 
-\dontrun{dw_publish_chart("aBcDE")} # uses the preset key in the .Renviron-file
+\dontrun{
+dw_publish_chart("aBcDE")
+} # uses the preset key in the .Renviron-file
 
-\dontrun{dw_publish_chart(chart_id = "a1B2Cd", api_key = "1234ABCD")} # uses the specified key
+\dontrun{
+dw_publish_chart(chart_id = "a1B2Cd", api_key = "1234ABCD")
+} # uses the specified key
 
-\dontrun{dw_publish_chart(chart_id = "a1B2Cd", return_urls = FALSE)} # won't return code and URLs for chart
+\dontrun{
+dw_publish_chart(chart_id = "a1B2Cd", return_urls = FALSE)
+} # won't return code and URLs for chart
+
+\dontrun{
+published_chart <- dw_publish_chart(chart_id = "a1B2Cd", return_object = TRUE)
+} # returns an object with URL and IframeCode
 
 }
 \author{

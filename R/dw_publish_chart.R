@@ -5,17 +5,28 @@
 #' @param chart_id Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe". Or a \strong{dw_chart}-object.
 #' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
 #' @param return_urls Optional. If TRUE (default) it returns the code for the responsive iFrame and an URL to the chart.
+#' @param return_object Optional. Defaults to FALSE. Returns an object if set to TRUE which contains \code{publicUrl} and \code{iframeCode}.
 #'
-#' @return A message that specifies, if the publication was successful. If set, including the iFrame-Code and chart-URL.
+#' @return A message that specifies, if the publication was successful. If set, including the iFrame-Code and chart-URL. If \code{return_object} is set to TRUE it returns a S3-structure of type \strong{dw_chart}
 #' @author Benedict Witzenberger
 #' @note This function publishes a chart in Datawrapper.
 #' @examples
 #'
-#' \dontrun{dw_publish_chart("aBcDE")} # uses the preset key in the .Renviron-file
+#' \dontrun{
+#' dw_publish_chart("aBcDE")
+#' } # uses the preset key in the .Renviron-file
 #'
-#' \dontrun{dw_publish_chart(chart_id = "a1B2Cd", api_key = "1234ABCD")} # uses the specified key
+#' \dontrun{
+#' dw_publish_chart(chart_id = "a1B2Cd", api_key = "1234ABCD")
+#' } # uses the specified key
 #'
-#' \dontrun{dw_publish_chart(chart_id = "a1B2Cd", return_urls = FALSE)} # won't return code and URLs for chart
+#' \dontrun{
+#' dw_publish_chart(chart_id = "a1B2Cd", return_urls = FALSE)
+#' } # won't return code and URLs for chart
+#'
+#' \dontrun{
+#' published_chart <- dw_publish_chart(chart_id = "a1B2Cd", return_object = TRUE)
+#' } # returns an object with URL and IframeCode
 #'
 #' @rdname dw_publish_chart
 #' @export
