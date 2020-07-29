@@ -147,7 +147,13 @@ Creates and returns a new Datawrapper chart object. This function starts the cha
 Creates and returns a new Datawrapper chart object. This function starts the chart-making process</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dw_create_chart</span>(<span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"environment"</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>folderId</span> <span class='kw'>=</span> <span class='st'>""</span>)</pre>
+    <pre class="usage"><span class='fu'>dw_create_chart</span>(
+  <span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"environment"</span>,
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>folderId</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>theme</span> <span class='kw'>=</span> <span class='st'>""</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -167,6 +173,10 @@ Creates and returns a new Datawrapper chart object. This function starts the cha
     <tr>
       <th>folderId</th>
       <td><p>Optional. Creates chart in specified folder.</p></td>
+    </tr>
+    <tr>
+      <th>theme</th>
+      <td><p>Optional. Creates chart with specified theme.</p></td>
     </tr>
     </table>
 

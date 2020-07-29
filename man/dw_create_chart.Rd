@@ -4,7 +4,13 @@
 \alias{dw_create_chart}
 \title{Creates a new Datawrapper chart}
 \usage{
-dw_create_chart(api_key = "environment", title = "", type = "", folderId = "")
+dw_create_chart(
+  api_key = "environment",
+  title = "",
+  type = "",
+  folderId = "",
+  theme = ""
+)
 }
 \arguments{
 \item{api_key}{Required. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.}
@@ -14,6 +20,8 @@ dw_create_chart(api_key = "environment", title = "", type = "", folderId = "")
 \item{type}{Optional. Changes the type of the chart. E.g. "d3-bars" for bars, "tables" for a table. Default is "d3-lines". See \href{https://developer.datawrapper.de/docs/chart-types}{the documentation} for the different types or the Chart Types section below. If you do not set this here you can set it with \code{\link[=dw_edit_chart]{dw_edit_chart()}}}
 
 \item{folderId}{Optional. Creates chart in specified folder.}
+
+\item{theme}{Optional. Creates chart with specified theme.}
 }
 \value{
 It prints the new chart's id and returns a S3-structure of type \strong{dw_chart} with the elements from the Datawrapper-API, the same as in \code{\link{dw_retrieve_chart_metadata}}.

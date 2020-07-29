@@ -33,6 +33,7 @@
 #' @param title Optional. Will set a chart's title on creation.
 #' @param type Optional. Changes the type of the chart. E.g. "d3-bars" for bars, "tables" for a table. Default is "d3-lines". See \href{https://developer.datawrapper.de/docs/chart-types}{the documentation} for the different types or the Chart Types section below. If you do not set this here you can set it with [dw_edit_chart()]
 #' @param folderId Optional. Creates chart in specified folder.
+#' @param theme Optional. Creates chart with specified theme.
 #'
 #' @return It prints the new chart's id and returns a S3-structure of type \strong{dw_chart} with the elements from the Datawrapper-API, the same as in \code{\link{dw_retrieve_chart_metadata}}.
 #' @author Benedict Witzenberger
