@@ -19,7 +19,7 @@
 #'
 #' @rdname dw_publish_chart
 #' @export
-dw_publish_chart <- function(chart_id, api_key = "environment", return_urls = TRUE) {
+dw_publish_chart <- function(chart_id, api_key = "environment", return_urls = TRUE, return_object = FALSE) {
 
   if (api_key == "environment") {
     api_key <- dw_get_api_key()
@@ -41,15 +41,40 @@ dw_publish_chart <- function(chart_id, api_key = "environment", return_urls = TR
   if (httr::status_code(r) %in% c(200, 201, 202, 203, 204)) {
     cat(paste0("Chart ", chart_id, " published!"))
 
-    if (return_urls == TRUE) {
+    if (isTRUE(return_urls)) {
 
       iframe_code <- parsed$data[[1]]$metadata$publish$`embed-codes`$`embed-method-responsive`
       chart_url <- parsed$data[[1]]$publicUrl
 
       writeLines(paste0("### Responsive iFrame-code: ###\n", iframe_code, "\n\n", "### Chart-URL:###\n", chart_url))
-    }
+
+      }
+
+    if (isTRUE(return_object)) {
+
+      structure(
+        list(
+          content = parsed,
+          path = "https://api.datawrapper.de/v3/charts",
+          id = parsed[["id"]],
+          publicUrl = parsed$data[[1]]$publicUrl,
+          iframeCode = parsed$data[[1]]$metadata$publish$`embed-codes`$`embed-method-responsive`
+        ),
+        class = "dw_chart"
+      )
+
+      }
 
   } else {
     warning(paste0("There has been an error in the publication process. Statuscode of the response: ", httr::status_code(r)), immediate. = TRUE)
   }
+}
+
+#' @export
+
+print.dw_chart <- function(x, ...) {
+  cat("<Datawrapper ", x$path, ">\n", sep = "")
+  cat("Chart-ID: ", x$id, "\n", sep = "")
+  str(x$content)
+  invisible(x)
 }
