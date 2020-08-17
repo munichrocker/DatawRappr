@@ -94,6 +94,66 @@ Check their \href{https://developer.datawrapper.de/docs}{reference guide} or \hr
 }
 }
 
+\section{Chart Properties}{
+
+
+Datawrapper defines the properties of a chart in the following structure.
+
+Note: Not all possibilities are displayed, as different chart-types offer different design features.
+
+You can find more on this structure in the \href{https://developer.datawrapper.de/docs/chart-properties}{API-Guide}.\preformatted{ \{
+"id": "6Ba3L",
+"type": "d3-scatter-plot",
+"title": "A grat chart",
+...
+
+"metadata": \{
+
+  "data": \{
+    "transpose": false,
+    ...
+  \},
+
+  "publish": \{
+    "embed-codes": \{
+      "embed-method-iframe": "<iframe title=\\"\\" aria-label=\\"Scatter Plot\\" src=\\"//datawrapper.dwcdn.net/6Ba3L/1/\\" scrolling=\\"no\\" frameborder=\\"0\\" style=\\"border: none;\\" width=\\"600\\" height=\\"294\\"></iframe>",
+      ...
+    \},
+    "embed-width": 600,
+    "chart-height": 33.859375,
+    ...
+  \}
+\},
+
+"annotate": \{
+  "notes": "Updates from 2018 are excluded."
+\},
+
+"describe": \{
+  "intro": "",
+  "byline": "",
+  ...
+\},
+
+"visualize": \{
+  "size": "fixed",
+  "rules": false,
+  "shape": "fixed",
+  ...
+\},
+
+"json_error": null
+\},
+
+"language": "en-US",
+"externalData": null,
+...
+\},
+"url": "/v3/charts/6Ba3L"
+\}
+}
+}
+
 \examples{
 
 \dontrun{

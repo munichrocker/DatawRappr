@@ -28,7 +28,7 @@
 #' - `d3-maps-symbols` : Symbol Map
 #' - `locator-map` : Locator Map
 #'
-#' @section Chart Properties
+#' @section Chart Properties:
 #'
 #' Datawrapper defines the properties of a chart in the following structure.
 #'

@@ -126,7 +126,7 @@
   <span class="kw">title</span> <span class="kw">=</span> <span class="st">"This is a automated choropleth map"</span>,
   <span class="kw">type</span> <span class="kw">=</span> <span class="st">"d3-maps-choropleth"</span>
   )
-<span class="co">#&gt; New chart's id: JiUo5</span></pre></body></html></div>
+<span class="co">#&gt; New chart's id: z1w4M</span></pre></body></html></div>
 </div>
 <div id="upload-data-to-the-chart" class="section level2">
 <h2 class="hasAnchor">
@@ -175,10 +175,10 @@
 <div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">dw_basemaps</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span>(<span class="st">"germany-nuts3"</span>, <span class="no">id</span>))
 <span class="co">#&gt; # A tibble: 2 x 6</span>
-<span class="co">#&gt;   id          level         slug        value    label description              </span>
-<span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;                    </span>
-<span class="co">#&gt; 1 germany-nu… Germany » NU… germany-nu… NUTS_NA… Name  The written name of the …</span>
-<span class="co">#&gt; 2 germany-nu… Germany » NU… germany-nu… NUTS_ID  Code  code / desc</span></pre></body></html></div>
+<span class="co">#&gt;   id         level            slug          value   label description           </span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;            &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;                 </span>
+<span class="co">#&gt; 1 germany-n… Germany » NUTS3… germany-nuts… NUTS_N… Name  The written name of t…</span>
+<span class="co">#&gt; 2 germany-n… Germany » NUTS3… germany-nuts… NUTS_ID Code  code / desc</span></pre></body></html></div>
 <p>In this example the basemap <code>germany-nuts3</code> offers two key-options: <code>NUTS_ID</code> and <code>NUTS_NAME</code>. If you already have one of these options in your dataset, select the right one.</p>
 <p>Otherwise, you will have to wrangle the data anyway.</p>
 <hr>
@@ -213,7 +213,7 @@
 <span class="co">#&gt;  $ share_foreign_population: num  15.5 13.2 18.5 4.7 18.1 16.4 16.2 4.5 9.4 13.3 ...</span></pre></body></html></div>
 <p>You can simply upload the data as you would do with any other {DatawRappr}-chart.</p>
 <div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu"><a href="../reference/dw_data_to_chart.html">dw_data_to_chart</a></span>(<span class="no">df_foreign_pop</span>, <span class="kw">chart_id</span> <span class="kw">=</span> <span class="no">new_choropleth_chart</span>)
-<span class="co">#&gt; Chart data in JiUo5 successfully updated.</span></pre></body></html></div>
+<span class="co">#&gt; Chart data in z1w4M successfully updated.</span></pre></body></html></div>
 </div>
 </div>
 <div id="set-the-keys-in-the-metadata" class="section level2">
@@ -241,7 +241,7 @@
                 <span class="st">"map-key-attr"</span> <span class="kw">=</span> <span class="st">"name"</span>
                 )
               )
-<span class="co">#&gt; Chart JiUo5 succesfully updated.</span></pre></body></html></div>
+<span class="co">#&gt; Chart z1w4M succesfully updated.</span></pre></body></html></div>
 <p>At that point, you might want to switch to Datawrapper’s UI to make the final adjustments to the legend before publishing. But: You could do them via <code>dw_edit_chart</code> as well. It’s probably just not that much fun.</p>
 </div>
 <div id="publish-the-chart" class="section level2">
@@ -249,12 +249,12 @@
 <a href="#publish-the-chart" class="anchor"></a>Publish the chart</h2>
 <p>This is probably the easiest part:</p>
 <div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="fu"><a href="../reference/dw_publish_chart.html">dw_publish_chart</a></span>(<span class="no">new_choropleth_chart</span>)
-<span class="co">#&gt; Chart JiUo5 published!### Responsive iFrame-code: ###</span>
-<span class="co">#&gt; &lt;iframe title="This is a automated choropleth map" aria-label="map" id="datawrapper-chart-JiUo5" src="https://datawrapper.dwcdn.net/JiUo5/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="undefined"&gt;&lt;/iframe&gt;&lt;script type="text/javascript"&gt;!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&amp;&amp;(t.style.height=a.data["datawrapper-height"][e]+"px")}}))}();</span>
+<span class="co">#&gt; Chart z1w4M published!### Responsive iFrame-code: ###</span>
+<span class="co">#&gt; &lt;iframe title="This is a automated choropleth map" aria-label="map" id="datawrapper-chart-z1w4M" src="https://datawrapper.dwcdn.net/z1w4M/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="undefined"&gt;&lt;/iframe&gt;&lt;script type="text/javascript"&gt;!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&amp;&amp;(t.style.height=a.data["datawrapper-height"][e]+"px")}}))}();</span>
 <span class="co">#&gt; &lt;/script&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; ### Chart-URL:###</span>
-<span class="co">#&gt; https://datawrapper.dwcdn.net/JiUo5/1/</span></pre></body></html></div>
+<span class="co">#&gt; https://datawrapper.dwcdn.net/z1w4M/1/</span></pre></body></html></div>
 <div class="figure">
 <img src="img/screenshot_choropleth_map.png" alt="Screenshot of the choropleth map"><p class="caption">Screenshot of the choropleth map</p>
 </div>
@@ -274,7 +274,7 @@
   <span class="kw">title</span> <span class="kw">=</span> <span class="st">"This is a automated symbol map"</span>,
   <span class="kw">type</span> <span class="kw">=</span> <span class="st">"d3-maps-symbols"</span>
   )
-<span class="co">#&gt; New chart's id: XQQc1</span></pre></body></html></div>
+<span class="co">#&gt; New chart's id: jowtE</span></pre></body></html></div>
 </div>
 <div id="upload-data-to-the-chart-1" class="section level2">
 <h2 class="hasAnchor">
@@ -335,7 +335,7 @@
 <hr>
 <p>With Lat and Lon-columns set, you can simply upload the data as you would do with any other {DatawRappr}-chart.</p>
 <div class="sourceCode" id="cb18"><html><body><pre class="r"><span class="fu"><a href="../reference/dw_data_to_chart.html">dw_data_to_chart</a></span>(<span class="no">df_foreign_pop_symbol</span>, <span class="kw">chart_id</span> <span class="kw">=</span> <span class="no">new_symbol_chart</span>)
-<span class="co">#&gt; Chart data in XQQc1 successfully updated.</span></pre></body></html></div>
+<span class="co">#&gt; Chart data in jowtE successfully updated.</span></pre></body></html></div>
 </div>
 </div>
 <div id="set-the-keys-in-the-metadata-1" class="section level2">
@@ -370,7 +370,7 @@
                 <span class="kw">basemap</span> <span class="kw">=</span> <span class="st">"germany-states"</span>
                 )
               )
-<span class="co">#&gt; Chart XQQc1 succesfully updated.</span></pre></body></html></div>
+<span class="co">#&gt; Chart jowtE succesfully updated.</span></pre></body></html></div>
 <p>At that point, you might want to switch to Datawrapper’s UI to make the final adjustments to the legend before publishing. But: You could do them via <code>dw_edit_chart</code> as well. It’s probably just not that much fun.</p>
 </div>
 <div id="publish-the-chart-1" class="section level2">
@@ -378,12 +378,12 @@
 <a href="#publish-the-chart-1" class="anchor"></a>Publish the chart</h2>
 <p>This is probably the easiest part:</p>
 <div class="sourceCode" id="cb21"><html><body><pre class="r"><span class="fu"><a href="../reference/dw_publish_chart.html">dw_publish_chart</a></span>(<span class="no">new_symbol_chart</span>)
-<span class="co">#&gt; Chart XQQc1 published!### Responsive iFrame-code: ###</span>
-<span class="co">#&gt; &lt;iframe title="This is a automated symbol map" aria-label="map" id="datawrapper-chart-XQQc1" src="https://datawrapper.dwcdn.net/XQQc1/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="undefined"&gt;&lt;/iframe&gt;&lt;script type="text/javascript"&gt;!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&amp;&amp;(t.style.height=a.data["datawrapper-height"][e]+"px")}}))}();</span>
+<span class="co">#&gt; Chart jowtE published!### Responsive iFrame-code: ###</span>
+<span class="co">#&gt; &lt;iframe title="This is a automated symbol map" aria-label="map" id="datawrapper-chart-jowtE" src="https://datawrapper.dwcdn.net/jowtE/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="undefined"&gt;&lt;/iframe&gt;&lt;script type="text/javascript"&gt;!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&amp;&amp;(t.style.height=a.data["datawrapper-height"][e]+"px")}}))}();</span>
 <span class="co">#&gt; &lt;/script&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; ### Chart-URL:###</span>
-<span class="co">#&gt; https://datawrapper.dwcdn.net/XQQc1/1/</span></pre></body></html></div>
+<span class="co">#&gt; https://datawrapper.dwcdn.net/jowtE/1/</span></pre></body></html></div>
 <div class="figure">
 <img src="img/screenshot_symbol_map.png" alt="Screenshot of the symbol map"><p class="caption">Screenshot of the symbol map</p>
 </div>
