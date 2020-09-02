@@ -9,7 +9,7 @@
 #' You may then extract the legend as a string. It might for example be stored in \code{metadata[["content"]][["metadata"]][["visualize"]][["categories"]]} or in \code{metadata[["content"]][["metadata"]][["visualize"]][["custom-colors"]]}.
 #'
 #' @md
-#' @param legend Required. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
+#' @param legend Required. A vector containing the legend (e.g. retrieved from a call with \code{\link{dw_retrieve_chart_metadata(chart_id)}}).
 #' @param return_val Required. One of c("string", "vector", "html"). Set the output type. Defaults to "string".
 #' @param use_ranges Optional. Filters out automatically generated ranges (e.g. `(0,10]`). Defaults to FALSE.
 #'
