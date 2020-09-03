@@ -23,7 +23,7 @@ dw_handle_errors <- function(r) {
       sprintf(
         "Datawrapper API request failed [%s]\n%s",
         httr::status_code(r),
-        parsed$message
+        httr::content(r, "parsed")$message
       ),
       call. = FALSE
     )
