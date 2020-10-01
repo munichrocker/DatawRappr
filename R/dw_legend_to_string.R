@@ -1,7 +1,8 @@
 #' Creates a legend from a Datawrapper chart
 #'
-#' \lifecycle{maturing}
+#' \lifecycle{deprecated}
 #' A helper function that creates a legend as string, vector or HTML from an existing legend in a Datawrapper chart.
+#' Will be deprecated soon, as it's no longer needed. Datawrapper now offers \href{https://blog.datawrapper.de/choropleth-symbol-maps-easier-faster-better-looking/}{a better option via its interface}.
 #'
 #' @section How to:
 #'
