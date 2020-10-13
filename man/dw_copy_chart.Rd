@@ -4,7 +4,7 @@
 \alias{dw_copy_chart}
 \title{Makes a copy of an existing Datawrapper chart}
 \usage{
-dw_copy_chart(copy_from = "", api_key = "environment")
+dw_copy_chart(copy_from, api_key = "environment")
 }
 \arguments{
 \item{copy_from}{Required. Chart_id from an existing chart which serves as the template.}
