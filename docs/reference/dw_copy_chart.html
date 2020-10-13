@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Datawrapper Basemaps — dw_basemaps • DatawRappr</title>
+<title>Makes a copy of an existing Datawrapper chart — dw_copy_chart • DatawRappr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,10 @@
 
 
 
-<meta property="og:title" content="Datawrapper Basemaps — dw_basemaps" />
-<meta property="og:description" content="Look up basemaps with their available keys." />
+<meta property="og:title" content="Makes a copy of an existing Datawrapper chart — dw_copy_chart" />
+<meta property="og:description" content="
+
+Creates a new Datawrapper chart object from an existing chart. This function starts the chart-making process like dw_create_chart." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -134,48 +136,46 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Datawrapper Basemaps</h1>
-    <small class="dont-index">Source: <a href='https://github.com/munichrocker/DatawRappr/blob/master/R/dw_basemaps.R'><code>R/dw_basemaps.R</code></a></small>
-    <div class="hidden name"><code>dw_basemaps.Rd</code></div>
+    <h1>Makes a copy of an existing Datawrapper chart</h1>
+    <small class="dont-index">Source: <a href='https://github.com/munichrocker/DatawRappr/blob/master/R/dw_copy_chart.R'><code>R/dw_copy_chart.R</code></a></small>
+    <div class="hidden name"><code>dw_copy_chart.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Look up basemaps with their available keys.</p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#maturing'><img src='figures/lifecycle-maturing.svg' alt='Maturing lifecycle'></a>
+
+Creates a new Datawrapper chart object from an existing chart. This function starts the chart-making process like <code><a href='dw_create_chart.html'>dw_create_chart</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='no'>dw_basemaps</span></pre>
+    <pre class="usage"><span class='fu'>dw_copy_chart</span>(<span class='kw'>copy_from</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"environment"</span>)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>copy_from</th>
+      <td><p>Required. Chart_id from an existing chart which serves as the template.</p></td>
+    </tr>
+    <tr>
+      <th>api_key</th>
+      <td><p>Required. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by <code><a href='datawrapper_auth.html'>datawrapper_auth</a></code>.</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Data frame with columns</p><dl'>
-<dt>id</dt><dd><p>id of the basemap. Required for call to <code><a href='dw_get_map_key.html'>dw_get_map_key</a></code>.</p></dd>
-<dt>level</dt><dd><p>Geographic level of this basemap</p></dd>
-<dt>value</dt><dd><p>Value of the keys. Required for call to <code><a href='dw_get_map_key.html'>dw_get_map_key</a></code>.</p></dd>
-<dt>label</dt><dd><p>Short name of the keys</p></dd>
-<dt>description</dt><dd><p>Description of the keys.</p></dd>
-
-</dl>
-
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
-
-    <p>&lt;https://api.datawrapper.de/plugin/basemaps&gt;</p>
+    <p>It prints the new chart's id and returns a S3-structure of type <strong>dw_chart</strong> with the elements from the Datawrapper-API, the same as in <code><a href='dw_retrieve_chart_metadata.html'>dw_retrieve_chart_metadata</a></code> and <code><a href='dw_create_chart.html'>dw_create_chart</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='no'>dw_basemaps</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 4,120 x 6</span><span>
-#&gt;    id        level  slug   value       label      description                   
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                         
-#&gt; </span><span style='color: #555555;'> 1</span><span> world-20… World  world  DW_NAME     Name       The three-letter ISO-code of …
-#&gt; </span><span style='color: #555555;'> 2</span><span> world-20… World  world  DW_STATE_C… ISO-Code   The written name of the count…
-#&gt; </span><span style='color: #555555;'> 3</span><span> world-20… World  world  GERMAN_NAME Name (Ger… The written name of the count…
-#&gt; </span><span style='color: #555555;'> 4</span><span> africa-2… Africa africa DW_NAME     Name       The three-letter ISO-code of …
-#&gt; </span><span style='color: #555555;'> 5</span><span> africa-2… Africa africa DW_STATE_C… ISO-Code   The written name of the count…
-#&gt; </span><span style='color: #555555;'> 6</span><span> europe    Europe europe ISO_A3      ISO 3-dig… DE21, FR24, TR42, ...         
-#&gt; </span><span style='color: #555555;'> 7</span><span> europe    Europe europe ISO_A2      ISO 2-dig… DE21, FR24, TR42, ...         
-#&gt; </span><span style='color: #555555;'> 8</span><span> europe    Europe europe ADMIN       Names      Olpe, Somerset, Toledo, ...   
-#&gt; </span><span style='color: #555555;'> 9</span><span> europe    Europe europe GERMAN_NAME Names (Ge… Olpe, Somerset, Toledo, ...   
-#&gt; </span><span style='color: #555555;'>10</span><span> europe    Europe europe FIPS_10_    FIPS       FIPS codes                    
-#&gt; </span><span style='color: #555555;'># … with 4,110 more rows</span><span></div></span></pre>
+    <pre class="examples"><div class='input'>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'>dw_copy_chart</span>(<span class='kw'>copy_from</span> <span class='kw'>=</span> <span class='st'>"ABCDE"</span>)
+<span class='co'># uses api-key from environment - if set.</span>
+}
+
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'>dw_copy_chart</span>(<span class='kw'>copy_from</span> <span class='kw'>=</span> <span class='st'>"ABCDE"</span>, <span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"1234ABCD"</span>)
+} <span class='co'># uses the specified key</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

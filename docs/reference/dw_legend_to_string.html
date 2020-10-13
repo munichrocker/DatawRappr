@@ -49,7 +49,8 @@
 <meta property="og:title" content="Creates a legend from a Datawrapper chart — dw_legend_to_string" />
 <meta property="og:description" content="
 
-A helper function that creates a legend as string, vector or HTML from an existing legend in a Datawrapper chart." />
+A helper function that creates a legend as string, vector or HTML from an existing legend in a Datawrapper chart.
+Will be deprecated soon, as it's no longer needed. Datawrapper now offers a better option via its interface." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -142,9 +143,10 @@ A helper function that creates a legend as string, vector or HTML from an existi
     </div>
 
     <div class="ref-description">
-    <p><a href='https://www.tidyverse.org/lifecycle/#maturing'><img src='figures/lifecycle-maturing.svg' alt='Maturing lifecycle'></a>
+    <p><img src='figures/lifecycle-deprecated.svg' alt='Deprecated lifecycle' />
 
-A helper function that creates a legend as string, vector or HTML from an existing legend in a Datawrapper chart.</p>
+A helper function that creates a legend as string, vector or HTML from an existing legend in a Datawrapper chart.
+Will be deprecated soon, as it's no longer needed. Datawrapper now offers <a href='https://blog.datawrapper.de/choropleth-symbol-maps-easier-faster-better-looking/'>a better option via its interface</a>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>dw_legend_to_string</span>(
@@ -158,7 +160,7 @@ A helper function that creates a legend as string, vector or HTML from an existi
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>legend</th>
-      <td><p>Required. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by <code><a href='datawrapper_auth.html'>datawrapper_auth</a></code>.</p></td>
+      <td><p>Required. A vector containing the legend (e.g. retrieved from a call with <code><a href='dw_retrieve_chart_metadata.html'>dw_retrieve_chart_metadata(chart_id)</a></code>).</p></td>
     </tr>
     <tr>
       <th>return_val</th>

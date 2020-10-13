@@ -1,16 +1,30 @@
+# DatawRappr 1.1.4
+
+## Bug Fixes
+
+* Replace `parsed` in `sprintf`-option to R with a `httr`-call in `dw_handle_errors()`.
+
+## Enhancements
+
+* Introducing a `dw_legend_to_string()`-function to create a mobile-friendly legend. But will already be deprecated soon, as Datawrappers now offers a similar option by default.
+
+* `dw_publish_chart()` can now return a object which contains information about the chart (id, embed-code, url).
+
+* Add a `theme`-argument to `dw_create_chart()`.
+
 # DatawRappr 1.1.3
 
 ## Bug Fixes
 
-* Fix URLs to chart types and chart properties in `dw_create_chart` and `dw_edit_chart`. (fixes #38)
+* Fix URLs to chart types and chart properties in `dw_create_chart()` and `dw_edit_chart()`. (fixes #38)
 
 ## Enhancements
 
-* Adds a `axes`-argument to `dw_edit_chart` which enables users to change the axes from within {DatawRappr}.
+* Adds a `axes`-argument to `dw_edit_chart()` which enables users to change the axes from within {DatawRappr}.
 
 * Includes a basemap-dump `dw_basemaps` as a data.frame (#36)
 
-* Adds the three dots ... to `dw_edit_chart` to allow any modification to the call-body.
+* Adds the three dots ... to `dw_edit_chart()` to allow any modification to the call-body.
 
 # DatawRappr 1.1.2
 
@@ -26,7 +40,7 @@
 
 ## Bug Fixes
 
-* Adds a `handle_reset()` to `dw_edit_chart` to allow multiple edit-calls to the API during a session. Until now a 401-error was raised. (fixes #31)
+* Adds a `handle_reset()` to `dw_edit_chart()` to allow multiple edit-calls to the API during a session. Until now a 401-error was raised. (fixes #31)
 
 # DatawRappr 1.1
 

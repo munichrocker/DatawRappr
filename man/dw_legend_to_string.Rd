@@ -11,7 +11,7 @@ dw_legend_to_string(
 )
 }
 \arguments{
-\item{legend}{Required. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.}
+\item{legend}{Required. A vector containing the legend (e.g. retrieved from a call with \code{\link{dw_retrieve_chart_metadata(chart_id)}}).}
 
 \item{return_val}{Required. One of c("string", "vector", "html"). Set the output type. Defaults to "string".}
 
@@ -21,8 +21,9 @@ dw_legend_to_string(
 A string, vector or HTML (as string), as defined in \code{return_val}.
 }
 \description{
-\lifecycle{maturing}
+\lifecycle{deprecated}
 A helper function that creates a legend as string, vector or HTML from an existing legend in a Datawrapper chart.
+Will be deprecated soon, as it's no longer needed. Datawrapper now offers \href{https://blog.datawrapper.de/choropleth-symbol-maps-easier-faster-better-looking/}{a better option via its interface}.
 }
 \section{How to}{
 
