@@ -23,7 +23,7 @@
 #'
 #' @rdname dw_copy_chart
 #' @export
-dw_copy_chart <- function(copy_from = "", api_key = "environment") {
+dw_copy_chart <- function(copy_from, api_key = "environment") {
 
   if (api_key == "environment") {
     api_key <- dw_get_api_key()
@@ -33,7 +33,7 @@ dw_copy_chart <- function(copy_from = "", api_key = "environment") {
     stop("You have to specify an chart_id to the copy_from argument.")
   }
 
-  dw_check_chart_id(copy_from)
+  copy_from <- dw_check_chart_id(copy_from)
 
   url <- paste0("https://api.datawrapper.de/v3/charts/", copy_from, "/copy")
 
