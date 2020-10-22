@@ -42,8 +42,8 @@ dw_create_folder <- function(name = "", organization_id = "", parent_id = "", ap
   parsed <- dw_handle_errors(r)
 
   if (httr::status_code(r) %in% c(200, 201, 202, 204)) {
-    cat(paste0("New Folder '", parsed$name, "' successfully created!\n",
-                 "Folder-ID is: ", parsed$id))
+    cat(paste0("New Folder '", parsed$name, "' successfully created!", "\n",
+                 "Folder-ID is: ", parsed$id, "\n"))
   } else {
     warning(paste0("There has been an error in the folder creation process. Statuscode of the response: ", httr::status_code(r)), immediate. = TRUE)
   }

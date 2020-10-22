@@ -68,7 +68,7 @@ dw_create_chart <- function(api_key = "environment", title = "", type = "", fold
 
   parsed <- dw_handle_errors(r)
 
-  cat(paste0("New chart's id: ", parsed[["id"]]))
+  cat(paste0("New chart's id: ", parsed[["id"]], "\n"))
 
   structure(
     list(

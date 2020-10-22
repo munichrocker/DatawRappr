@@ -92,7 +92,7 @@ dw_create_symbol_map <- function(basemap_id,
 
   parsed <- dw_handle_errors(r)
 
-  cat(paste0("New maps's id: ", parsed[["id"]]))
+  cat(paste0("New maps's id: ", parsed[["id"]], "\n"))
 
   structure(
     list(
