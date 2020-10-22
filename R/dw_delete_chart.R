@@ -31,7 +31,7 @@ dw_delete_chart <- function(chart_id, api_key = "environment") {
   if (httr::status_code(r) == "204") {
     cat(paste0("Chart ", chart_id, " sucessfully deleted!", "\n"))
   } else {
-    warning("There has been an error while deleting the chart!", immediate. = TRUE)
+    stop("There has been an error while deleting the chart!", immediate. = TRUE)
     return(r)
   }
 

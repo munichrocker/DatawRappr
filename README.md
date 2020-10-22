@@ -14,6 +14,7 @@ All functions (except `datawrapper_auth()`) are preceded by `dw_`:
 * lists all created charts: `dw_list_charts()`.
 * lists all folders: `dw_list_folders()`.
 * creates a new Datawrapper chart via `dw_create_chart()`
+* copy a existing chart with: `dw_copy_chart()`
 * adds data from a R-dataframe to an existing Datawrapper chart via `dw_data_to_chart()`
 * retrieves (`dw_retrieve_chart_metadata()`) or edits metadata, description and visualization of an existing chart via `dw_edit_chart()`
 * publishes and republishes a Datawrapper chart via `dw_publish_chart()`

@@ -61,7 +61,7 @@ dw_data_to_chart <- function(x, chart_id, parse_dates = TRUE, api_key = "environ
   if (httr::status_code(r) %in% c(200, 201, 202, 204)) {
     cat(paste0("Data in ", chart_id, " successfully updated.", "\n"))
   } else {
-    warning(paste0("There has been an error in the upload process. Statuscode of the response: ", httr::status_code(r)), immediate. = TRUE)
+    stop(paste0("There has been an error in the upload process. Statuscode of the response: ", httr::status_code(r)), immediate. = TRUE)
   }
 
 }

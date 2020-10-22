@@ -77,7 +77,7 @@ dw_publish_chart <- function(chart_id, api_key = "environment", return_urls = TR
       }
 
   } else {
-    warning(paste0("There has been an error in the publication process. Statuscode of the response: ", httr::status_code(r)), immediate. = TRUE)
+    stop(paste0("There has been an error in the publication process. Statuscode of the response: ", httr::status_code(r)), immediate. = TRUE)
   }
 }
 
