@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Create a Map">
-<meta property="og:description" content="How to create a simple choropleth map with DatawRappt
+<meta property="og:description" content="How to create a simple choropleth map with DatawRappr
 ">
 <meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -62,6 +62,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/export.html">Exporting a chart</a>
+    </li>
+    <li>
       <a href="../articles/map.html">Create a Map</a>
     </li>
     <li>
@@ -126,7 +129,7 @@
   <span class="kw">title</span> <span class="kw">=</span> <span class="st">"This is a automated choropleth map"</span>,
   <span class="kw">type</span> <span class="kw">=</span> <span class="st">"d3-maps-choropleth"</span>
   )
-<span class="co">#&gt; New chart's id: ZO9I5</span></pre></body></html></div>
+<span class="co">#&gt; New chart's id: XYx5Z</span></pre></body></html></div>
 </div>
 <div id="upload-data-to-the-chart" class="section level2">
 <h2 class="hasAnchor">
@@ -141,14 +144,14 @@
 <p>Or you can use the built-in dataframe in DatawRappr:</p>
 <div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">dw_basemaps</span>)
 <span class="co">#&gt; # A tibble: 6 x 6</span>
-<span class="co">#&gt;   id         level  slug   value      label      description                    </span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;                          </span>
-<span class="co">#&gt; 1 world-2019 World  world  DW_NAME    Name       The three-letter ISO-code of t…</span>
-<span class="co">#&gt; 2 world-2019 World  world  DW_STATE_… ISO-Code   The written name of the countr…</span>
-<span class="co">#&gt; 3 world-2019 World  world  GERMAN_NA… Name (Ger… The written name of the countr…</span>
-<span class="co">#&gt; 4 africa-20… Africa africa DW_NAME    Name       The three-letter ISO-code of t…</span>
-<span class="co">#&gt; 5 africa-20… Africa africa DW_STATE_… ISO-Code   The written name of the countr…</span>
-<span class="co">#&gt; 6 europe     Europe europe ISO_A3     ISO 3-dig… DE21, FR24, TR42, ...</span></pre></body></html></div>
+<span class="co">#&gt;   id        level  slug   value       label        description                  </span>
+<span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;                        </span>
+<span class="co">#&gt; 1 world-20… World  world  DW_NAME     Name         The three-letter ISO-code of…</span>
+<span class="co">#&gt; 2 world-20… World  world  DW_STATE_C… ISO-Code     The written name of the coun…</span>
+<span class="co">#&gt; 3 world-20… World  world  GERMAN_NAM… Name (Germa… The written name of the coun…</span>
+<span class="co">#&gt; 4 world-20… World  world  GERMAN_NAME Name old (G… The written name of the coun…</span>
+<span class="co">#&gt; 5 africa-2… Africa africa DW_NAME     Name         The three-letter ISO-code of…</span>
+<span class="co">#&gt; 6 africa-2… Africa africa DW_STATE_C… ISO-Code     The written name of the coun…</span></pre></body></html></div>
 <p>First, you have to decide, which map to use. It is identified by the <code>id</code>-column.</p>
 <p>You can use dplyr’s <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code> to get an interactive table. Or you might want to filter using <code><a href="https://rdrr.io/r/base/grep.html">grepl()</a></code></p>
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">dw_basemaps</span> <span class="kw">%&gt;%</span>
@@ -213,7 +216,7 @@
 <span class="co">#&gt;  $ share_foreign_population: num  15.5 13.2 18.5 4.7 18.1 16.4 16.2 4.5 9.4 13.3 ...</span></pre></body></html></div>
 <p>You can simply upload the data as you would do with any other {DatawRappr}-chart.</p>
 <div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu"><a href="../reference/dw_data_to_chart.html">dw_data_to_chart</a></span>(<span class="no">df_foreign_pop</span>, <span class="kw">chart_id</span> <span class="kw">=</span> <span class="no">new_choropleth_chart</span>)
-<span class="co">#&gt; Data in ZO9I5 successfully updated.</span></pre></body></html></div>
+<span class="co">#&gt; Data in XYx5Z successfully updated.</span></pre></body></html></div>
 </div>
 </div>
 <div id="set-the-keys-in-the-metadata" class="section level2">
@@ -241,7 +244,7 @@
                 <span class="st">"map-key-attr"</span> <span class="kw">=</span> <span class="st">"name"</span>
                 )
               )
-<span class="co">#&gt; Chart ZO9I5 succesfully updated.</span></pre></body></html></div>
+<span class="co">#&gt; Chart XYx5Z succesfully updated.</span></pre></body></html></div>
 <p>At that point, you might want to switch to Datawrapper’s UI to make the final adjustments to the legend before publishing. But: You could do them via <code>dw_edit_chart</code> as well. It’s probably just not that much fun.</p>
 </div>
 <div id="publish-the-chart" class="section level2">
@@ -249,12 +252,12 @@
 <a href="#publish-the-chart" class="anchor"></a>Publish the chart</h2>
 <p>This is probably the easiest part:</p>
 <div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="fu"><a href="../reference/dw_publish_chart.html">dw_publish_chart</a></span>(<span class="no">new_choropleth_chart</span>)
-<span class="co">#&gt; Chart ZO9I5 published!### Responsive iFrame-code: ###</span>
-<span class="co">#&gt; &lt;iframe title="This is a automated choropleth map" aria-label="Karte" id="datawrapper-chart-ZO9I5" src="https://datawrapper.dwcdn.net/ZO9I5/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="undefined"&gt;&lt;/iframe&gt;&lt;script type="text/javascript"&gt;!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&amp;&amp;(t.style.height=a.data["datawrapper-height"][e]+"px")}}))}();</span>
+<span class="co">#&gt; Chart XYx5Z published!### Responsive iFrame-code: ###</span>
+<span class="co">#&gt; &lt;iframe title="This is a automated choropleth map" aria-label="Karte" id="datawrapper-chart-XYx5Z" src="https://datawrapper.dwcdn.net/XYx5Z/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="undefined"&gt;&lt;/iframe&gt;&lt;script type="text/javascript"&gt;!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&amp;&amp;(t.style.height=a.data["datawrapper-height"][e]+"px")}}))}();</span>
 <span class="co">#&gt; &lt;/script&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; ### Chart-URL:###</span>
-<span class="co">#&gt; https://datawrapper.dwcdn.net/ZO9I5/1/</span></pre></body></html></div>
+<span class="co">#&gt; https://datawrapper.dwcdn.net/XYx5Z/1/</span></pre></body></html></div>
 <div class="figure">
 <img src="img/screenshot_choropleth_map.png" alt="Screenshot of the choropleth map"><p class="caption">Screenshot of the choropleth map</p>
 </div>
@@ -274,7 +277,7 @@
   <span class="kw">title</span> <span class="kw">=</span> <span class="st">"This is a automated symbol map"</span>,
   <span class="kw">type</span> <span class="kw">=</span> <span class="st">"d3-maps-symbols"</span>
   )
-<span class="co">#&gt; New chart's id: X8IcM</span></pre></body></html></div>
+<span class="co">#&gt; New chart's id: J6z1w</span></pre></body></html></div>
 </div>
 <div id="upload-data-to-the-chart-1" class="section level2">
 <h2 class="hasAnchor">
@@ -289,14 +292,14 @@
 <p>Or you can use the built-in dataframe in {DatawRappr}:</p>
 <div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">dw_basemaps</span>)
 <span class="co">#&gt; # A tibble: 6 x 6</span>
-<span class="co">#&gt;   id         level  slug   value      label      description                    </span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;                          </span>
-<span class="co">#&gt; 1 world-2019 World  world  DW_NAME    Name       The three-letter ISO-code of t…</span>
-<span class="co">#&gt; 2 world-2019 World  world  DW_STATE_… ISO-Code   The written name of the countr…</span>
-<span class="co">#&gt; 3 world-2019 World  world  GERMAN_NA… Name (Ger… The written name of the countr…</span>
-<span class="co">#&gt; 4 africa-20… Africa africa DW_NAME    Name       The three-letter ISO-code of t…</span>
-<span class="co">#&gt; 5 africa-20… Africa africa DW_STATE_… ISO-Code   The written name of the countr…</span>
-<span class="co">#&gt; 6 europe     Europe europe ISO_A3     ISO 3-dig… DE21, FR24, TR42, ...</span></pre></body></html></div>
+<span class="co">#&gt;   id        level  slug   value       label        description                  </span>
+<span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;                        </span>
+<span class="co">#&gt; 1 world-20… World  world  DW_NAME     Name         The three-letter ISO-code of…</span>
+<span class="co">#&gt; 2 world-20… World  world  DW_STATE_C… ISO-Code     The written name of the coun…</span>
+<span class="co">#&gt; 3 world-20… World  world  GERMAN_NAM… Name (Germa… The written name of the coun…</span>
+<span class="co">#&gt; 4 world-20… World  world  GERMAN_NAME Name old (G… The written name of the coun…</span>
+<span class="co">#&gt; 5 africa-2… Africa africa DW_NAME     Name         The three-letter ISO-code of…</span>
+<span class="co">#&gt; 6 africa-2… Africa africa DW_STATE_C… ISO-Code     The written name of the coun…</span></pre></body></html></div>
 <p>First, you have to decide, which map to use. It is identified by the <code>id</code>-column.</p>
 <p>You can use dplyr’s <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code> to get an interactive table. Or you might want to filter using <code><a href="https://rdrr.io/r/base/grep.html">grepl()</a></code></p>
 <div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="no">dw_basemaps</span> <span class="kw">%&gt;%</span>
@@ -335,7 +338,7 @@
 <hr>
 <p>With Lat and Lon-columns set, you can simply upload the data as you would do with any other {DatawRappr}-chart.</p>
 <div class="sourceCode" id="cb18"><html><body><pre class="r"><span class="fu"><a href="../reference/dw_data_to_chart.html">dw_data_to_chart</a></span>(<span class="no">df_foreign_pop_symbol</span>, <span class="kw">chart_id</span> <span class="kw">=</span> <span class="no">new_symbol_chart</span>)
-<span class="co">#&gt; Data in X8IcM successfully updated.</span></pre></body></html></div>
+<span class="co">#&gt; Data in J6z1w successfully updated.</span></pre></body></html></div>
 </div>
 </div>
 <div id="set-the-keys-in-the-metadata-1" class="section level2">
@@ -370,7 +373,7 @@
                 <span class="kw">basemap</span> <span class="kw">=</span> <span class="st">"germany-states"</span>
                 )
               )
-<span class="co">#&gt; Chart X8IcM succesfully updated.</span></pre></body></html></div>
+<span class="co">#&gt; Chart J6z1w succesfully updated.</span></pre></body></html></div>
 <p>At that point, you might want to switch to Datawrapper’s UI to make the final adjustments to the legend before publishing. But: You could do them via <code>dw_edit_chart</code> as well. It’s probably just not that much fun.</p>
 </div>
 <div id="publish-the-chart-1" class="section level2">
@@ -378,12 +381,12 @@
 <a href="#publish-the-chart-1" class="anchor"></a>Publish the chart</h2>
 <p>This is probably the easiest part:</p>
 <div class="sourceCode" id="cb21"><html><body><pre class="r"><span class="fu"><a href="../reference/dw_publish_chart.html">dw_publish_chart</a></span>(<span class="no">new_symbol_chart</span>)
-<span class="co">#&gt; Chart X8IcM published!### Responsive iFrame-code: ###</span>
-<span class="co">#&gt; &lt;iframe title="This is a automated symbol map" aria-label="Karte" id="datawrapper-chart-X8IcM" src="https://datawrapper.dwcdn.net/X8IcM/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="undefined"&gt;&lt;/iframe&gt;&lt;script type="text/javascript"&gt;!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&amp;&amp;(t.style.height=a.data["datawrapper-height"][e]+"px")}}))}();</span>
+<span class="co">#&gt; Chart J6z1w published!### Responsive iFrame-code: ###</span>
+<span class="co">#&gt; &lt;iframe title="This is a automated symbol map" aria-label="Karte" id="datawrapper-chart-J6z1w" src="https://datawrapper.dwcdn.net/J6z1w/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="undefined"&gt;&lt;/iframe&gt;&lt;script type="text/javascript"&gt;!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&amp;&amp;(t.style.height=a.data["datawrapper-height"][e]+"px")}}))}();</span>
 <span class="co">#&gt; &lt;/script&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; ### Chart-URL:###</span>
-<span class="co">#&gt; https://datawrapper.dwcdn.net/X8IcM/1/</span></pre></body></html></div>
+<span class="co">#&gt; https://datawrapper.dwcdn.net/J6z1w/1/</span></pre></body></html></div>
 <div class="figure">
 <img src="img/screenshot_symbol_map.png" alt="Screenshot of the symbol map"><p class="caption">Screenshot of the symbol map</p>
 </div>

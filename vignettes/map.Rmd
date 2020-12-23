@@ -1,7 +1,7 @@
 ---
 title: "Create a Map"
 description: >
-  How to create a simple choropleth map with DatawRappt
+  How to create a simple choropleth map with DatawRappr
 output: 
   rmarkdown::html_vignette:
     toc: true

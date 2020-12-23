@@ -1,0 +1,78 @@
+---
+title: "Exporting a chart"
+description: >
+  How to export a chart with DatawRappr
+output:
+  rmarkdown::html_vignette:
+  toc: true
+toc_depth: 2
+number_sections: true
+vignette: >
+  %\VignetteIndexEntry{Exporting a chart}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+library(DatawRappr)
+library(magick)
+```
+
+This article wants to provide a brief overview on How to export charts with `dw_export_chart()` via the Datawrapper-API.
+
+## Arguments
+
+In general there is a bunch of arguments that can be added to a call to Datawrapper's Export-API. You can check out the [documentation here](https://developer.datawrapper.de/docs/exporting-as-pdfsvg) or the [reference here](https://developer.datawrapper.de/reference#getchartsidexportformat). 
+
+`dw_export_chart()` does not yet support all of these options. They are added step by step. Feel free to contribute the argument you're missing with [a pull request on Github](https://github.com/munichrocker/DatawRappr/pulls). 
+
+For the moment, the most important arguments are supported (check the documentation `dw_export_chart()` for more):
+
+* Changing the type of output: `type`
+* Changing the unit of the output: `unit`
+* The color mode: `mode`
+* `width` and `height` in pixels
+* Selection if titles should be included: set `plain` to `FALSE`
+* The `scale` of the chart.
+* A `border_width` argument, measured in pixels
+* A argument to change the `border_color`.
+
+## PNG
+
+Use the `type = "png"`-argument and download the result into an object. 
+
+To save the image we are using {magick} which is a requirement for {DatawRappr}. Simply run `image_write()`:
+
+```{r eval = FALSE}
+png_chart <- dw_export_chart("CHART_ID", type = "png")
+
+magick::image_write(png_chart, "OUTPUT.png")
+```
+
+## PDF
+
+When loading a PDF with `type = "pdf"`, the data is transfered as a binary. Fir this you can use the builtin `writeBin`-function:
+
+```{r eval = FALSE}
+pdf_chart <- dw_export_chart("CHART_ID", type = "pdf")
+
+writeBin(pdf_chart, con = "OUTPUT.pdf")
+```
+
+## SVG
+
+When using `type = "svg"` you will retrieve the code for a svg. So saving is as simple as writing text to a file:
+
+```{r eval = FALSE}
+svg_chart <- dw_export_chart("CHART_ID", type = "svg")
+
+fileConn <- file("OUTPUT.svg")
+writeLines(svg_chart, fileConn)
+close(fileConn)
+```
+

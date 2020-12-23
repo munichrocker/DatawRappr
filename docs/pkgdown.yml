@@ -2,7 +2,8 @@ pandoc: 2.7.2
 pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
+  export: export.html
   map: map.html
   usage: usage.html
-last_built: 2020-10-22T16:19Z
+last_built: 2020-12-23T11:04Z
 
