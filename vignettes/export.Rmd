@@ -40,7 +40,8 @@ For the moment, the most important arguments are supported (check the documentat
 * Selection if titles should be included: set `plain` to `FALSE`
 * The `scale` of the chart.
 * A `border_width` argument, measured in pixels
-* A argument to change the `border_color`.
+* A argument to change the `border_color`
+* Removing the background- and border-color by setting `transparent` to `TRUE`.
 
 ## PNG
 
