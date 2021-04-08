@@ -40,7 +40,10 @@ By default, Datawrapper will create an empty linechart, without a title. The fun
 To populate that chart with data, you can run
 
 ```{r}
-dw_data_to_chart(x = DATAFRAME, chart_id = CHART_ID_OR_dw_chart-object)
+dw_data_to_chart(
+  x = DATAFRAME, 
+  chart_id = CHART_ID_OR_dw_chart - object
+  )
 ```
 
 which uploads an R data.frame to an Datawrapper chart. 
@@ -50,8 +53,11 @@ The data.frame should already be in the right format, only including the expecte
 ## Edit chart's metadata
 
 ```{r}
-dw_edit_chart(chart_id = CHART_ID_OR_dw_chart-object, title = "I'm a title", 
-data = list(`horizontal-header` = "false"))
+dw_edit_chart(
+  chart_id = CHART_ID_OR_dw_chart - object,
+  title = "I'm a title",
+  data = list(`horizontal-header` = "false")
+)
 ```
 
 Datawrapper offers a lot of variability in editing it's charts' metadata. You can find a whole [Documentation here](https://developer.datawrapper.de/docs/chart-properties-1).
@@ -65,7 +71,15 @@ To speed things up, the `dw_edit_chart()`-function has some built-in arguments f
 * `source_name` which states the source
 * `source_url` which links to the source - but only if a `source_name` is provided
 
-If you want to edit specific arguments in your plot, you can use the arguments `data`, `visualize`, `describe` and `publish` to include lists to the API call which change all possible settings in a chart, as shown in the example above.
+If you want to edit specific arguments in your plot, you can use the arguments `data`, `visualize`, `describe` and `publish` to include lists to the API call which change all possible settings in a chart, as shown in the example above. Or you may change the theme by simply adding it via the `...`-option:
+
+```{r}
+dw_edit_chart(
+  chart_id = CHART_ID_OR_dw_chart - object,
+  theme = "my_beautiful_dw_theme"
+)
+```
+
 
 When you're finished editing your chart, you might want to publish it:
 
@@ -88,6 +102,8 @@ dw_delete_chart(chart_id = CHART_ID_OR_dw_chart-object)
 You can export charts as png - or even in pdf or svg, if you're using a paid plan.
 
 ```{r}
-exported_chart <- dw_export_chart(chart_id = CHART_ID_OR_dw_chart-object, type = c("png", "pdf", "svg"))
+exported_chart <-
+  dw_export_chart(chart_id = CHART_ID_OR_dw_chart - object,
+                  type = c("png", "pdf", "svg"))
 ```
 
