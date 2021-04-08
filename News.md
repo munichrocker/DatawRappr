@@ -10,6 +10,8 @@
 
 * Allow to switch data upload type between csv and tsv. (f9e078e2cf1632d29cd9475246e9a1e3a7c2f1de, as proposed in #57)
 
+* Change `cat`-messages to `message` to allow standardized suppression of messages. (209c63326e256c32f4ac22e5d209bc3a33aed4ac, as proposed in #56) 
+
 # DatawRappr 1.1.4
 
 ## Bug Fixes
