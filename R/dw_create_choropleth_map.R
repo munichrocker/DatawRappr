@@ -90,7 +90,7 @@ dw_create_choropleth_map <- function(basemap_id, basemap_value,
 
   parsed <- dw_handle_errors(r)
 
-  cat(paste0("New maps's id: ", parsed[["id"]], "\n"))
+  message(paste0("New maps's id: ", parsed[["id"]], "\n"))
 
   structure(
     list(
@@ -105,8 +105,8 @@ dw_create_choropleth_map <- function(basemap_id, basemap_value,
 #' @export
 
 print.dw_chart <- function(x, ...) {
-  cat("<Datawrapper ", x$path, ">\n", sep = "")
-  cat("Chart-ID: ", x$id, "\n", sep = "")
+  message("<Datawrapper ", x$path, ">\n", sep = "")
+  message("Chart-ID: ", x$id, "\n", sep = "")
   str(x$content)
   invisible(x)
 }

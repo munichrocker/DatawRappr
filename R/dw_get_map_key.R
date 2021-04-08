@@ -62,9 +62,9 @@ dw_get_map_key <- function(api_key = "environment", basemap_id, basemap_value) {
 #' @export
 
 print.dw_basemap_keys <- function(x, ...) {
-  cat("<Datawrapper ", x$path, ">\n", sep = "")
-  cat("Basemap-ID: ", x$id, "\n", sep = "")
-  cat("Basemap-Value: ", x$value, "\n", sep = "")
+  message("<Datawrapper ", x$path, ">\n", sep = "")
+  message("Basemap-ID: ", x$id, "\n", sep = "")
+  message("Basemap-Value: ", x$value, "\n", sep = "")
   str(x$keys)
   invisible(x)
 }
