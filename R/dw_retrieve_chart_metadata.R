@@ -62,8 +62,8 @@ dw_retrieve_chart_metadata <- function(chart_id, api_key = "environment") {
 #' @export
 
 print.dw_chart <- function(x, ...) {
-  cat("<Datawrapper ", x$path, ">\n", sep = "")
-  cat("Chart-ID: ", x$id, "\n", sep = "")
+  message("<Datawrapper ", x$path, ">\n", sep = "")
+  message("Chart-ID: ", x$id, "\n", sep = "")
   str(x$content)
   invisible(x)
 }
