@@ -4,7 +4,13 @@
 \alias{dw_data_to_chart}
 \title{Fill a Datawrapper chart with data from R}
 \usage{
-dw_data_to_chart(x, chart_id, parse_dates = TRUE, api_key = "environment")
+dw_data_to_chart(
+  x,
+  chart_id,
+  parse_dates = TRUE,
+  api_key = "environment",
+  format = c("csv", "tsv")
+)
 }
 \arguments{
 \item{x}{Required. A R object of class 'data.frame',to be uploaded as the Datawrapper data.}
@@ -14,6 +20,8 @@ dw_data_to_chart(x, chart_id, parse_dates = TRUE, api_key = "environment")
 \item{parse_dates}{Optional. Defaults to TRUE. Should columns that contain a Date or as POSIX-object be automatically converted to a character vector?}
 
 \item{api_key}{Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.}
+
+\item{format}{Optional. Switch between \code{csv} and \code{tsv} representation of data for upload. Might be more forgiving towards commas in strings. Recommended to stick with the default (\code{csv}).}
 }
 \value{
 A terminal message.

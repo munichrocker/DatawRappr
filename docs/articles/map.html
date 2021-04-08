@@ -47,7 +47,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -79,7 +79,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/munichrocker/DatawRappr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -93,7 +93,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="map_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Create a Map</h1>
@@ -125,11 +125,12 @@
 <h2 class="hasAnchor">
 <a href="#create-a-new-chart" class="anchor"></a>Create a new chart</h2>
 <p>You can use this code to create a new chart and save the chart to your current environment. You don’t have to save it. You will just need the chart-id later.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="no">new_choropleth_chart</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dw_create_chart.html">dw_create_chart</a></span>(
-  <span class="kw">title</span> <span class="kw">=</span> <span class="st">"This is a automated choropleth map"</span>,
-  <span class="kw">type</span> <span class="kw">=</span> <span class="st">"d3-maps-choropleth"</span>
-  )
-<span class="co">#&gt; New chart's id: qt3eo</span></pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">new_choropleth_chart</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dw_create_chart.html">dw_create_chart</a></span><span class="op">(</span>
+  title <span class="op">=</span> <span class="st">"This is a automated choropleth map"</span>, 
+  type <span class="op">=</span> <span class="st">"d3-maps-choropleth"</span>
+  <span class="op">)</span>
+<span class="co">#&gt; New chart's id: va3eQ</span></code></pre></div>
 </div>
 <div id="upload-data-to-the-chart" class="section level2">
 <h2 class="hasAnchor">
@@ -139,10 +140,11 @@
 <h3 class="hasAnchor">
 <a href="#select-the-right-map" class="anchor"></a>Select the right map</h3>
 <p>Datawrapper provides an API-endpoint with their basemaps, which you might <code>curl</code></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">curl</span> --request GET \</a>
-<a class="sourceLine" id="cb2-2" title="2">  --url https://api.datawrapper.de/plugin/basemaps</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> --request GET <span class="kw">\</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">--url</span> https://api.datawrapper.de/plugin/basemaps</span></code></pre></div>
 <p>Or you can use the built-in dataframe in DatawRappr:</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">dw_basemaps</span>)
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">dw_basemaps</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 x 6</span>
 <span class="co">#&gt;   id        level  slug   value       label        description                  </span>
 <span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;                        </span>
@@ -151,12 +153,13 @@
 <span class="co">#&gt; 3 world-20… World  world  GERMAN_NAM… Name (Germa… The written name of the coun…</span>
 <span class="co">#&gt; 4 world-20… World  world  GERMAN_NAME Name old (G… The written name of the coun…</span>
 <span class="co">#&gt; 5 africa-2… Africa africa DW_NAME     Name         The three-letter ISO-code of…</span>
-<span class="co">#&gt; 6 africa-2… Africa africa DW_STATE_C… ISO-Code     The written name of the coun…</span></pre></body></html></div>
+<span class="co">#&gt; 6 africa-2… Africa africa DW_STATE_C… ISO-Code     The written name of the coun…</span></code></pre></div>
 <p>First, you have to decide, which map to use. It is identified by the <code>id</code>-column.</p>
 <p>You can use dplyr’s <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code> to get an interactive table. Or you might want to filter using <code><a href="https://rdrr.io/r/base/grep.html">grepl()</a></code></p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">dw_basemaps</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span>(<span class="st">"us-nyc"</span>, <span class="no">id</span>))
-<span class="co">#&gt; # A tibble: 10 x 6</span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dw_basemaps</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="st">"us-nyc"</span>, <span class="va">id</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 12 x 6</span>
 <span class="co">#&gt;    id          level             slug            value  label     description   </span>
 <span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;             &lt;chr&gt;           &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;         </span>
 <span class="co">#&gt;  1 us-nyc-bor… USA » New York C… usa-new-york-c… BoroN… Borough … "Name of the …</span>
@@ -168,20 +171,23 @@
 <span class="co">#&gt;  7 us-nyc-hoo… USA » New York C… usa-new-york-c… NTACo… NTA Code  ""            </span>
 <span class="co">#&gt;  8 us-nyc-pol… USA » New York C… usa-new-york-c… Preci… Precinct… ""            </span>
 <span class="co">#&gt;  9 us-nyc-sch… USA » New York C… usa-new-york-c… Schoo… School D… ""            </span>
-<span class="co">#&gt; 10 us-nyc-zip… USA » New York C… usa-new-york-c… ZIPCO… ZIP code  ""</span></pre></body></html></div>
+<span class="co">#&gt; 10 us-nyc-uhf  USA » New York C… usa-new-york-c… uhfco… Code      "Name of the …</span>
+<span class="co">#&gt; 11 us-nyc-uhf  USA » New York C… usa-new-york-c… uhf_n… Name      "Name of the …</span>
+<span class="co">#&gt; 12 us-nyc-zip… USA » New York C… usa-new-york-c… ZIPCO… ZIP code  ""</span></code></pre></div>
 </div>
 <div id="select-the-right-key" class="section level3">
 <h3 class="hasAnchor">
 <a href="#select-the-right-key" class="anchor"></a>Select the right key</h3>
 <p>In a second step, you have to choose a key for the map, which is identified in <code>value</code>. <code>label</code> and <code>description</code> provide some more details about it.</p>
 <p>The key is the variable that binds the data to the map.</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">dw_basemaps</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span>(<span class="st">"germany-nuts3"</span>, <span class="no">id</span>))
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dw_basemaps</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="st">"germany-nuts3"</span>, <span class="va">id</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 2 x 6</span>
 <span class="co">#&gt;   id         level            slug          value   label description           </span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;            &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;                 </span>
 <span class="co">#&gt; 1 germany-n… Germany » NUTS3… germany-nuts… NUTS_N… Name  The written name of t…</span>
-<span class="co">#&gt; 2 germany-n… Germany » NUTS3… germany-nuts… NUTS_ID Code  code / desc</span></pre></body></html></div>
+<span class="co">#&gt; 2 germany-n… Germany » NUTS3… germany-nuts… NUTS_ID Code  code / desc</span></code></pre></div>
 <p>In this example the basemap <code>germany-nuts3</code> offers two key-options: <code>NUTS_ID</code> and <code>NUTS_NAME</code>. If you already have one of these options in your dataset, select the right one.</p>
 <p>Otherwise, you will have to wrangle the data anyway.</p>
 <hr>
@@ -190,33 +196,36 @@
 <p>After installation, simply add a column with something like <code>countrycode::countrycode(sourcevar = SOURCE VARIABLE, origin = "country.name.de", destination = "iso3c")</code> to your dataframe.</p>
 <hr>
 <p>Just in case you need it: You can retrieve the expected keys for a basemap by calling this API-endpoint. Simply enter the <code>id</code> of the basemap and the <code>value</code> of the key:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="ex">curl</span> --request GET \</a>
-<a class="sourceLine" id="cb6-2" title="2">  --url https://api.datawrapper.de/plugin/basemaps/ID/VALUE</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> --request GET <span class="kw">\</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">--url</span> https://api.datawrapper.de/plugin/basemaps/ID/VALUE</span></code></pre></div>
 <p>you could also use the {jsonlite}-package for this task:</p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">jsonlite</span>)
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://arxiv.org/abs/1403.2805">jsonlite</a></span><span class="op">)</span>
 
-<span class="no">r</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span>(<span class="st">"https://api.datawrapper.de/plugin/basemaps/germany-states/name"</span>)
-<span class="no">r</span>$<span class="no">data</span>$<span class="no">values</span>
+<span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="st">"https://api.datawrapper.de/plugin/basemaps/germany-states/name"</span><span class="op">)</span>
+<span class="va">r</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">values</span>
 <span class="co">#&gt;  [1] "Nordrhein-Westfalen"    "Baden-Württemberg"      "Hessen"                </span>
 <span class="co">#&gt;  [4] "Bremen"                 "Niedersachsen"          "Thüringen"             </span>
 <span class="co">#&gt;  [7] "Hamburg"                "Schleswig-Holstein"     "Rheinland-Pfalz"       </span>
 <span class="co">#&gt; [10] "Saarland"               "Bayern"                 "Berlin"                </span>
 <span class="co">#&gt; [13] "Sachsen-Anhalt"         "Sachsen"                "Brandenburg"           </span>
-<span class="co">#&gt; [16] "Mecklenburg-Vorpommern"</span></pre></body></html></div>
+<span class="co">#&gt; [16] "Mecklenburg-Vorpommern"</span></code></pre></div>
 </div>
 <div id="upload-the-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#upload-the-data" class="anchor"></a>Upload the data</h3>
 <p>We are using a simple dataset for German States here as an example: It contains the share of foreign population per German federal state (<a href="https://www.statistikportal.de/de/bevoelkerung/auslaendische-bevoelkerung">source: Federal Statistical Office Germany (Destatis)</a>).</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">df_foreign_pop</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span>(<span class="st">"data/foreign_pop.csv"</span>, <span class="kw">stringsAsFactors</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df_foreign_pop</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"data/foreign_pop.csv"</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span>(<span class="no">df_foreign_pop</span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">df_foreign_pop</span><span class="op">)</span>
 <span class="co">#&gt; 'data.frame':    16 obs. of  2 variables:</span>
 <span class="co">#&gt;  $ state                   : chr  "Baden-Württemberg" "Bayern" "Berlin" "Brandenburg" ...</span>
-<span class="co">#&gt;  $ share_foreign_population: num  15.5 13.2 18.5 4.7 18.1 16.4 16.2 4.5 9.4 13.3 ...</span></pre></body></html></div>
+<span class="co">#&gt;  $ share_foreign_population: num  15.5 13.2 18.5 4.7 18.1 16.4 16.2 4.5 9.4 13.3 ...</span></code></pre></div>
 <p>You can simply upload the data as you would do with any other {DatawRappr}-chart.</p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu"><a href="../reference/dw_data_to_chart.html">dw_data_to_chart</a></span>(<span class="no">df_foreign_pop</span>, <span class="kw">chart_id</span> <span class="kw">=</span> <span class="no">new_choropleth_chart</span>)
-<span class="co">#&gt; Data in qt3eo successfully updated.</span></pre></body></html></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/dw_data_to_chart.html">dw_data_to_chart</a></span><span class="op">(</span><span class="va">df_foreign_pop</span>, chart_id <span class="op">=</span> <span class="va">new_choropleth_chart</span><span class="op">)</span>
+<span class="co">#&gt; Data in va3eQ successfully updated.</span></code></pre></div>
 </div>
 </div>
 <div id="set-the-keys-in-the-metadata" class="section level2">
@@ -234,32 +243,34 @@
       }
 }    </code></pre>
 <p>In our example from above, we are using the names of the German federal states as the IDs. We will therefore use the basemap <strong>germany-states</strong> with the value <strong>name</strong>. <strong>name</strong> consists of the keys that are already present in our dataset in the <em>state</em>-column. So we don’t need any transformation here. We just need to tell Datawrapper which column to use.</p>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu"><a href="../reference/dw_edit_chart.html">dw_edit_chart</a></span>(<span class="no">new_choropleth_chart</span>,
-              <span class="kw">axes</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
-                <span class="kw">keys</span> <span class="kw">=</span> <span class="st">"state"</span>,
-                <span class="kw">values</span> <span class="kw">=</span> <span class="st">"share_foreign_population"</span>
-                ),
-              <span class="kw">visualize</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
-                <span class="kw">basemap</span> <span class="kw">=</span> <span class="st">"germany-states"</span>,
-                <span class="st">"map-key-attr"</span> <span class="kw">=</span> <span class="st">"name"</span>
-                )
-              )
-<span class="co">#&gt; Chart qt3eo succesfully updated.</span></pre></body></html></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/dw_edit_chart.html">dw_edit_chart</a></span><span class="op">(</span><span class="va">new_choropleth_chart</span>, 
+              axes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+                keys <span class="op">=</span> <span class="st">"state"</span>, 
+                values <span class="op">=</span> <span class="st">"share_foreign_population"</span>
+                <span class="op">)</span>, 
+              visualize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+                basemap <span class="op">=</span> <span class="st">"germany-states"</span>, 
+                <span class="st">"map-key-attr"</span> <span class="op">=</span> <span class="st">"name"</span>
+                <span class="op">)</span>
+              <span class="op">)</span>
+<span class="co">#&gt; Chart va3eQ succesfully updated.</span></code></pre></div>
 <p>At that point, you might want to switch to Datawrapper’s UI to make the final adjustments to the legend before publishing. But: You could do them via <code>dw_edit_chart</code> as well. It’s probably just not that much fun.</p>
 </div>
 <div id="publish-the-chart" class="section level2">
 <h2 class="hasAnchor">
 <a href="#publish-the-chart" class="anchor"></a>Publish the chart</h2>
 <p>This is probably the easiest part:</p>
-<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="fu"><a href="../reference/dw_publish_chart.html">dw_publish_chart</a></span>(<span class="no">new_choropleth_chart</span>)
-<span class="co">#&gt; Chart qt3eo published!### Responsive iFrame-code: ###</span>
-<span class="co">#&gt; &lt;iframe title="This is a automated choropleth map" aria-label="Karte" id="datawrapper-chart-qt3eo" src="https://datawrapper.dwcdn.net/qt3eo/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="undefined"&gt;&lt;/iframe&gt;&lt;script type="text/javascript"&gt;!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&amp;&amp;(t.style.height=a.data["datawrapper-height"][e]+"px")}}))}();</span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/dw_publish_chart.html">dw_publish_chart</a></span><span class="op">(</span><span class="va">new_choropleth_chart</span><span class="op">)</span>
+<span class="co">#&gt; Chart va3eQ published!### Responsive iFrame-code: ###</span>
+<span class="co">#&gt; &lt;iframe title="This is a automated choropleth map" aria-label="Karte" id="datawrapper-chart-va3eQ" src="https://datawrapper.dwcdn.net/va3eQ/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="undefined"&gt;&lt;/iframe&gt;&lt;script type="text/javascript"&gt;!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&amp;&amp;(t.style.height=a.data["datawrapper-height"][e]+"px")}}))}();</span>
 <span class="co">#&gt; &lt;/script&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; ### Chart-URL:###</span>
-<span class="co">#&gt; https://datawrapper.dwcdn.net/qt3eo/1/</span></pre></body></html></div>
+<span class="co">#&gt; https://datawrapper.dwcdn.net/va3eQ/1/</span></code></pre></div>
 <div class="figure">
-<img src="img/screenshot_choropleth_map.png" alt="Screenshot of the choropleth map"><p class="caption">Screenshot of the choropleth map</p>
+<img src="img/screenshot_choropleth_map.png" alt=""><p class="caption">Screenshot of the choropleth map</p>
 </div>
 <hr>
 </div>
@@ -273,11 +284,12 @@
 <h2 class="hasAnchor">
 <a href="#create-a-new-chart-1" class="anchor"></a>Create a new chart</h2>
 <p>You can use this code to create a new chart and save the chart to your current environment. You don’t have to save it. You will just need the chart-id later.</p>
-<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">new_symbol_chart</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dw_create_chart.html">dw_create_chart</a></span>(
-  <span class="kw">title</span> <span class="kw">=</span> <span class="st">"This is a automated symbol map"</span>,
-  <span class="kw">type</span> <span class="kw">=</span> <span class="st">"d3-maps-symbols"</span>
-  )
-<span class="co">#&gt; New chart's id: MyjEc</span></pre></body></html></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">new_symbol_chart</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dw_create_chart.html">dw_create_chart</a></span><span class="op">(</span>
+  title <span class="op">=</span> <span class="st">"This is a automated symbol map"</span>, 
+  type <span class="op">=</span> <span class="st">"d3-maps-symbols"</span>
+  <span class="op">)</span>
+<span class="co">#&gt; New chart's id: QXE9S</span></code></pre></div>
 </div>
 <div id="upload-data-to-the-chart-1" class="section level2">
 <h2 class="hasAnchor">
@@ -287,10 +299,11 @@
 <h3 class="hasAnchor">
 <a href="#select-the-right-map-1" class="anchor"></a>Select the right map</h3>
 <p>Datawrapper provides an API-endpoint with their basemaps, which you might <code>curl</code></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1"><span class="ex">curl</span> --request GET \</a>
-<a class="sourceLine" id="cb14-2" title="2">  --url https://api.datawrapper.de/plugin/basemaps</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> --request GET <span class="kw">\</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">--url</span> https://api.datawrapper.de/plugin/basemaps</span></code></pre></div>
 <p>Or you can use the built-in dataframe in {DatawRappr}:</p>
-<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">dw_basemaps</span>)
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">dw_basemaps</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 x 6</span>
 <span class="co">#&gt;   id        level  slug   value       label        description                  </span>
 <span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;                        </span>
@@ -299,12 +312,13 @@
 <span class="co">#&gt; 3 world-20… World  world  GERMAN_NAM… Name (Germa… The written name of the coun…</span>
 <span class="co">#&gt; 4 world-20… World  world  GERMAN_NAME Name old (G… The written name of the coun…</span>
 <span class="co">#&gt; 5 africa-2… Africa africa DW_NAME     Name         The three-letter ISO-code of…</span>
-<span class="co">#&gt; 6 africa-2… Africa africa DW_STATE_C… ISO-Code     The written name of the coun…</span></pre></body></html></div>
+<span class="co">#&gt; 6 africa-2… Africa africa DW_STATE_C… ISO-Code     The written name of the coun…</span></code></pre></div>
 <p>First, you have to decide, which map to use. It is identified by the <code>id</code>-column.</p>
 <p>You can use dplyr’s <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code> to get an interactive table. Or you might want to filter using <code><a href="https://rdrr.io/r/base/grep.html">grepl()</a></code></p>
-<div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="no">dw_basemaps</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span>(<span class="st">"us-nyc"</span>, <span class="no">id</span>))
-<span class="co">#&gt; # A tibble: 10 x 6</span>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dw_basemaps</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="st">"us-nyc"</span>, <span class="va">id</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 12 x 6</span>
 <span class="co">#&gt;    id          level             slug            value  label     description   </span>
 <span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;             &lt;chr&gt;           &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;         </span>
 <span class="co">#&gt;  1 us-nyc-bor… USA » New York C… usa-new-york-c… BoroN… Borough … "Name of the …</span>
@@ -316,20 +330,23 @@
 <span class="co">#&gt;  7 us-nyc-hoo… USA » New York C… usa-new-york-c… NTACo… NTA Code  ""            </span>
 <span class="co">#&gt;  8 us-nyc-pol… USA » New York C… usa-new-york-c… Preci… Precinct… ""            </span>
 <span class="co">#&gt;  9 us-nyc-sch… USA » New York C… usa-new-york-c… Schoo… School D… ""            </span>
-<span class="co">#&gt; 10 us-nyc-zip… USA » New York C… usa-new-york-c… ZIPCO… ZIP code  ""</span></pre></body></html></div>
+<span class="co">#&gt; 10 us-nyc-uhf  USA » New York C… usa-new-york-c… uhfco… Code      "Name of the …</span>
+<span class="co">#&gt; 11 us-nyc-uhf  USA » New York C… usa-new-york-c… uhf_n… Name      "Name of the …</span>
+<span class="co">#&gt; 12 us-nyc-zip… USA » New York C… usa-new-york-c… ZIPCO… ZIP code  ""</span></code></pre></div>
 </div>
 <div id="upload-the-data-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#upload-the-data-1" class="anchor"></a>Upload the data</h3>
 <p>We are using a simple dataset for German States here as an example: It contains the share of foreign population per German federal state (<a href="https://www.statistikportal.de/de/bevoelkerung/auslaendische-bevoelkerung">source: Federal Statistical Office Germany (Destatis)</a>).</p>
-<div class="sourceCode" id="cb17"><html><body><pre class="r"><span class="no">df_foreign_pop_symbol</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span>(<span class="st">"data/foreign_pop_symbol.csv"</span>, <span class="kw">stringsAsFactors</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df_foreign_pop_symbol</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"data/foreign_pop_symbol.csv"</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span>(<span class="no">df_foreign_pop_symbol</span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">df_foreign_pop_symbol</span><span class="op">)</span>
 <span class="co">#&gt; 'data.frame':    16 obs. of  4 variables:</span>
 <span class="co">#&gt;  $ Lat                     : num  48.6 48.9 52.5 52.8 53.1 ...</span>
 <span class="co">#&gt;  $ Lon                     : num  9.19 11.4 13.39 13.25 8.81 ...</span>
 <span class="co">#&gt;  $ name                    : chr  "Baden-Württemberg" "Bayern" "Berlin" "Brandenburg" ...</span>
-<span class="co">#&gt;  $ share_foreign_population: num  15.5 13.2 18.5 4.7 18.1 16.4 16.2 4.5 9.4 13.3 ...</span></pre></body></html></div>
+<span class="co">#&gt;  $ share_foreign_population: num  15.5 13.2 18.5 4.7 18.1 16.4 16.2 4.5 9.4 13.3 ...</span></code></pre></div>
 <p>The data is already geocoded into the <strong>Lat</strong> and <strong>Lon</strong>-columns. They are required for the symbol map.</p>
 <hr>
 <p><strong>Geocoding Adresses</strong></p>
@@ -337,8 +354,9 @@
 <p>For open alternatives you might have a look at <a href="https://github.com/hrbrmstr/nominatim">hrbrmstr’s {nominatim}</a> or the <code>geocode_OSM()</code>-function in <a href="https://github.com/mtennekes/tmaptools">{tmaptools}</a>.</p>
 <hr>
 <p>With Lat and Lon-columns set, you can simply upload the data as you would do with any other {DatawRappr}-chart.</p>
-<div class="sourceCode" id="cb18"><html><body><pre class="r"><span class="fu"><a href="../reference/dw_data_to_chart.html">dw_data_to_chart</a></span>(<span class="no">df_foreign_pop_symbol</span>, <span class="kw">chart_id</span> <span class="kw">=</span> <span class="no">new_symbol_chart</span>)
-<span class="co">#&gt; Data in MyjEc successfully updated.</span></pre></body></html></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/dw_data_to_chart.html">dw_data_to_chart</a></span><span class="op">(</span><span class="va">df_foreign_pop_symbol</span>, chart_id <span class="op">=</span> <span class="va">new_symbol_chart</span><span class="op">)</span>
+<span class="co">#&gt; Data in QXE9S successfully updated.</span></code></pre></div>
 </div>
 </div>
 <div id="set-the-keys-in-the-metadata-1" class="section level2">
@@ -363,32 +381,34 @@
 <li>
 <code>value</code>: for the color of the symbol</li>
 </ul>
-<div class="sourceCode" id="cb20"><html><body><pre class="r"><span class="fu"><a href="../reference/dw_edit_chart.html">dw_edit_chart</a></span>(<span class="no">new_symbol_chart</span>,
-              <span class="kw">axes</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
-                <span class="kw">lat</span> <span class="kw">=</span> <span class="st">"Lat"</span>,
-                <span class="kw">lon</span> <span class="kw">=</span> <span class="st">"Lon"</span>,
-                <span class="kw">area</span> <span class="kw">=</span> <span class="st">"share_foreign_population"</span>
-                ),
-              <span class="kw">visualize</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
-                <span class="kw">basemap</span> <span class="kw">=</span> <span class="st">"germany-states"</span>
-                )
-              )
-<span class="co">#&gt; Chart MyjEc succesfully updated.</span></pre></body></html></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/dw_edit_chart.html">dw_edit_chart</a></span><span class="op">(</span><span class="va">new_symbol_chart</span>, 
+              axes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+                lat <span class="op">=</span> <span class="st">"Lat"</span>, 
+                lon <span class="op">=</span> <span class="st">"Lon"</span>,
+                area <span class="op">=</span> <span class="st">"share_foreign_population"</span>
+                <span class="op">)</span>, 
+              visualize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+                basemap <span class="op">=</span> <span class="st">"germany-states"</span>
+                <span class="op">)</span>
+              <span class="op">)</span>
+<span class="co">#&gt; Chart QXE9S succesfully updated.</span></code></pre></div>
 <p>At that point, you might want to switch to Datawrapper’s UI to make the final adjustments to the legend before publishing. But: You could do them via <code>dw_edit_chart</code> as well. It’s probably just not that much fun.</p>
 </div>
 <div id="publish-the-chart-1" class="section level2">
 <h2 class="hasAnchor">
 <a href="#publish-the-chart-1" class="anchor"></a>Publish the chart</h2>
 <p>This is probably the easiest part:</p>
-<div class="sourceCode" id="cb21"><html><body><pre class="r"><span class="fu"><a href="../reference/dw_publish_chart.html">dw_publish_chart</a></span>(<span class="no">new_symbol_chart</span>)
-<span class="co">#&gt; Chart MyjEc published!### Responsive iFrame-code: ###</span>
-<span class="co">#&gt; &lt;iframe title="This is a automated symbol map" aria-label="Karte" id="datawrapper-chart-MyjEc" src="https://datawrapper.dwcdn.net/MyjEc/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="undefined"&gt;&lt;/iframe&gt;&lt;script type="text/javascript"&gt;!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&amp;&amp;(t.style.height=a.data["datawrapper-height"][e]+"px")}}))}();</span>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/dw_publish_chart.html">dw_publish_chart</a></span><span class="op">(</span><span class="va">new_symbol_chart</span><span class="op">)</span>
+<span class="co">#&gt; Chart QXE9S published!### Responsive iFrame-code: ###</span>
+<span class="co">#&gt; &lt;iframe title="This is a automated symbol map" aria-label="Karte" id="datawrapper-chart-QXE9S" src="https://datawrapper.dwcdn.net/QXE9S/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="undefined"&gt;&lt;/iframe&gt;&lt;script type="text/javascript"&gt;!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&amp;&amp;(t.style.height=a.data["datawrapper-height"][e]+"px")}}))}();</span>
 <span class="co">#&gt; &lt;/script&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; ### Chart-URL:###</span>
-<span class="co">#&gt; https://datawrapper.dwcdn.net/MyjEc/1/</span></pre></body></html></div>
+<span class="co">#&gt; https://datawrapper.dwcdn.net/QXE9S/1/</span></code></pre></div>
 <div class="figure">
-<img src="img/screenshot_symbol_map.png" alt="Screenshot of the symbol map"><p class="caption">Screenshot of the symbol map</p>
+<img src="img/screenshot_symbol_map.png" alt=""><p class="caption">Screenshot of the symbol map</p>
 </div>
 <hr>
 </div>
@@ -406,15 +426,16 @@
 <li>
 <code>fields</code>: is a list that contains the mapping between the chart data and the variables in the tooltips. You have to include each variable here that is used in the tooltip double brackets in the format: <code>"variable in tooltip" = "variable in data"</code>. You may (although it makes things more complicated) map variables to different names, as shown below where <code>"name" = "b"</code>.</li>
 </ul>
-<div class="sourceCode" id="cb22"><html><body><pre class="r"><span class="fu"><a href="../reference/dw_edit_chart.html">dw_edit_chart</a></span>(<span class="no">CHART_ID</span>, <span class="kw">visualize</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
-  <span class="kw">tooltip</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
-    <span class="kw">body</span> <span class="kw">=</span> <span class="st">"{{ name }} has value {{ a }}."</span>,
-    <span class="kw">title</span> <span class="kw">=</span> <span class="st">"{{ name }}"</span>,
-    <span class="kw">fields</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
-      <span class="st">"name"</span> <span class="kw">=</span> <span class="st">"b"</span>,
-      <span class="st">"a"</span> <span class="kw">=</span> <span class="st">"a"</span>
-    )
-    )))</pre></body></html></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/dw_edit_chart.html">dw_edit_chart</a></span><span class="op">(</span><span class="va">CHART_ID</span>, visualize <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+  tooltip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+    body <span class="op">=</span> <span class="st">"{{ name }} has value {{ a }}."</span>,
+    title <span class="op">=</span> <span class="st">"{{ name }}"</span>,
+    fields <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+      <span class="st">"name"</span> <span class="op">=</span> <span class="st">"b"</span>,
+      <span class="st">"a"</span> <span class="op">=</span> <span class="st">"a"</span>
+    <span class="op">)</span>
+    <span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
   </div>
 
@@ -433,7 +454,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
