@@ -230,7 +230,7 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
   terminate_on <- NULL
   terminate_on_success <- TRUE
 
-  httr::RETRY("PATCH",
+  r <- httr::RETRY("PATCH",
               url_upload,
               httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
               body = call_body,
