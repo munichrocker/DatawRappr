@@ -214,15 +214,36 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
 
   # send call to API
   # upload modified data
-  # solution for API v1:
-  # url_upload <- paste0("https://api.datawrapper.de/charts/", chart_id)
-  #
-  # r <- httr::PUT(url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
-  #                       body = call_body, encode = "json", .DATAWRAPPR_UA)
 
   url_upload <- paste0("https://api.datawrapper.de/v3/charts/", chart_id)
-  r <- httr::PATCH(url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
-                   body = call_body, encode = "json", .DATAWRAPPR_UA)
+
+  # r <- httr::PATCH(url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+  #                  body = call_body, encode = "json", .DATAWRAPPR_UA)
+
+  # using RETRY
+  # set RETRY variables to default if not specified in args
+  times <- 3
+  pause_base <- 1
+  pause_cap <- 60
+  pause_min <- 1
+  quiet <- TRUE # deviates from httr::RETRY()s defaults
+  terminate_on <- NULL
+  terminate_on_success <- TRUE
+
+  httr::RETRY("PATCH",
+              url_upload,
+              httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+              body = call_body,
+              encode = "json",
+              .DATAWRAPPR_UA,
+              quiet = quiet,
+              times = times,
+              pause_base = pause_base,
+              pause_cap = pause_cap,
+              pause_min = pause_min,
+              terminate_on = terminate_on,
+              terminate_on_success = terminate_on_success
+  )
 
   parsed <- dw_handle_errors(r)
 
