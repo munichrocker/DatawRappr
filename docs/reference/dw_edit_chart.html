@@ -49,7 +49,7 @@
 <meta property="og:title" content="Edits a existing Datawrapper chart — dw_edit_chart" />
 <meta property="og:description" content="
 
-Modifies an existing Datawrapper chart." />
+Modifies an existing Datawrapper chart. Allows retry if call fails." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -82,7 +82,7 @@ Modifies an existing Datawrapper chart." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DatawRappr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2</span>
       </span>
     </div>
 
@@ -147,7 +147,7 @@ Modifies an existing Datawrapper chart." />
     <div class="ref-description">
     <p><a href='https://lifecycle.r-lib.org/articles/stages.html#maturing'><img src='figures/lifecycle-maturing.svg' alt='[Maturing]' /></a>
 
-Modifies an existing Datawrapper chart.</p>
+Modifies an existing Datawrapper chart. Allows retry if call fails.</p>
     </div>
 
     <pre class="usage"><span class='fu'>dw_edit_chart</span><span class='op'>(</span>
@@ -166,6 +166,13 @@ Modifies an existing Datawrapper chart.</p>
   visualize <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
   describe <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
   publish <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
+  times <span class='op'>=</span> <span class='fl'>3</span>,
+  pause_base <span class='op'>=</span> <span class='fl'>1</span>,
+  pause_cap <span class='op'>=</span> <span class='fl'>60</span>,
+  pause_min <span class='op'>=</span> <span class='fl'>1</span>,
+  quiet <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  terminate_on <span class='op'>=</span> <span class='cn'>NULL</span>,
+  terminate_on_success <span class='op'>=</span> <span class='cn'>TRUE</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
@@ -231,6 +238,30 @@ Modifies an existing Datawrapper chart.</p>
     <tr>
       <th>publish</th>
       <td><p>Optional. A list. Add separate arguments for publication. See <a href='https://developer.datawrapper.de/docs/chart-properties'>the documentation</a> for details.</p></td>
+    </tr>
+    <tr>
+      <th>times</th>
+      <td><p>Optional. Retry-Argument: Maximum number of requests to attempt.</p></td>
+    </tr>
+    <tr>
+      <th>pause_base, pause_cap</th>
+      <td><p>Optional. Retry-Argument:This method uses exponential back-off with full jitter - this means that each request will randomly wait between 0 and <code>pause_base * 2 ^ attempt</code> seconds, up to a maximum of <code>pause_cap</code> seconds.</p></td>
+    </tr>
+    <tr>
+      <th>pause_min</th>
+      <td><p>Optional. Retry-Argument:Minimum time to wait in the backoff; generally only necessary if you need pauses less than one second (which may not be kind to the server, use with caution!).</p></td>
+    </tr>
+    <tr>
+      <th>quiet</th>
+      <td><p>Optional. Retry-Argument:If <code>FALSE</code>, will print a message displaying how long until the next request.</p></td>
+    </tr>
+    <tr>
+      <th>terminate_on</th>
+      <td><p>Optional. Retry-Argument:Optional vector of numeric HTTP status codes that if found on the response will terminate the retry process. If NULL, will keep retrying while http_error() is TRUE for the response.</p></td>
+    </tr>
+    <tr>
+      <th>terminate_on_success</th>
+      <td><p>Retry-Argument:Optional. If <code>TRUE</code>, the default, this will automatically terminate when the request is successful, regardless of the value of terminate_on.</p></td>
     </tr>
     <tr>
       <th>...</th>

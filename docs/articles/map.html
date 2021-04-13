@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DatawRappr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2</span>
       </span>
     </div>
 
@@ -130,7 +130,7 @@
   title <span class="op">=</span> <span class="st">"This is a automated choropleth map"</span>, 
   type <span class="op">=</span> <span class="st">"d3-maps-choropleth"</span>
   <span class="op">)</span>
-<span class="co">#&gt; New chart's id: va3eQ</span></code></pre></div>
+<span class="co">#&gt; New chart's id: HwpzM</span></code></pre></div>
 </div>
 <div id="upload-data-to-the-chart" class="section level2">
 <h2 class="hasAnchor">
@@ -225,7 +225,7 @@
 <p>You can simply upload the data as you would do with any other {DatawRappr}-chart.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dw_data_to_chart.html">dw_data_to_chart</a></span><span class="op">(</span><span class="va">df_foreign_pop</span>, chart_id <span class="op">=</span> <span class="va">new_choropleth_chart</span><span class="op">)</span>
-<span class="co">#&gt; Data in va3eQ successfully updated.</span></code></pre></div>
+<span class="co">#&gt; Data in HwpzM successfully updated.</span></code></pre></div>
 </div>
 </div>
 <div id="set-the-keys-in-the-metadata" class="section level2">
@@ -254,7 +254,7 @@
                 <span class="st">"map-key-attr"</span> <span class="op">=</span> <span class="st">"name"</span>
                 <span class="op">)</span>
               <span class="op">)</span>
-<span class="co">#&gt; Chart va3eQ succesfully updated.</span></code></pre></div>
+<span class="co">#&gt; Chart HwpzM succesfully updated.</span></code></pre></div>
 <p>At that point, you might want to switch to Datawrapper’s UI to make the final adjustments to the legend before publishing. But: You could do them via <code>dw_edit_chart</code> as well. It’s probably just not that much fun.</p>
 </div>
 <div id="publish-the-chart" class="section level2">
@@ -263,12 +263,13 @@
 <p>This is probably the easiest part:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dw_publish_chart.html">dw_publish_chart</a></span><span class="op">(</span><span class="va">new_choropleth_chart</span><span class="op">)</span>
-<span class="co">#&gt; Chart va3eQ published!### Responsive iFrame-code: ###</span>
-<span class="co">#&gt; &lt;iframe title="This is a automated choropleth map" aria-label="Karte" id="datawrapper-chart-va3eQ" src="https://datawrapper.dwcdn.net/va3eQ/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="undefined"&gt;&lt;/iframe&gt;&lt;script type="text/javascript"&gt;!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&amp;&amp;(t.style.height=a.data["datawrapper-height"][e]+"px")}}))}();</span>
+<span class="co">#&gt; Chart HwpzM published!</span>
+<span class="co">#&gt; ### Responsive iFrame-code: ###</span>
+<span class="co">#&gt; &lt;iframe title="This is a automated choropleth map" aria-label="Karte" id="datawrapper-chart-HwpzM" src="https://datawrapper.dwcdn.net/HwpzM/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="undefined"&gt;&lt;/iframe&gt;&lt;script type="text/javascript"&gt;!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&amp;&amp;(t.style.height=a.data["datawrapper-height"][e]+"px")}}))}();</span>
 <span class="co">#&gt; &lt;/script&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; ### Chart-URL:###</span>
-<span class="co">#&gt; https://datawrapper.dwcdn.net/va3eQ/1/</span></code></pre></div>
+<span class="co">#&gt; https://datawrapper.dwcdn.net/HwpzM/1/</span></code></pre></div>
 <div class="figure">
 <img src="img/screenshot_choropleth_map.png" alt=""><p class="caption">Screenshot of the choropleth map</p>
 </div>
@@ -289,7 +290,7 @@
   title <span class="op">=</span> <span class="st">"This is a automated symbol map"</span>, 
   type <span class="op">=</span> <span class="st">"d3-maps-symbols"</span>
   <span class="op">)</span>
-<span class="co">#&gt; New chart's id: QXE9S</span></code></pre></div>
+<span class="co">#&gt; New chart's id: 7cPpV</span></code></pre></div>
 </div>
 <div id="upload-data-to-the-chart-1" class="section level2">
 <h2 class="hasAnchor">
@@ -356,7 +357,7 @@
 <p>With Lat and Lon-columns set, you can simply upload the data as you would do with any other {DatawRappr}-chart.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dw_data_to_chart.html">dw_data_to_chart</a></span><span class="op">(</span><span class="va">df_foreign_pop_symbol</span>, chart_id <span class="op">=</span> <span class="va">new_symbol_chart</span><span class="op">)</span>
-<span class="co">#&gt; Data in QXE9S successfully updated.</span></code></pre></div>
+<span class="co">#&gt; Data in 7cPpV successfully updated.</span></code></pre></div>
 </div>
 </div>
 <div id="set-the-keys-in-the-metadata-1" class="section level2">
@@ -392,7 +393,7 @@
                 basemap <span class="op">=</span> <span class="st">"germany-states"</span>
                 <span class="op">)</span>
               <span class="op">)</span>
-<span class="co">#&gt; Chart QXE9S succesfully updated.</span></code></pre></div>
+<span class="co">#&gt; Chart 7cPpV succesfully updated.</span></code></pre></div>
 <p>At that point, you might want to switch to Datawrapper’s UI to make the final adjustments to the legend before publishing. But: You could do them via <code>dw_edit_chart</code> as well. It’s probably just not that much fun.</p>
 </div>
 <div id="publish-the-chart-1" class="section level2">
@@ -401,12 +402,13 @@
 <p>This is probably the easiest part:</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dw_publish_chart.html">dw_publish_chart</a></span><span class="op">(</span><span class="va">new_symbol_chart</span><span class="op">)</span>
-<span class="co">#&gt; Chart QXE9S published!### Responsive iFrame-code: ###</span>
-<span class="co">#&gt; &lt;iframe title="This is a automated symbol map" aria-label="Karte" id="datawrapper-chart-QXE9S" src="https://datawrapper.dwcdn.net/QXE9S/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="undefined"&gt;&lt;/iframe&gt;&lt;script type="text/javascript"&gt;!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&amp;&amp;(t.style.height=a.data["datawrapper-height"][e]+"px")}}))}();</span>
+<span class="co">#&gt; Chart 7cPpV published!</span>
+<span class="co">#&gt; ### Responsive iFrame-code: ###</span>
+<span class="co">#&gt; &lt;iframe title="This is a automated symbol map" aria-label="Karte" id="datawrapper-chart-7cPpV" src="https://datawrapper.dwcdn.net/7cPpV/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="undefined"&gt;&lt;/iframe&gt;&lt;script type="text/javascript"&gt;!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&amp;&amp;(t.style.height=a.data["datawrapper-height"][e]+"px")}}))}();</span>
 <span class="co">#&gt; &lt;/script&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; ### Chart-URL:###</span>
-<span class="co">#&gt; https://datawrapper.dwcdn.net/QXE9S/1/</span></code></pre></div>
+<span class="co">#&gt; https://datawrapper.dwcdn.net/7cPpV/1/</span></code></pre></div>
 <div class="figure">
 <img src="img/screenshot_symbol_map.png" alt=""><p class="caption">Screenshot of the symbol map</p>
 </div>

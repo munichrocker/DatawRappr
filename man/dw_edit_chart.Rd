@@ -20,6 +20,13 @@ dw_edit_chart(
   visualize = list(),
   describe = list(),
   publish = list(),
+  times = 3,
+  pause_base = 1,
+  pause_cap = 60,
+  pause_min = 1,
+  quiet = TRUE,
+  terminate_on = NULL,
+  terminate_on_success = TRUE,
   ...
 )
 }
@@ -54,6 +61,18 @@ dw_edit_chart(
 
 \item{publish}{Optional. A list. Add separate arguments for publication. See \href{https://developer.datawrapper.de/docs/chart-properties}{the documentation} for details.}
 
+\item{times}{Optional. Retry-Argument: Maximum number of requests to attempt.}
+
+\item{pause_base, pause_cap}{Optional. Retry-Argument:This method uses exponential back-off with full jitter - this means that each request will randomly wait between 0 and \code{pause_base * 2 ^ attempt} seconds, up to a maximum of \code{pause_cap} seconds.}
+
+\item{pause_min}{Optional. Retry-Argument:Minimum time to wait in the backoff; generally only necessary if you need pauses less than one second (which may not be kind to the server, use with caution!).}
+
+\item{quiet}{Optional. Retry-Argument:If \code{FALSE}, will print a message displaying how long until the next request.}
+
+\item{terminate_on}{Optional. Retry-Argument:Optional vector of numeric HTTP status codes that if found on the response will terminate the retry process. If NULL, will keep retrying while http_error() is TRUE for the response.}
+
+\item{terminate_on_success}{Retry-Argument:Optional. If \code{TRUE}, the default, this will automatically terminate when the request is successful, regardless of the value of terminate_on.}
+
 \item{...}{Optional. Will be added as a list to the top-level of the call-body. Use with caution, as it may overwrite some values defined earlier.}
 }
 \value{
@@ -61,7 +80,7 @@ A terminal message: "Chart xyz succesfully updated." - or an error message.
 }
 \description{
 \lifecycle{maturing}
-Modifies an existing Datawrapper chart.
+Modifies an existing Datawrapper chart. Allows retry if call fails.
 }
 \note{
 This function builds a body for a API-call to the Datawrapper-API.

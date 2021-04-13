@@ -1,7 +1,7 @@
 #' Edits a existing Datawrapper chart
 #'
 #' \lifecycle{maturing}
-#' Modifies an existing Datawrapper chart.
+#' Modifies an existing Datawrapper chart. Allows retry if call fails.
 #'
 #' @section Chart Types:
 #'
@@ -106,6 +106,12 @@
 #' @param describe Optional. A list. Add separate arguments for the description. See \href{https://developer.datawrapper.de/docs/chart-properties}{the documentation} for details.
 #' @param publish Optional. A list. Add separate arguments for publication. See \href{https://developer.datawrapper.de/docs/chart-properties}{the documentation} for details.
 #' @param ... Optional. Will be added as a list to the top-level of the call-body. Use with caution, as it may overwrite some values defined earlier.
+#' @param times Optional. Retry-Argument: Maximum number of requests to attempt.
+#' @param pause_base,pause_cap Optional. Retry-Argument:This method uses exponential back-off with full jitter - this means that each request will randomly wait between 0 and \code{pause_base * 2 ^ attempt} seconds, up to a maximum of \code{pause_cap} seconds.
+#' @param pause_min Optional. Retry-Argument:Minimum time to wait in the backoff; generally only necessary if you need pauses less than one second (which may not be kind to the server, use with caution!).
+#' @param quiet Optional. Retry-Argument:If \code{FALSE}, will print a message displaying how long until the next request.
+#' @param terminate_on Optional. Retry-Argument:Optional vector of numeric HTTP status codes that if found on the response will terminate the retry process. If NULL, will keep retrying while http_error() is TRUE for the response.
+#' @param terminate_on_success Retry-Argument:Optional. If \code{TRUE}, the default, this will automatically terminate when the request is successful, regardless of the value of terminate_on.
 #'
 #' @return A terminal message: "Chart xyz succesfully updated." - or an error message.
 #' @author Benedict Witzenberger
@@ -137,7 +143,8 @@
 #' @export
 dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro = "", annotate = "", byline = "",
                           type = "", source_name = "", source_url = "", folderId = "", axes = list(), data = list(), visualize = list(),
-                          describe = list(), publish = list(), ...) {
+                          describe = list(), publish = list(), times = 3, pause_base = 1, pause_cap = 60, pause_min = 1,
+                          quiet = TRUE, terminate_on = NULL, terminate_on_success = TRUE, ...) {
 
   if (api_key == "environment") {
     api_key <- dw_get_api_key()
@@ -222,13 +229,7 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
 
   # using RETRY
   # set RETRY variables to default if not specified in args
-  times <- 3
-  pause_base <- 1
-  pause_cap <- 60
-  pause_min <- 1
-  quiet <- TRUE # deviates from httr::RETRY()s defaults
-  terminate_on <- NULL
-  terminate_on_success <- TRUE
+
 
   r <- httr::RETRY("PATCH",
               url_upload,

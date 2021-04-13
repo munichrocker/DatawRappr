@@ -82,7 +82,7 @@ Uploads a dataframe to Datawrapper, returns a message." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DatawRappr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2</span>
       </span>
     </div>
 
@@ -150,7 +150,13 @@ Uploads a dataframe to Datawrapper, returns a message." />
 Uploads a dataframe to Datawrapper, returns a message.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dw_data_to_chart</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>chart_id</span>, parse_dates <span class='op'>=</span> <span class='cn'>TRUE</span>, api_key <span class='op'>=</span> <span class='st'>"environment"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>dw_data_to_chart</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  <span class='va'>chart_id</span>,
+  parse_dates <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  api_key <span class='op'>=</span> <span class='st'>"environment"</span>,
+  format <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"csv"</span>, <span class='st'>"tsv"</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -170,6 +176,10 @@ Uploads a dataframe to Datawrapper, returns a message.</p>
     <tr>
       <th>api_key</th>
       <td><p>Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by <code><a href='datawrapper_auth.html'>datawrapper_auth</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>format</th>
+      <td><p>Optional. Switch between <code>csv</code> and <code>tsv</code> representation of data for upload. Might be more forgiving towards commas in strings. Recommended to stick with the default (<code>csv</code>).</p></td>
     </tr>
     </table>
 
