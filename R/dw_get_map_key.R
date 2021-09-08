@@ -33,12 +33,9 @@ dw_get_map_key <- function(api_key = "environment", basemap_id, basemap_value) {
 
   url <- paste0("https://api.datawrapper.de/plugin/basemaps/", basemap_id, "/", basemap_value)
 
-  r <- httr::RETRY("GET", url,
+  parsed <- dw_call_api("GET", url,
                  httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                  .DATAWRAPPR_UA)
-
-
-  parsed <- dw_handle_errors(r)
 
   parsed_tibble <- tibble(parsed[["data"]])
 

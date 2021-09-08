@@ -83,12 +83,8 @@ dw_create_choropleth_map <- function(basemap_id, basemap_value,
   if (folderId != "") {call_body <- rlist::list.append(call_body, folderId = folderId)}
 
   # Call to API:
-  r <- httr::RETRY("POST", "https://api.datawrapper.de/v3/charts", httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+  parsed <- dw_call_api("POST", "https://api.datawrapper.de/v3/charts", httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                   body = call_body, encode = "json", .DATAWRAPPR_UA)
-
-  httr::handle_reset("https://api.datawrapper.de/")
-
-  parsed <- dw_handle_errors(r)
 
   cat(paste0("New maps's id: ", parsed[["id"]], "\n"))
 
