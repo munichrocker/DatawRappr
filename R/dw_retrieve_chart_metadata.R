@@ -40,7 +40,7 @@ dw_retrieve_chart_metadata <- function(chart_id, api_key = "environment") {
 
   url <- paste0("https://api.datawrapper.de/v3/charts/", chart_id)
 
-  r <- httr::GET(url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+  r <- httr::RETRY("GET", url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                  .DATAWRAPPR_UA)
 
   parsed <- dw_handle_errors(r)

@@ -55,7 +55,7 @@ dw_data_to_chart <- function(x, chart_id, parse_dates = TRUE, api_key = "environ
 
   url <- paste0("https://api.datawrapper.de/v3/charts/", chart_id, "/data")
 
-  r <- httr::PUT(url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+  r <- httr::RETRY("PUT", url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                  body = data_body, .DATAWRAPPR_UA)
 
   if (httr::status_code(r) %in% c(200, 201, 202, 204)) {

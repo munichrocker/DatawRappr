@@ -36,7 +36,7 @@ dw_create_folder <- function(name = "", organization_id = "", parent_id = "", ap
   if (organization_id != "") {call_body <- c(call_body, "organizationId" = organization_id)}
   if (parent_id != "") {call_body <- c(call_body, "parentId" = parent_id)}
 
-  r <- httr::POST("https://api.datawrapper.de/v3/folders", httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+  r <- httr::RETRY("POST", "https://api.datawrapper.de/v3/folders", httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                  body = call_body, encode = "json", .DATAWRAPPR_UA)
 
   parsed <- dw_handle_errors(r)

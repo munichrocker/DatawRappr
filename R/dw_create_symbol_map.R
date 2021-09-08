@@ -85,7 +85,7 @@ dw_create_symbol_map <- function(basemap_id,
   if (folderId != "") {call_body <- rlist::list.append(call_body, folderId = folderId)}
 
   # Call to API:
-  r <- httr::POST("https://api.datawrapper.de/v3/charts", httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+  r <- httr::RETRY("POST", "https://api.datawrapper.de/v3/charts", httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                   body = call_body, encode = "json", .DATAWRAPPR_UA)
 
   httr::handle_reset("https://api.datawrapper.de/")

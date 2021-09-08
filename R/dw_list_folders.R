@@ -22,7 +22,7 @@ dw_list_folders <- function(api_key = "environment"){
     api_key <- dw_get_api_key()
   }
 
-  r <- httr::GET("https://api.datawrapper.de/v3/folders", httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+  r <- httr::RETRY("GET", "https://api.datawrapper.de/v3/folders", httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                  encode = "json", .DATAWRAPPR_UA)
 
   parsed <- dw_handle_errors(r)

@@ -37,7 +37,7 @@ dw_copy_chart <- function(copy_from, api_key = "environment") {
 
   url <- paste0("https://api.datawrapper.de/v3/charts/", copy_from, "/copy")
 
-  r <- httr::POST(url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+  r <- httr::RETRY("POST", url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                   encode = "json", .DATAWRAPPR_UA)
 
   parsed <- dw_handle_errors(r)

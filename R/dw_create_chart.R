@@ -63,7 +63,7 @@ dw_create_chart <- function(api_key = "environment", title = "", type = "", fold
   if (folderId != "") {call_body <- rlist::list.append(call_body, folderId = folderId)}
   if (theme != "") {call_body <- rlist::list.append(call_body, theme = theme)}
 
-  r <- httr::POST("https://api.datawrapper.de/v3/charts", httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+  r <- httr::RETRY("POST", "https://api.datawrapper.de/v3/charts", httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                   body = call_body, encode = "json", .DATAWRAPPR_UA)
 
   parsed <- dw_handle_errors(r)

@@ -34,7 +34,7 @@ dw_invite_user <- function(team, email, role = c("member", "admin", "owner"), ap
     "role" = role
   )
 
-  r <- httr::POST(url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+  r <- httr::RETRY("POST", url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                  body = call_body, encode = "form", .DATAWRAPPR_UA)
 
   parsed <- dw_handle_errors(r)
