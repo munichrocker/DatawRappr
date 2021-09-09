@@ -233,7 +233,7 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
     cat(paste0("Chart ", chart_id_response, " succesfully updated.", "\n"))
 
   } else {
-    stop(paste0("There has been an error in the upload process.), immediate. = TRUE)
+    stop(paste0("There has been an error in the upload process."), immediate. = TRUE)
   }
 
   httr::handle_reset(url_upload)
