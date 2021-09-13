@@ -45,10 +45,10 @@ dw_test_key <- function(api_key = "environment") {
 #' @export
 
 print.dw_user <- function(x, ...) {
-  cat("<Datawrapper ", x$path, ">\n", sep = "")
-  cat("Response:\n")
+  message("<Datawrapper ", x$path, ">\n", sep = "")
+  message("Response:\n")
   str(x$response)
-  cat("Content:\n")
+  message("Content:\n")
   str(x$content)
   invisible(x)
 }

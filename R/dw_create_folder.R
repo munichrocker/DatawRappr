@@ -39,7 +39,7 @@ dw_create_folder <- function(name = "", organization_id = "", parent_id = "", ap
   parsed <- dw_call_api("POST", "https://api.datawrapper.de/v3/folders", httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                  body = call_body, encode = "json", .DATAWRAPPR_UA)
 
-  cat(paste0("New Folder '", parsed$name, "' successfully created!", "\n", "Folder-ID is: ", parsed$id, "\n"))
+  message(paste0("New Folder '", parsed$name, "' successfully created!", "\n", "Folder-ID is: ", parsed$id, "\n"))
 
   return(parsed)
 

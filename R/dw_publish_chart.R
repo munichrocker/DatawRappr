@@ -50,7 +50,7 @@ dw_publish_chart <- function(chart_id, api_key = "environment", return_urls = TR
   parsed
 
   if (httr::status_code(r) %in% c(200, 201, 202, 203, 204)) {
-    cat(paste0("Chart ", chart_id, " published!"))
+    message(paste0("Chart ", chart_id, " published!"))
 
     if (isTRUE(return_urls)) {
 
@@ -84,8 +84,8 @@ dw_publish_chart <- function(chart_id, api_key = "environment", return_urls = TR
 #' @export
 
 print.dw_chart <- function(x, ...) {
-  cat("<Datawrapper ", x$path, ">\n", sep = "")
-  cat("Chart-ID: ", x$id, "\n", sep = "")
+  message("<Datawrapper ", x$path, ">\n", sep = "")
+  message("Chart-ID: ", x$id, "\n", sep = "")
   str(x$content)
   invisible(x)
 }

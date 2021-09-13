@@ -28,5 +28,5 @@ dw_delete_chart <- function(chart_id, api_key = "environment") {
   r <- dw_call_api("DELETE", url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                     .DATAWRAPPR_UA)
 
-  cat(paste0("Chart ", chart_id, " sucessfully deleted!", "\n"))
+  message(paste0("Chart ", chart_id, " sucessfully deleted!", "\n"))
 }

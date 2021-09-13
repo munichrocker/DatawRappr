@@ -40,7 +40,7 @@ dw_copy_chart <- function(copy_from, api_key = "environment") {
   parsed <- dw_call_api("POST", url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                   encode = "json", .DATAWRAPPR_UA)
 
-  cat(paste0("New chart's id: ", parsed[["id"]], "\n"))
+  message(paste0("New chart's id: ", parsed[["id"]], "\n"))
 
   structure(
     list(
@@ -56,8 +56,8 @@ dw_copy_chart <- function(copy_from, api_key = "environment") {
 #' @export
 
 print.dw_chart <- function(x, ...) {
-  cat("<Datawrapper ", x$path, ">\n", sep = "")
-  cat("Chart-ID: ", x$id, "\n", sep = "")
+  message("<Datawrapper ", x$path, ">\n", sep = "")
+  message("Chart-ID: ", x$id, "\n", sep = "")
   str(x$content)
   invisible(x)
 }

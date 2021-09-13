@@ -230,7 +230,7 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
 
   if (chart_id == chart_id_response) {
 
-    cat(paste0("Chart ", chart_id_response, " succesfully updated.", "\n"))
+    message(paste0("Chart ", chart_id_response, " succesfully updated.", "\n"))
 
   } else {
     stop(paste0("There has been an error in the upload process."), immediate. = TRUE)

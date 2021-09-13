@@ -67,5 +67,5 @@ dw_data_to_chart <- function(x, chart_id, parse_dates = TRUE, api_key = "environ
   dw_call_api("PUT", url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
               body = data_body, .DATAWRAPPR_UA)
 
-  cat(paste0("Data in ", chart_id, " successfully updated.", "\n"))
+  message(paste0("Data in ", chart_id, " successfully updated.", "\n"))
 }
