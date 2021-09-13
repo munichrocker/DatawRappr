@@ -40,7 +40,10 @@ By default, Datawrapper will create an empty linechart, without a title. The fun
 To populate that chart with data, you can run
 
 ```{r}
-dw_data_to_chart(x = DATAFRAME, chart_id = CHART_ID_OR_dw_chart-object)
+dw_data_to_chart(
+  x = DATAFRAME, 
+  chart_id = CHART_ID_OR_dw_chart-object
+  )
 ```
 
 which uploads an R data.frame to an Datawrapper chart. 
@@ -50,8 +53,14 @@ The data.frame should already be in the right format, only including the expecte
 ## Edit chart's metadata
 
 ```{r}
-dw_edit_chart(chart_id = CHART_ID_OR_dw_chart-object, title = "I'm a title", 
-data = list(`horizontal-header` = "false"))
+dw_edit_chart(
+  chart_id = CHART_ID_OR_dw_chart-object, 
+  title = "I'm a title", 
+data = 
+  list(
+    `horizontal-header` = "false"
+    )
+)
 ```
 
 Datawrapper offers a lot of variability in editing it's charts' metadata. You can find a whole [Documentation here](https://developer.datawrapper.de/docs/chart-properties-1).
@@ -70,7 +79,9 @@ If you want to edit specific arguments in your plot, you can use the arguments `
 When you're finished editing your chart, you might want to publish it:
 
 ```{r}
-dw_publish_chart(chart_id = CHART_ID_OR_dw_chart-object)
+dw_publish_chart(
+  chart_id = CHART_ID_OR_dw_chart-object
+  )
 ```
 
 This function returns a URL to the chart and the embed code, if you set the argument _return_urls_ to `TRUE`.
@@ -80,7 +91,9 @@ This function returns a URL to the chart and the embed code, if you set the argu
 Or you might want to delete a chart:
 
 ```{r}
-dw_delete_chart(chart_id = CHART_ID_OR_dw_chart-object)
+dw_delete_chart(
+  chart_id = CHART_ID_OR_dw_chart-object
+  )
 ```
 
 ## Export chart
@@ -88,6 +101,9 @@ dw_delete_chart(chart_id = CHART_ID_OR_dw_chart-object)
 You can export charts as png - or even in pdf or svg, if you're using a paid plan.
 
 ```{r}
-exported_chart <- dw_export_chart(chart_id = CHART_ID_OR_dw_chart-object, type = c("png", "pdf", "svg"))
+exported_chart <- dw_export_chart(
+  chart_id = CHART_ID_OR_dw_chart-object, 
+  type = c("png", "pdf", "svg")
+  )
 ```
 
