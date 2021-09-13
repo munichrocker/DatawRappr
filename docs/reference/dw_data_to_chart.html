@@ -82,7 +82,7 @@ Uploads a dataframe to Datawrapper, returns a message." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DatawRappr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2</span>
       </span>
     </div>
 
@@ -90,7 +90,7 @@ Uploads a dataframe to Datawrapper, returns a message." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -122,7 +122,7 @@ Uploads a dataframe to Datawrapper, returns a message." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/munichrocker/DatawRappr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -145,12 +145,12 @@ Uploads a dataframe to Datawrapper, returns a message." />
     </div>
 
     <div class="ref-description">
-    <p><a href='https://www.tidyverse.org/lifecycle/#stable'><img src='figures/lifecycle-stable.svg' alt='Stable lifecycle'></a>
+    <p><a href='https://lifecycle.r-lib.org/articles/stages.html#stable'><img src='figures/lifecycle-stable.svg' alt='[Stable]' /></a>
 
 Uploads a dataframe to Datawrapper, returns a message.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dw_data_to_chart</span>(<span class='no'>x</span>, <span class='no'>chart_id</span>, <span class='kw'>parse_dates</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"environment"</span>)</pre>
+    <pre class="usage"><span class='fu'>dw_data_to_chart</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>chart_id</span>, parse_dates <span class='op'>=</span> <span class='cn'>TRUE</span>, api_key <span class='op'>=</span> <span class='st'>"environment"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -179,14 +179,19 @@ Uploads a dataframe to Datawrapper, returns a message.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>This function uploads a R-dataframe to Datawrapper.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Benedict Witzenberger</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>dw_data_to_chart</span>(<span class='no'>df</span>, <span class='st'>"aBcDE"</span>) <span class='co'># uses the preset key in the .Renviron-file</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='fu'>dw_data_to_chart</span><span class='op'>(</span><span class='va'>df</span>, <span class='st'>"aBcDE"</span><span class='op'>)</span> <span class='co'># uses the preset key in the .Renviron-file</span>
 
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>dw_data_to_chart</span>(<span class='no'>df</span>, <span class='kw'>chart_id</span> <span class='kw'>=</span> <span class='st'>"a1B2Cd"</span>, <span class='kw'>api_key</span> <span class='kw'>=</span> <span class='st'>"1234ABCD"</span>) <span class='co'># uses the specified key</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='fu'>dw_data_to_chart</span><span class='op'>(</span><span class='va'>df</span>, chart_id <span class='op'>=</span> <span class='st'>"a1B2Cd"</span>, api_key <span class='op'>=</span> <span class='st'>"1234ABCD"</span><span class='op'>)</span> <span class='co'># uses the specified key</span>
 
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>dw_data_to_chart</span>(<span class='no'>df</span>, <span class='kw'>chart_id</span> <span class='kw'>=</span> <span class='st'>"a1B2Cd"</span>, <span class='kw'>parse_dates</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>) <span class='co'># do not parse Dates to characters</span></div></pre>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='fu'>dw_data_to_chart</span><span class='op'>(</span><span class='va'>df</span>, chart_id <span class='op'>=</span> <span class='st'>"a1B2Cd"</span>, parse_dates <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='co'># do not parse Dates to characters</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -202,7 +207,7 @@ Uploads a dataframe to Datawrapper, returns a message.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DatawRappr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2</span>
       </span>
     </div>
 
@@ -88,7 +88,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -120,7 +120,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/munichrocker/DatawRappr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -146,12 +146,12 @@
     <p>Look up basemaps with their available keys.</p>
     </div>
 
-    <pre class="usage"><span class='no'>dw_basemaps</span></pre>
+    <pre class="usage"><span class='va'>dw_basemaps</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>Data frame with columns</p><dl'>
+    <p>Data frame with columns</p><dl>
 <dt>id</dt><dd><p>id of the basemap. Required for call to <code><a href='dw_get_map_key.html'>dw_get_map_key</a></code>.</p></dd>
 <dt>level</dt><dd><p>Geographic level of this basemap</p></dd>
 <dt>value</dt><dd><p>Value of the keys. Required for call to <code><a href='dw_get_map_key.html'>dw_get_map_key</a></code>.</p></dd>
@@ -165,20 +165,21 @@
     <p>&lt;https://api.datawrapper.de/plugin/basemaps&gt;</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='no'>dw_basemaps</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 4,256 x 6</span><span>
-#&gt;    id        level  slug  value       label        description                  
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                        
-#&gt; </span><span style='color: #555555;'> 1</span><span> world-20… World  world DW_NAME     Name         The three-letter ISO-code of…
-#&gt; </span><span style='color: #555555;'> 2</span><span> world-20… World  world DW_STATE_C… ISO-Code     The written name of the coun…
-#&gt; </span><span style='color: #555555;'> 3</span><span> world-20… World  world GERMAN_NAM… Name (Germa… The written name of the coun…
-#&gt; </span><span style='color: #555555;'> 4</span><span> world-20… World  world GERMAN_NAME Name old (G… The written name of the coun…
-#&gt; </span><span style='color: #555555;'> 5</span><span> africa-2… Africa afri… DW_NAME     Name         The three-letter ISO-code of…
-#&gt; </span><span style='color: #555555;'> 6</span><span> africa-2… Africa afri… DW_STATE_C… ISO-Code     The written name of the coun…
-#&gt; </span><span style='color: #555555;'> 7</span><span> europe    Europe euro… ISO_A3      ISO 3-digit  DE21, FR24, TR42, ...        
-#&gt; </span><span style='color: #555555;'> 8</span><span> europe    Europe euro… ISO_A2      ISO 2-digit  DE21, FR24, TR42, ...        
-#&gt; </span><span style='color: #555555;'> 9</span><span> europe    Europe euro… NAME_NEW    Names        Olpe, Somerset, Toledo, ...  
-#&gt; </span><span style='color: #555555;'>10</span><span> europe    Europe euro… GERMAN_NAM… Names (Germ… Olpe, Somerset, Toledo, ...  
-#&gt; </span><span style='color: #555555;'># … with 4,246 more rows</span><span></div></span></pre>
+    <pre class="examples"><div class='input'>  <span class='va'>dw_basemaps</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4,980 × 6</span>
+#&gt;    id                      level  slug   value           label             description
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      
+#&gt; <span style='color: #BCBCBC;'> 1</span> world-2019              World  world  DW_NAME         Name              The three-…
+#&gt; <span style='color: #BCBCBC;'> 2</span> world-2019              World  world  NAME_SHORT      Name (short)      The three-…
+#&gt; <span style='color: #BCBCBC;'> 3</span> world-2019              World  world  DW_STATE_CODE   ISO-Code          The writte…
+#&gt; <span style='color: #BCBCBC;'> 4</span> world-2019              World  world  GERMAN_NAME_NEW Name (German)     The writte…
+#&gt; <span style='color: #BCBCBC;'> 5</span> world-2019              World  world  GERMAN_NAME     Name old (German) The writte…
+#&gt; <span style='color: #BCBCBC;'> 6</span> africa-2020             Africa africa DW_NAME         Name              The three-…
+#&gt; <span style='color: #BCBCBC;'> 7</span> africa-2020             Africa africa DW_STATE_CODE   ISO-Code          The writte…
+#&gt; <span style='color: #BCBCBC;'> 8</span> europe-sovereign-states Europe europe ISO_3_SOV       ISO 3-digit       DE21, FR24…
+#&gt; <span style='color: #BCBCBC;'> 9</span> europe-sovereign-states Europe europe ISO_2_SOV       ISO 2-digit       DE21, FR24…
+#&gt; <span style='color: #BCBCBC;'>10</span> europe-sovereign-states Europe europe NAME_SOV        Names             Olpe, Some…
+#&gt; <span style='color: #949494;'># … with 4,970 more rows</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -194,7 +195,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

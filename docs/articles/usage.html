@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DatawRappr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2</span>
       </span>
     </div>
 
@@ -47,7 +47,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -79,7 +79,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/munichrocker/DatawRappr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -93,7 +93,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="usage_files/header-attrs-2.9/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Using the API</h1>
@@ -113,7 +113,8 @@
 <h2 class="hasAnchor">
 <a href="#create-a-chart" class="anchor"></a>Create a chart</h2>
 <p>To <strong>create an empty chart</strong>, you can use</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="../reference/dw_create_chart.html">dw_create_chart</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/dw_create_chart.html">dw_create_chart</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>which will use the API key stored locally on your system.</p>
 <p>By default, Datawrapper will create an empty linechart, without a title. The function returns a <strong>dw_chart</strong>-object with the metadata-elements from the API. This object can be used to populate the <code>chart_id</code>-argument in all other functions - which means you don’t have to deal with it. Just store the response from <code><a href="../reference/dw_create_chart.html">dw_create_chart()</a></code> in your R-environment.</p>
 </div>
@@ -121,15 +122,26 @@
 <h2 class="hasAnchor">
 <a href="#add-data-to-the-chart" class="anchor"></a>Add data to the chart</h2>
 <p>To populate that chart with data, you can run</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="../reference/dw_data_to_chart.html">dw_data_to_chart</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">DATAFRAME</span>, <span class="kw">chart_id</span> <span class="kw">=</span> <span class="no">CHART_ID_OR_dw_chart</span>-<span class="no">object</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/dw_data_to_chart.html">dw_data_to_chart</a></span><span class="op">(</span>
+  x <span class="op">=</span> <span class="va">DATAFRAME</span>, 
+  chart_id <span class="op">=</span> <span class="va">CHART_ID_OR_dw_chart</span><span class="op">-</span><span class="va">object</span>
+  <span class="op">)</span></code></pre></div>
 <p>which uploads an R data.frame to an Datawrapper chart.</p>
 <p>The data.frame should already be in the right format, only including the expected columns for the chart. The API will asume, that the first row contains headers. If that’s not true, you have to edit the metadata afterwards:</p>
 </div>
 <div id="edit-charts-metadata" class="section level2">
 <h2 class="hasAnchor">
 <a href="#edit-charts-metadata" class="anchor"></a>Edit chart’s metadata</h2>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="../reference/dw_edit_chart.html">dw_edit_chart</a></span>(<span class="kw">chart_id</span> <span class="kw">=</span> <span class="no">CHART_ID_OR_dw_chart</span>-<span class="no">object</span>, <span class="kw">title</span> <span class="kw">=</span> <span class="st">"I'm a title"</span>,
-<span class="kw">data</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">`horizontal-header`</span> <span class="kw">=</span> <span class="st">"false"</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/dw_edit_chart.html">dw_edit_chart</a></span><span class="op">(</span>
+  chart_id <span class="op">=</span> <span class="va">CHART_ID_OR_dw_chart</span><span class="op">-</span><span class="va">object</span>, 
+  title <span class="op">=</span> <span class="st">"I'm a title"</span>, 
+data <span class="op">=</span> 
+  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+    `horizontal-header` <span class="op">=</span> <span class="st">"false"</span>
+    <span class="op">)</span>
+<span class="op">)</span></code></pre></div>
 <p>Datawrapper offers a lot of variability in editing it’s charts’ metadata. You can find a whole <a href="https://developer.datawrapper.de/docs/chart-properties-1">Documentation here</a>.</p>
 <p>To speed things up, the <code><a href="../reference/dw_edit_chart.html">dw_edit_chart()</a></code>-function has some built-in arguments for common transformations:</p>
 <ul>
@@ -147,20 +159,30 @@
 </ul>
 <p>If you want to edit specific arguments in your plot, you can use the arguments <code>data</code>, <code>visualize</code>, <code>describe</code> and <code>publish</code> to include lists to the API call which change all possible settings in a chart, as shown in the example above.</p>
 <p>When you’re finished editing your chart, you might want to publish it:</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="../reference/dw_publish_chart.html">dw_publish_chart</a></span>(<span class="kw">chart_id</span> <span class="kw">=</span> <span class="no">CHART_ID_OR_dw_chart</span>-<span class="no">object</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/dw_publish_chart.html">dw_publish_chart</a></span><span class="op">(</span>
+  chart_id <span class="op">=</span> <span class="va">CHART_ID_OR_dw_chart</span><span class="op">-</span><span class="va">object</span>
+  <span class="op">)</span></code></pre></div>
 <p>This function returns a URL to the chart and the embed code, if you set the argument <em>return_urls</em> to <code>TRUE</code>.</p>
 </div>
 <div id="delete-chart" class="section level2">
 <h2 class="hasAnchor">
 <a href="#delete-chart" class="anchor"></a>Delete chart</h2>
 <p>Or you might want to delete a chart:</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="../reference/dw_delete_chart.html">dw_delete_chart</a></span>(<span class="kw">chart_id</span> <span class="kw">=</span> <span class="no">CHART_ID_OR_dw_chart</span>-<span class="no">object</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/dw_delete_chart.html">dw_delete_chart</a></span><span class="op">(</span>
+  chart_id <span class="op">=</span> <span class="va">CHART_ID_OR_dw_chart</span><span class="op">-</span><span class="va">object</span>
+  <span class="op">)</span></code></pre></div>
 </div>
 <div id="export-chart" class="section level2">
 <h2 class="hasAnchor">
 <a href="#export-chart" class="anchor"></a>Export chart</h2>
 <p>You can export charts as png - or even in pdf or svg, if you’re using a paid plan.</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">exported_chart</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dw_export_chart.html">dw_export_chart</a></span>(<span class="kw">chart_id</span> <span class="kw">=</span> <span class="no">CHART_ID_OR_dw_chart</span>-<span class="no">object</span>, <span class="kw">type</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"png"</span>, <span class="st">"pdf"</span>, <span class="st">"svg"</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">exported_chart</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dw_export_chart.html">dw_export_chart</a></span><span class="op">(</span>
+  chart_id <span class="op">=</span> <span class="va">CHART_ID_OR_dw_chart</span><span class="op">-</span><span class="va">object</span>, 
+  type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"png"</span>, <span class="st">"pdf"</span>, <span class="st">"svg"</span><span class="op">)</span>
+  <span class="op">)</span></code></pre></div>
 </div>
 </div>
   </div>
@@ -180,7 +202,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
