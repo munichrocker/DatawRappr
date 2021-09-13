@@ -1,3 +1,19 @@
+# DatawRappr 1.2
+
+## Bug Fixes
+
+* Replace `list.append` to base `append` for `...` in `dw_edit_chart()`. (fixes #59)
+
+* Add transparent export option.
+
+## Enhancements
+
+* most requests are now using `RETRY()` to connect. (thanks @fin, resolves #58)
+
+* Allow to switch data upload type between csv and tsv. (f9e078e2cf1632d29cd9475246e9a1e3a7c2f1de, as proposed in #57)
+
+* switched `cat()` to `message()`. (resolves #56)
+
 # DatawRappr 1.1.4
 
 ## Bug Fixes
