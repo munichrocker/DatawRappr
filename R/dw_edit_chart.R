@@ -209,7 +209,7 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
   additional_arguments <- list(...)
 
   if (length(additional_arguments) > 0) {
-    call_body <- rlist::list.append(call_body, additional_arguments)
+    call_body <- append(call_body, additional_arguments)
   }
 
   # send call to API
