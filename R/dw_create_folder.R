@@ -36,17 +36,10 @@ dw_create_folder <- function(name = "", organization_id = "", parent_id = "", ap
   if (organization_id != "") {call_body <- c(call_body, "organizationId" = organization_id)}
   if (parent_id != "") {call_body <- c(call_body, "parentId" = parent_id)}
 
-  r <- httr::POST("https://api.datawrapper.de/v3/folders", httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+  parsed <- dw_call_api("POST", "https://api.datawrapper.de/v3/folders", httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                  body = call_body, encode = "json", .DATAWRAPPR_UA)
 
-  parsed <- dw_handle_errors(r)
-
-  if (httr::status_code(r) %in% c(200, 201, 202, 204)) {
-    cat(paste0("New Folder '", parsed$name, "' successfully created!", "\n",
-                 "Folder-ID is: ", parsed$id, "\n"))
-  } else {
-    stop(paste0("There has been an error in the folder creation process. Statuscode of the response: ", httr::status_code(r)), immediate. = TRUE)
-  }
+  cat(paste0("New Folder '", parsed$name, "' successfully created!", "\n", "Folder-ID is: ", parsed$id, "\n"))
 
   return(parsed)
 

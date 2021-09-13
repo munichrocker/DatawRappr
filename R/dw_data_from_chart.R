@@ -27,13 +27,9 @@ dw_data_from_chart <- function(chart_id, api_key = "environment") {
 
   url <- paste0("https://api.datawrapper.de/v3/charts/", chart_id, "/data")
 
-  r <- httr::GET(url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")), .DATAWRAPPR_UA)
+  x <- dw_call_api("GET", url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")), .DATAWRAPPR_UA, enforce_json_response=F)
 
-  if (!(httr::status_code(r) %in% c(200, 201, 202, 204))) {
-    stop(paste0("There has been an error in the download process. Statuscode of the response: ", httr::status_code(r)), immediate. = TRUE)
-  }
-
-  x <- as.data.frame(httr::content(r))
+  x <- as.data.frame(x)
 
   return(x)
 

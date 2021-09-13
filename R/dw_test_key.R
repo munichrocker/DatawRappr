@@ -28,11 +28,9 @@ dw_test_key <- function(api_key = "environment") {
     api_key <- dw_get_api_key()
   }
 
-  r <- httr::GET("https://api.datawrapper.de/v3/me",
+  parsed <- dw_call_api("GET", "https://api.datawrapper.de/v3/me",
                  httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                  .DATAWRAPPR_UA)
-
-  parsed <- dw_handle_errors(r)
 
   structure(
     list(

@@ -48,11 +48,9 @@ dw_list_charts <- function(api_key = "environment", userId = "", published = "",
 
   if (limit != "") {call_body <- rlist::list.append(charts_query, limit = limit)}
 
-  r <- httr::GET("https://api.datawrapper.de/v3/charts",
+  parsed <- dw_call_api("GET", "https://api.datawrapper.de/v3/charts",
                  httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                  query = charts_query, encode = "json", .DATAWRAPPR_UA)
-
-  parsed <- dw_handle_errors(r)
 
   out <- bind_rows(parsed$list)
 

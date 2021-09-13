@@ -27,4 +27,6 @@ test_that("Multiple charts can be edited and sent data", {
                 source_name='and',
                 annotate='desert you')
   dw_publish_chart(chart_2)
+
+  expect_true(T) # expect to reach here without quitting
 })

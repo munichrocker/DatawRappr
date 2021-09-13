@@ -46,7 +46,7 @@ dw_export_chart <- function(chart_id,
 
   url <- sprintf("https://api.datawrapper.de/v3/charts/%s/export/%s", chart_id, type)
 
-  r <- httr::GET(url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+  r <- dw_call_api("GET", url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                  query = list(
                    unit =  match.arg(trimws(tolower(unit[1])), c("px", "inch", "mm")),
                    mode =  match.arg(trimws(tolower(mode[1])), c("rgb", "cmyk")),
@@ -58,7 +58,7 @@ dw_export_chart <- function(chart_id,
                    borderColor = border_color[1],
                    transparent = trimws(tolower(as.character(transparent[1])))
                  ),
-                 .DATAWRAPPR_UA)
+                 .DATAWRAPPR_UA, return_raw_response=T)
 
   if (httr::status_code(r) == 200) {
 

@@ -217,25 +217,23 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
   # solution for API v1:
   # url_upload <- paste0("https://api.datawrapper.de/charts/", chart_id)
   #
-  # r <- httr::PUT(url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+  # r <- dw_call_api("PUT", url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
   #                       body = call_body, encode = "json", .DATAWRAPPR_UA)
 
   url_upload <- paste0("https://api.datawrapper.de/v3/charts/", chart_id)
-  r <- httr::PATCH(url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+  parsed <- dw_call_api("PATCH", url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                    body = call_body, encode = "json", .DATAWRAPPR_UA)
-
-  parsed <- dw_handle_errors(r)
 
   chart_id_response <- parsed["id"][[1]] #for v3: parsed["id"][[1]], for v1: parsed[["data"]][[1]][["id"]]
 
   try(if (chart_id != chart_id_response) stop(paste0("The chart_ids between call (",  chart_id ,") and response (",  chart_id_response ,") do not match. Try again and check API.")))
 
-  if (chart_id == chart_id_response & httr::status_code(r) %in% c(200, 201, 202, 204)) {
+  if (chart_id == chart_id_response) {
 
     cat(paste0("Chart ", chart_id_response, " succesfully updated.", "\n"))
 
   } else {
-    stop(paste0("There has been an error in the upload process. Statuscode of the response: ", httr::status_code(r)), immediate. = TRUE)
+    stop(paste0("There has been an error in the upload process."), immediate. = TRUE)
   }
 
   httr::handle_reset(url_upload)

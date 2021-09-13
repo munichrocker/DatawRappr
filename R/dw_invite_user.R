@@ -34,12 +34,10 @@ dw_invite_user <- function(team, email, role = c("member", "admin", "owner"), ap
     "role" = role
   )
 
-  r <- httr::POST(url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
+  parsed <- dw_call_api("POST", url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                  body = call_body, encode = "form", .DATAWRAPPR_UA)
 
-  parsed <- dw_handle_errors(r)
-
-  if (r$status_code == 201 & is.null(parsed)) message(paste0("The emailadress ", email, " has successfully been added to team ", team, ".\n"))
+  message(paste0("The emailadress ", email, " has successfully been added to team ", team, ".\n"))
 
   return(parsed)
 
