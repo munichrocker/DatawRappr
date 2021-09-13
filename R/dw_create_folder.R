@@ -22,7 +22,7 @@
 
 #' @rdname dw_create_folder
 #' @export
-dw_create_folder <- function(name = "", organization_id = "", parent_id = "", api_key = "environment"){
+dw_create_folder <- function(name = "", organization_id = NULL, parent_id = NULL, api_key = "environment"){
 
   if (api_key == "environment") {
     api_key <- dw_get_api_key()
@@ -33,8 +33,8 @@ dw_create_folder <- function(name = "", organization_id = "", parent_id = "", ap
   # create empty body for API-call
   call_body <- list("name" = name)
 
-  if (organization_id != "") {call_body <- c(call_body, "organizationId" = organization_id)}
-  if (parent_id != "") {call_body <- c(call_body, "parentId" = parent_id)}
+  if (!is.null(organization_id)) {call_body <- c(call_body, "organizationId" = organization_id)}
+  if (!is.null(parent_id)) {call_body <- c(call_body, "parentId" = parent_id)}
 
   parsed <- dw_call_api("POST", "https://api.datawrapper.de/v3/folders", httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                  body = call_body, encode = "json", .DATAWRAPPR_UA)

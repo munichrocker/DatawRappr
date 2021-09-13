@@ -50,7 +50,7 @@
 #' \dontrun{dw_create_chart(api_key = "1234ABCD")} # uses the specified key
 #' @rdname dw_create_chart
 #' @export
-dw_create_chart <- function(api_key = "environment", title = "", type = "", folderId = "", theme = "") {
+dw_create_chart <- function(api_key = "environment", title = NULL, type = NULL, folderId = NULL, theme = NULL) {
 
   if (api_key == "environment") {
     api_key <- dw_get_api_key()
@@ -58,10 +58,10 @@ dw_create_chart <- function(api_key = "environment", title = "", type = "", fold
 
   call_body <- list(metadata = list())
 
-  if (title != "") {call_body <- rlist::list.append(call_body, title = title)}
-  if (type != "") {call_body <- rlist::list.append(call_body, type = type)}
-  if (folderId != "") {call_body <- rlist::list.append(call_body, folderId = folderId)}
-  if (theme != "") {call_body <- rlist::list.append(call_body, theme = theme)}
+  if (!is.null(title)) {call_body <- rlist::list.append(call_body, title = title)}
+  if (!is.null(type)) {call_body <- rlist::list.append(call_body, type = type)}
+  if (!is.null(folderId)) {call_body <- rlist::list.append(call_body, folderId = folderId)}
+  if (!is.null(theme)) {call_body <- rlist::list.append(call_body, theme = theme)}
 
   parsed <- dw_call_api("POST", "https://api.datawrapper.de/v3/charts", httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                   body = call_body, encode = "json", .DATAWRAPPR_UA)

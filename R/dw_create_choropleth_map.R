@@ -52,7 +52,7 @@
 #' @export
 dw_create_choropleth_map <- function(basemap_id, basemap_value,
                                      values_col, keys_col, api_key = "environment",
-                                     title = "", tooltip = list(title, body, fields = c()), folderId = "") {
+                                     title = NULL, tooltip = list(title, body, fields = c()), folderId = NULL) {
 
   if (api_key == "environment") {
     api_key <- dw_get_api_key()
@@ -79,8 +79,8 @@ dw_create_choropleth_map <- function(basemap_id, basemap_value,
     )
   }
 
-  if (title != "") {call_body <- rlist::list.append(call_body, title = title)}
-  if (folderId != "") {call_body <- rlist::list.append(call_body, folderId = folderId)}
+  if (!is.null(title)) {call_body <- rlist::list.append(call_body, title = title)}
+  if (!is.null(folderId)) {call_body <- rlist::list.append(call_body, folderId = folderId)}
 
   # Call to API:
   parsed <- dw_call_api("POST", "https://api.datawrapper.de/v3/charts", httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
