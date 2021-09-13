@@ -6,10 +6,10 @@
 \usage{
 dw_create_chart(
   api_key = "environment",
-  title = "",
-  type = "",
-  folderId = "",
-  theme = ""
+  title = NULL,
+  type = NULL,
+  folderId = NULL,
+  theme = NULL
 )
 }
 \arguments{

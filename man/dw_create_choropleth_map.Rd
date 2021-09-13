@@ -10,9 +10,9 @@ dw_create_choropleth_map(
   values_col,
   keys_col,
   api_key = "environment",
-  title = "",
+  title = NULL,
   tooltip = list(title, body, fields = c()),
-  folderId = ""
+  folderId = NULL
 )
 }
 \arguments{

@@ -141,8 +141,8 @@
 #'
 #' @rdname dw_edit_chart
 #' @export
-dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro = "", annotate = "", byline = "",
-                          type = "", source_name = "", source_url = "", folderId = "", axes = list(), data = list(), visualize = list(),
+dw_edit_chart <- function(chart_id, api_key = "environment", title = NULL, intro = NULL, annotate = NULL, byline = NULL,
+                          type = NULL, source_name = NULL, source_url = NULL, folderId = NULL, axes = list(), data = list(), visualize = list(),
                           describe = list(), publish = list(), times = 3, pause_base = 1, pause_cap = 60, pause_min = 1,
                           quiet = TRUE, terminate_on = NULL, terminate_on_success = TRUE, ...) {
 
@@ -156,16 +156,16 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
   call_body <- list(metadata = list())
 
   # change only specified parts of existing data
-  if (title != "") {call_body <- rlist::list.append(call_body, title = title)}
-  if (type != "") {call_body <- rlist::list.append(call_body, type = type)}
-  if (folderId != "") {call_body <- rlist::list.append(call_body, folderId = folderId)}
+  if (!is.null(title)) {call_body <- rlist::list.append(call_body, title = title)}
+  if (!is.null(type)) {call_body <- rlist::list.append(call_body, type = type)}
+  if (!is.null(folderId)) {call_body <- rlist::list.append(call_body, folderId = folderId)}
 
-  if (intro != "") {call_body$metadata$describe$intro <- intro}
-  if (annotate != "") {call_body$metadata$annotate$notes <- annotate}
+  if (!is.null(intro)) {call_body$metadata$describe$intro <- intro}
+  if (!is.null(annotate)) {call_body$metadata$annotate$notes <- annotate}
 
-  if (byline != "") {call_body$metadata$describe$byline <- byline}
-  if (source_name != "") {call_body$metadata$describe$`source-name` <- source_name}
-  if (source_url != "") {
+  if (!is.null(byline)) {call_body$metadata$describe$byline <- byline}
+  if (!is.null(source_name)) {call_body$metadata$describe$`source-name` <- source_name}
+  if (!is.null(source_url)) {
 
     if (grepl("^http", source_url) == FALSE) {  # include simple test, if url is starting with http(s)
       source_url <- paste0("http://", source_url)
@@ -223,9 +223,6 @@ dw_edit_chart <- function(chart_id, api_key = "environment", title = "", intro =
   # upload modified data
 
   url_upload <- paste0("https://api.datawrapper.de/v3/charts/", chart_id)
-
-  # r <- httr::PATCH(url_upload, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
-  #                  body = call_body, encode = "json", .DATAWRAPPR_UA)
 
   # using RETRY
   # set RETRY variables to default if not specified in args

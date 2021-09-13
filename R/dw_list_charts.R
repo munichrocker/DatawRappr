@@ -22,7 +22,7 @@
 #'
 #' @rdname dw_list_charts
 #' @export
-dw_list_charts <- function(api_key = "environment", userId = "", published = "", search = "", order = "DESC", orderBy = "createdAt", limit = "") {
+dw_list_charts <- function(api_key = "environment", userId = NULL, published = NULL, search = NULL, order = "DESC", orderBy = "createdAt", limit = NULL) {
 
   if (api_key == "environment") {
     api_key <- dw_get_api_key()
@@ -30,9 +30,9 @@ dw_list_charts <- function(api_key = "environment", userId = "", published = "",
 
   charts_query <- list()
 
-  if (userId != "") {call_body <- rlist::list.append(charts_query, userId = userId)}
-  if (published != "") {call_body <- rlist::list.append(charts_query, published = published)}
-  if (search != "") {call_body <- rlist::list.append(charts_query, search = search)}
+  if (!is.null(userId)) {call_body <- rlist::list.append(charts_query, userId = userId)}
+  if (!is.null(published)) {call_body <- rlist::list.append(charts_query, published = published)}
+  if (!is.null(search)) {call_body <- rlist::list.append(charts_query, search = search)}
 
   if (order != "DESC") {
     call_body <- rlist::list.append(charts_query, order = order)
@@ -46,7 +46,7 @@ dw_list_charts <- function(api_key = "environment", userId = "", published = "",
     call_body <- rlist::list.append(charts_query, orderBy = "createdAt")
   }
 
-  if (limit != "") {call_body <- rlist::list.append(charts_query, limit = limit)}
+  if (!is.null(limit)) {call_body <- rlist::list.append(charts_query, limit = limit)}
 
   r <- httr::GET("https://api.datawrapper.de/v3/charts",
                  httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
