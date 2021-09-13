@@ -7,6 +7,8 @@
 #' @param chart_id Required. A Datawrapper-chart-id as character string, usually a five character combination of digits and letters, e.g. "aBcDe". Or a \emph{dw_chart}-object.
 #' @param parse_dates Optional. Defaults to TRUE. Should columns that contain a Date or as POSIX-object be automatically converted to a character vector?
 #' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
+#' @param format Optional. Switch between \code{csv} and \code{tsv} representation of data for upload. Might be more forgiving towards commas in strings. Recommended to stick with the default (\code{csv}).
+#'
 #'
 #' @return A terminal message.
 #' @author Benedict Witzenberger
@@ -21,7 +23,7 @@
 #'
 #' @rdname dw_data_to_chart
 #' @export
-dw_data_to_chart <- function(x, chart_id, parse_dates = TRUE, api_key = "environment") {
+dw_data_to_chart <- function(x, chart_id, parse_dates = TRUE, api_key = "environment", format = c("csv", "tsv")) {
 
   if (api_key == "environment") {
     api_key <- dw_get_api_key()
@@ -41,8 +43,15 @@ dw_data_to_chart <- function(x, chart_id, parse_dates = TRUE, api_key = "environ
     x[idx] <- lapply(x[idx], as.character)
   }
 
-  # collapse the data in the dataframe as a string
-  data_body <- readr::format_csv(x)
+  # use csv or tsv representation, depending on arg
+  if (format == "csv") {
+    data_body <- readr::format_csv(x)
+  } else if (format == "tsv") {
+    data_body <- readr::format_tsv(x)
+  } else {
+    stop("Unknown format-argument! Select csv or tsv.")
+  }
+
 
   # # test if header contains separator symbol
   # try(if (TRUE %in% grepl(",", names(x))) stop("The Dataframe's header contains a comma - which is used as the column separator. Remove the comma (e.g. with names()) and try again."))
