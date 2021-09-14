@@ -44,6 +44,7 @@ dw_data_to_chart <- function(x, chart_id, parse_dates = TRUE, api_key = "environ
   }
 
   # use csv or tsv representation, depending on arg
+  format <- match.arg(format, choices = c("csv", "tsv"))
   if (format == "csv") {
     data_body <- readr::format_csv(x)
   } else if (format == "tsv") {
