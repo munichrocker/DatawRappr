@@ -38,7 +38,7 @@ dw_publish_chart <- function(chart_id, api_key = "environment", return_urls = TR
 
   chart_id <- dw_check_chart_id(chart_id)
 
-  url <- paste0("https://api.datawrapper.de/charts/", chart_id, "/publish")
+  url <- paste0("https://api.datawrapper.de/v3/charts/", chart_id, "/publish")
 
   r <- dw_call_api("POST", url, httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                   .DATAWRAPPR_UA, return_raw_response=T)
@@ -67,7 +67,7 @@ dw_publish_chart <- function(chart_id, api_key = "environment", return_urls = TR
         list(
           content = parsed,
           path = "https://api.datawrapper.de/v3/charts",
-          id = parsed[["id"]],
+          id = parsed[["data"]][[1]][["id"]],
           publicUrl = parsed$data[[1]]$publicUrl,
           iframeCode = parsed$data[[1]]$metadata$publish$`embed-codes`$`embed-method-responsive`
         ),
