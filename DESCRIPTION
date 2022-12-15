@@ -24,7 +24,7 @@ Imports:
     needs,
     jsonlite,
     lifecycle
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.0
 Suggests: 
     httptest,
     testthat (>= 2.1.0)
