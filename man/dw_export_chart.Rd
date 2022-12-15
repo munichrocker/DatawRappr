@@ -16,6 +16,7 @@ dw_export_chart(
   border_width = 0,
   border_color = NULL,
   transparent = FALSE,
+  dark = FALSE,
   api_key = "environment"
 )
 }
@@ -41,6 +42,8 @@ will have a 20px margin. Default is \code{0}.}
 \item{border_color}{color of the border; The default is the same as the visualization (likely \code{white}).}
 
 \item{transparent}{make the background transparent; The default is \code{FALSE}; will override \code{border_color}.}
+
+\item{dark}{activate the dark mode; The default is \code{FALSE}.}
 
 \item{api_key}{Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.}
 }

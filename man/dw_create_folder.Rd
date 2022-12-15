@@ -6,8 +6,8 @@
 \usage{
 dw_create_folder(
   name = "",
-  organization_id = "",
-  parent_id = "",
+  organization_id = NULL,
+  parent_id = NULL,
   api_key = "environment"
 )
 }

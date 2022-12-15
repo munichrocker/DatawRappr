@@ -16,6 +16,7 @@
 #'        will have a 20px margin. Default is `0`.
 #' @param border_color color of the border; The default is the same as the visualization (likely `white`).
 #' @param transparent make the background transparent; The default is `FALSE`; will override `border_color`.
+#' @param dark activate the dark mode; The default is `FALSE`.
 #' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
 #' @note PDF and SVG export require paid plans
 #' @return for `png`, a `{magick}` object; for `pdf`, invisible raw vector with PDF content; for `svg`, invisible character vector with SVG content
@@ -34,6 +35,7 @@ dw_export_chart <- function(chart_id,
                             border_width = 0,
                             border_color = NULL,
                             transparent = FALSE,
+                            dark = FALSE,
                             api_key = "environment") {
 
   if (api_key == "environment") {
@@ -56,7 +58,8 @@ dw_export_chart <- function(chart_id,
                    scale = scale[1],
                    borderWidth = as.numeric(border_width[1]),
                    borderColor = border_color[1],
-                   transparent = trimws(tolower(as.character(transparent[1])))
+                   transparent = trimws(tolower(as.character(transparent[1]))),
+                   dark = trimws(tolower(as.character(dark[1])))
                  ),
                  .DATAWRAPPR_UA, return_raw_response=T)
 

@@ -7,14 +7,14 @@
 dw_edit_chart(
   chart_id,
   api_key = "environment",
-  title = "",
-  intro = "",
-  annotate = "",
-  byline = "",
-  type = "",
-  source_name = "",
-  source_url = "",
-  folderId = "",
+  title = NULL,
+  intro = NULL,
+  annotate = NULL,
+  byline = NULL,
+  type = NULL,
+  source_name = NULL,
+  source_url = NULL,
+  folderId = NULL,
   axes = list(),
   data = list(),
   visualize = list(),
@@ -44,6 +44,8 @@ dw_edit_chart(
 
 \item{folderId}{Optional. Moves the chart to the specified folder (by folder-id, which can be found using \code{\link{dw_list_folders}}).}
 
+\item{axes}{Optional. A list which specifies the axes.}
+
 \item{data}{Optional. A list. Add separate arguments for the data. See \href{https://developer.datawrapper.de/docs/chart-properties}{the documentation} for details.}
 
 \item{visualize}{Optional. A list. Add separate arguments for the visualization. See \href{https://developer.datawrapper.de/docs/chart-properties}{the documentation} for details.}
@@ -53,8 +55,6 @@ dw_edit_chart(
 \item{publish}{Optional. A list. Add separate arguments for publication. See \href{https://developer.datawrapper.de/docs/chart-properties}{the documentation} for details.}
 
 \item{...}{Optional. Will be added as a list to the top-level of the call-body. Use with caution, as it may overwrite some values defined earlier.}
-
-\item{axes.}{Optional. A list which specifies the axes.}
 }
 \value{
 A terminal message: "Chart xyz succesfully updated." - or an error message.
@@ -103,7 +103,9 @@ Datawrapper defines the properties of a chart in the following structure.
 
 Note: Not all possibilities are displayed, as different chart-types offer different design features.
 
-You can find more on this structure in the \href{https://developer.datawrapper.de/docs/chart-properties}{API-Guide}.\preformatted{ \{
+You can find more on this structure in the \href{https://developer.datawrapper.de/docs/chart-properties}{API-Guide}.
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{ \{
 "id": "6Ba3L",
 "type": "d3-scatter-plot",
 "title": "A grat chart",
@@ -153,7 +155,7 @@ You can find more on this structure in the \href{https://developer.datawrapper.d
 \},
 "url": "/v3/charts/6Ba3L"
 \}
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{

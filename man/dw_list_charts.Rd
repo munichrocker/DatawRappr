@@ -6,12 +6,12 @@
 \usage{
 dw_list_charts(
   api_key = "environment",
-  userId = "",
-  published = "",
-  search = "",
+  userId = NULL,
+  published = NULL,
+  search = NULL,
   order = "DESC",
   orderBy = "createdAt",
-  limit = ""
+  limit = NULL
 )
 }
 \arguments{
