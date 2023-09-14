@@ -53,7 +53,7 @@ dw_list_charts <- function(api_key = "environment", userId = NULL, published = N
                  query = charts_query, encode = "json", .DATAWRAPPR_UA)
 
   # out <- bind_rows(parsed$list)
-  out <- dplyr::as_tibble(do.call(rbind, parsed$list))
+  out <- tibble::as_tibble(do.call(rbind, parsed$list))
 
   return(out)
 
