@@ -52,7 +52,8 @@ dw_list_charts <- function(api_key = "environment", userId = NULL, published = N
                  httr::add_headers(Authorization = paste("Bearer", api_key, sep = " ")),
                  query = charts_query, encode = "json", .DATAWRAPPR_UA)
 
-  out <- bind_rows(parsed$list)
+  # out <- bind_rows(parsed$list)
+  out <- dplyr::as_tibble(do.call(rbind, parsed$list))
 
   return(out)
 
