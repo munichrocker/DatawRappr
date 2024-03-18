@@ -48,6 +48,7 @@ If not specified, the new chart will by default be created without a title and w
 \item \code{stacked-column-chart} : Stacked Column Chart
 \item \code{d3-area} : Area Chart
 \item \code{d3-lines} : Line Chart
+\item \code{multiple-lines} : Multiple Lines Chart
 \item \code{d3-pies} : Pie Chart
 \item \code{d3-donuts} : Donut Chart
 \item \code{d3-multiple-pies} : Multiple Pies

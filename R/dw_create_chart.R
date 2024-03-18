@@ -17,6 +17,7 @@
 #' - `stacked-column-chart` : Stacked Column Chart
 #' - `d3-area` : Area Chart
 #' - `d3-lines` : Line Chart
+#' - `multiple-lines` : Multiple Lines Chart
 #' - `d3-pies` : Pie Chart
 #' - `d3-donuts` : Donut Chart
 #' - `d3-multiple-pies` : Multiple Pies
