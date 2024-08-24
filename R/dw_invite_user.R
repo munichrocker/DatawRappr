@@ -6,7 +6,7 @@
 #'
 #' @param team Required. The team-id (can be found in the URL of a teams-folder) as character.
 #' @param email Required. The email-address that gets an invitation as character.
-#' @param role Required. Set to one of: \code{member}, \code{admin}, \code{owner}. Check this for more informations: \href{https://academy.datawrapper.de/article/212-how-to-invite-others-to-a-team}
+#' @param role Required. Set to one of: \code{member}, \code{admin}, \code{owner}. Check this for more informations: \href{https://academy.datawrapper.de/article/212-how-to-invite-others-to-a-team}{How to invite others to a team}
 #' @param api_key Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.
 #'
 #' @return A message of failure or success, derived from the API's status code.
