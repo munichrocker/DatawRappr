@@ -16,7 +16,7 @@ dw_invite_user(
 
 \item{email}{Required. The email-address that gets an invitation as character.}
 
-\item{role}{Required. Set to one of: \code{member}, \code{admin}, \code{owner}. Check this for more informations: \href{https://academy.datawrapper.de/article/212-how-to-invite-others-to-a-team}}
+\item{role}{Required. Set to one of: \code{member}, \code{admin}, \code{owner}. Check this for more informations: \href{https://academy.datawrapper.de/article/212-how-to-invite-others-to-a-team}{How to invite others to a team}}
 
 \item{api_key}{Optional. A Datawrapper-API-key as character string. Defaults to "environment" - tries to automatically retrieve the key that's stored in the .Reviron-file by \code{\link{datawrapper_auth}}.}
 }
