@@ -11,7 +11,7 @@
 #' @param mode color movde for output. Defaults to `rgb`. Only applicable to `pdf` output type.
 #' @param width,height width and height of the visualization; if not specified it takes the chart width/height.
 #' @param plain if `TRUE` (the default) only the visualization will be exported; `FALSE` includes header and footer.
-#' @param scale defines multiplier for the size; e.g. if `3` then the chart will be 3x wider and taller; Defaults to `2`.
+#' @param scale defines multiplier for the size; e.g. if `3` then the chart will be 3x wider and taller; Defaults to `2`. If exporting to PDF, this sets the `scale` parameter in the API; if exporting to PNG, it sets the API's `zoom` parameter.
 #' @param border_width margin around the visualization; e.g. if `border_width` is `20` and `unit` is `px`, the visualization
 #'        will have a 20px margin. Default is `0`.
 #' @param border_color color of the border; The default is the same as the visualization (likely `white`).
@@ -56,6 +56,7 @@ dw_export_chart <- function(chart_id,
                    height = height[1],
                    plain = trimws(tolower(as.character(plain[1]))),
                    scale = scale[1],
+                   zoom = scale[1],
                    borderWidth = as.numeric(border_width[1]),
                    borderColor = border_color[1],
                    transparent = trimws(tolower(as.character(transparent[1]))),
