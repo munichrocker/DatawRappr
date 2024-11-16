@@ -220,10 +220,13 @@ bind_cols <- function(...) {
   col_names <- unlist(lapply(res, names), use.names = FALSE)
   col_names <- make.unique(col_names, sep = "")
 
+  if( R.version$major<4 | ( R.version$major<=4 & R.version$minor=="0.0")) 
+   {
   saf <- default.stringsAsFactors()
   options(stringsAsFactors = FALSE)
   on.exit(options(stringsAsFactors = saf))
-
+   }
+  
   out <- do.call(cbind.data.frame, res)
 
   names(out) <- col_names
