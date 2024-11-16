@@ -168,10 +168,13 @@ bind_rows <- function(..., .id = NULL) {
 
   id_vals <- if (is.null(names(res))) 1:length(res) else names(res)
 
-  saf <- default.stringsAsFactors()
-  options(stringsAsFactors = FALSE)
-  on.exit(options(stringsAsFactors = saf))
-
+if( R.version$major<4 | ( R.version$major<=4 & R.version$minor=="0.0")) 
+    {
+      saf <- default.stringsAsFactors()
+      options(stringsAsFactors = FALSE)
+      on.exit(options(stringsAsFactors = saf))
+  }
+       
   idx <- 1
   do.call(
     rbind.data.frame,
@@ -217,10 +220,13 @@ bind_cols <- function(...) {
   col_names <- unlist(lapply(res, names), use.names = FALSE)
   col_names <- make.unique(col_names, sep = "")
 
+  if( R.version$major<4 | ( R.version$major<=4 & R.version$minor=="0.0")) 
+   {
   saf <- default.stringsAsFactors()
   options(stringsAsFactors = FALSE)
   on.exit(options(stringsAsFactors = saf))
-
+   }
+  
   out <- do.call(cbind.data.frame, res)
 
   names(out) <- col_names
